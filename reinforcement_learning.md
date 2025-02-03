@@ -67,7 +67,7 @@ Where
 - $F_t=F(x_t,a_t)$ is the feedback we have observed.
 - $T_t=T(x_t,a_t)$ is the transition we have observed.
 
-Additionally while there are further steps to implement an exploit/explore execution algorithm, the above equation gives supervised learning approach for fitting $\tilde{Q}(\theta,\cdot)$.
+Additionally, while there are further steps to implement an exploit/explore execution algorithm, the above equation gives supervised learning approach for fitting $\tilde{Q}(\theta,\cdot)$.
 
 References:
 - https://en.wikipedia.org/wiki/Q-learning

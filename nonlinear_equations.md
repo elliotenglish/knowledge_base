@@ -30,7 +30,7 @@ $$=\pm\sqrt{-4ac+b^2}/(2a)-b/(2a)$$
 
 $$=\frac{-b\pm\sqrt{-4ac+b^2}}{2a}$$
 
-Which is the standard quadratic equation solution formula (so called "quadratic equation").
+Which is the standard quadratic equation solution formula (so-called "quadratic equation").
 
 ## Cubic Equation
 

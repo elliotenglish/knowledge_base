@@ -105,7 +105,7 @@ A physical space representation provides a lot of flexibility in terms of render
 
 When calculating the position of a point or a camera using triangulation, the calculation becomes much less accurate as the triangle becomes more oblique (and less equilateral). Specifically this means that 1) the distance to the vertex with the smallest angle will have higher error, or 2) the perpendicular location of the vertex with the largest angles will have higher error.
 
-For 2 views this is relatively straightfoward since you have a single triangle as illustrated below.
+For 2 views this is relatively straightforward since you have a single triangle as illustrated below.
 
 Near equilateral, low error triangulation.
 
@@ -115,7 +115,7 @@ Oblique/high error triangulation.
 
 ![Oblique triangulation baseline](triangulation_baseline_oblique.svg)
 
-For multiple views of the same point, this becomes much less well defined. One could loop over all the camera pairs and compute this. But this is $O(n^2)$ and inefficient. Instead one option is to compute some the perpendicular spread from the mean position of the cameras.
+For multiple views of the same point, this becomes much less well-defined. One could loop over all the camera pairs and compute this. But this is $O(n^2)$ and inefficient. Instead, one option is to compute some the perpendicular spread from the mean position of the cameras.
 
 ![Multiview triangulation baseline](triangulation_baseline_multiview.svg)
 
@@ -130,7 +130,7 @@ See Essential and Fundamental Matrices.
 - [SRPose](https://arxiv.org/abs/2407.08199)
 - [QuEst](https://github.com/KavehFathian/QuEst)
 
-Each of these algorithms present an analytical solution to the 2 view pose estimation problem. However, they suffer from degeneracy and multiple-solutions in intermediate steps. They then require further heuristics to dissambiguate the solution, but often still yield unusable results.
+Each of these algorithms present an analytical solution to the 2 view pose estimation problem. However, they suffer from degeneracy and multiple-solutions in intermediate steps. They then require further heuristics to disambiguate the solution, but often still yield unusable results.
 
 ### 5-Point Algorithm
 
@@ -140,7 +140,7 @@ Where $$E=t_\times R$$.
 
 Eigenvalue constraint (TODO: explanation): $$E E^T E-\frac{1}{2}trace(E E^T)E=0$$
 
-Which results in 3 constraints as the offdiagonals are trivially true. As for the effect we show this as follows. We first decompose $E$ into an SVD $E=U\Sigma V^T$ and then simplify the expression.
+Which results in 3 constraints as the off-diagonals are trivially true. As for the effect we show this as follows. We first decompose $E$ into an SVD $E=U\Sigma V^T$ and then simplify the expression.
 
 $$U\Sigma V^T V \Sigma U^T U\Sigma V^T-\frac{1}{2}\sum_i \Sigma_{ii}^2 E=0$$
 
@@ -150,7 +150,7 @@ $$U\Sigma^3 V^T-U (\frac{1}{2}\sum_i \Sigma_{ii}^2\Sigma)V^T=0$$
 
 $$\Sigma^3-\frac{1}{2}\sum_i \Sigma_{ii}^2\Sigma=0$$
 
-This is clearly satisfied non-trivially only by $$\Sigma_{00}=\Sigma{11}$$ $$\Sigma{22}=0$$ where the 2 nonzeros is controled by the 1/2 factor in front and squaring, where the squaring prevents cancellation and the 1/2 means that the terms must then be equal.
+This is clearly satisfied non-trivially only by $$\Sigma_{00}=\Sigma{11}$$ $$\Sigma{22}=0$$ where the 2 non-zeros is controlled by the 1/2 factor in front and squaring, where the squaring prevents cancellation and the 1/2 means that the terms must then be equal.
 
 ### QuEst
 
@@ -278,7 +278,7 @@ sin(\tau_y) & 0 & cos(\tau_y)
 \begin{bmatrix}
 1 & 0 & 0 \\
 0 & cos(\tau_x) & sin(\tau_x) \\
-0 & -sin(\tau_x & cos(\tau_x)
+0 & -sin(\tau_x) & cos(\tau_x)
 \end{bmatrix}
 \begin{bmatrix}
 cos(\tau_y) & sin(\tau_y)sin(\tau_x) & -sin(\tau_y)cos(\tau_x) \\
@@ -324,7 +324,7 @@ Where
 
 One of the challenges with bundle adjustment solvers is that the objective is generally only valid for points that are within the camera [frustum](https://en.wikipedia.org/wiki/Frustum). More specifically there are 2 challenging cases:
 
-1. Non-monotic/stable distortion: For points that are in front of the camera ($Z_c$>0) then the objective above is technically computable and can be computed for points outside of the frustum. However, because the distortion functions are polynomials they tend to be unbounded and invert/go to infinity very quickly outside of the calibrated region. This makes the problem unnecessary non-convex/severely non-linear. This is compounded when points are near the camera and get projected to something arbitrarily far out.
+1. Non-monotonic/stable distortion: For points that are in front of the camera ($Z_c$>0) then the objective above is technically computable and can be computed for points outside the frustum. However, because the distortion functions are polynomials they tend to be unbounded and invert/go to infinity very quickly outside the calibrated region. This makes the problem unnecessary non-convex/severely non-linear. This is compounded when points are near the camera and get projected to something arbitrarily far out.
 2. Points behind camera: The above projection is simply not defined for points behind the camera so once a point gets stuck there, other than due to the solver making adjustments for still valid points, there's no way for most solvers to correct themselves.
 
 For case 1 we need to do the following:
@@ -397,7 +397,7 @@ Which is simply the Jacobians multiplied together.
 - Scale ambiguity
 - Necker reversal
   - https://en.wikipedia.org/wiki/Necker_cube
-  - Although this in theory is a not an issue with perspective projection, it manifests itself as a local minima to solvers.
+  - Although this in theory is a not an issue with perspective projection, it manifests itself as local minima to solvers.
 - Chirality ambiguity
   - A point can project to the same place when in front of or behind the camera.
 - Plane-translation

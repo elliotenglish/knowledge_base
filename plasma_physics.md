@@ -6,11 +6,11 @@ Note below that some vector quantities are bolded and capitalized. Which is typi
 * $\textbf{B}$ - Magnetic field.
 * $B=\sqrt{\textbf{B}\cdot\textbf{B}}=|\textbf{B}|$
 * $\beta=\frac{p}{B^2/2\mu_0}$ - Plasma pressure.
-* $P_B=\frac{B^2}{2\mu_0}$ - Magnetic pressure, so called because the lorentz force can be rewritten in terms of a tension term and the gradient of this pressure.
+* $P_B=\frac{B^2}{2\mu_0}$ - Magnetic pressure, so called because the Lorentz force can be rewritten in terms of a tension term and the gradient of this pressure.
 * $f_T=\frac{(\textbf{B}\cdot\nabla)\textbf{B}}{\mu_0}$ - magnetic tension.
 * $\mu_0$ - vacuum permeability, effectively the rate of change of the magnetic field.
 * $\textbf{J}$ (or $\textbf{I}$) - Current density. It is relative to the motion of the different charge fields, e.g. $\textbf{J} ~= n_e \textbf{v}_e - n_i \textbf{v}_i$. ? TODO
-* $\tau_E$ - Confinement time. This is the halflife of the plasma's energy due to conduction and radiation, collectively transport.
+* $\tau_E$ - Confinement time. This is the half life of the plasma's energy due to conduction and radiation, collectively transport.
 * $\textbf{R}_c$ - TODO
 * $R_c=\sqrt{\textbf{R}\cdot\textbf{R}}=|\textbf{R}|$
 * Gyromotion - ?
@@ -29,7 +29,7 @@ Note below that some vector quantities are bolded and capitalized. Which is typi
 * $R$ - Major radius from origin to center of torus.
 * $a$ - Minor radius from center of torus to plasma surface.
 * Aspect ratio = $R/a$
-* Elongation - How much the plasma profile is stretched from a base circle. TODO: precise defintion
+* Elongation - How much the plasma profile is stretched from a base circle. TODO: precise definition
 * Characteristic speed of waves in electromagnetic fields - speed of light? TODO: How much is this attenuated in dielectric mediums
 * Characteristic speed of waves in fusion plasma - TODO
 * Dielectric material - TODO
@@ -198,7 +198,7 @@ A $\theta$-screw is the configuration when you have a current flowing in the $th
 
 ## $z$-screw
 
-A $z$-screw is the configurationw hen you have a current flowing along the $\phi$ direction around the major axis of the torus.
+A $z$-screw is the configuration when you have a current flowing along the $\phi$ direction around the major axis of the torus.
 
 # Tokamak Force Breakdown
 

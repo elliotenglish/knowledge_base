@@ -2,11 +2,11 @@
 
 A simple is the most basic linear polytope in a $d$ dimensional space. In 1D this is a line segment, in 2D this is a triangle, in 3D this is a tetrahedron.
 
-In these derivations the right-hand rule is used, aswell as a right handed coordinate system.
+In these derivations the right-hand rule is used, as well as a right-handed coordinate system.
 
 ## Volume
 
-Then general form for the volume of a simple in $d$ dimensional space is computed using the determinant of the basis vectors as a matrix columns. Note that this and the following forms are the signed volume and require deliberate vertex ordering to achieve the required results.
+Then general form for the volume of a simple in $d$ dimensional space is computed using the determinant of matrix where the columns are the determinant basis vectors. Note that this and the following forms are the signed volume and require deliberate vertex ordering to achieve the required results.
 
 $vol(\{\vec{x}_{j\in [1,d]}\})=\frac{1}{d!}det(\begin{bmatrix}(\vec{x}_2-\vec{x}_1) & .. & (\vec{x}_d-\vec{x}_1)\end{bmatrix})$
 

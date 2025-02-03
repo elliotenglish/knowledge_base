@@ -3,7 +3,7 @@
 ## Script shebang
 The shebang (https://en.wikipedia.org/wiki/Shebang_(Unix)) is used to specify the interpreter for the script.
 
-In order to get the broadest support for multiple platforms using the following shebang. It's confirmed to work on linux, MacOS test. The `env` command searches the path for the specified path. Shebangs are limited to 2 arguments so you can't pass `-u` to suppress buffered output in case you want to pipe the output to other tools without getting out of order and delayed results, but the tradeoff is generally worth it (TODO: is there a solution to this).
+In order to get the broadest support for multiple platforms using the following shebang. It's confirmed to work on Linux, MacOS test. The `env` command searches the path for the specified path. Shebangs are limited to 2 arguments, so you can't pass `-u` to suppress buffered output in case you want to pipe the output to other tools without getting out of order and delayed results, but the trade-off is generally worth it (TODO: is there a solution to this).
 
 ```
 #!/usr/bin/env python3

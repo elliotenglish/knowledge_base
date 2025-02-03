@@ -300,7 +300,7 @@ $$\int_{\Omega_n}\phi_n(x)\nabla\cdot\nabla \sum_i u_i\phi_i(x)dx=\int_{\Omega_n
 
 $$\sum_i u_i\int_{\Omega_n}\phi_n(x)\nabla\cdot\nabla\phi_i(x)dx=\int_{\Omega_n}\phi_n(x)g(x)dx$$
 
-Where the solution variables are now $u_i$. Note that since $\phi_i$ is linear, the second derivative will be 0 so we can't proceed with this extact formulation. Instead the strategy is typically to use integration by parts (specifically in higher dimensions, using Green's first identity https://en.wikipedia.org/wiki/Integration_by_parts#Higher_dimensions) to move the derivative to the residual weight.
+Where the solution variables are now $u_i$. Note that since $\phi_i$ is linear, the second derivative will be 0, so we can't proceed with this exact formulation. Instead, the strategy is typically to use integration by parts (specifically in higher dimensions, using Green's first identity https://en.wikipedia.org/wiki/Integration_by_parts#Higher_dimensions) to move the derivative to the residual weight.
 
 $$\sum_i u_i\left ( \int_{\Omega_n}-\nabla\phi_n(x)\cdot\nabla\phi_i(x)dx+\int_{\partial \Omega_n}\phi_n(x)n\cdot\nabla \phi_i(x)\right )=\int_{\Omega_n}\phi_n(x)g(x)dx$$
 
@@ -356,7 +356,7 @@ $$\rho\vec{u}\cdot\nabla\phi_i=\sum_j\rho_j\phi_j\vec{u}\cdot\nabla\phi_i$$
 
 Here $\rho_j$ is the value at pseudo-face $j$, $\phi_j$ is the area of face $j$, and $\nabla\phi_i$ is the pseudo-face normal. In order for this to be conservative, the same term must appear for other node integrals, e.g. when swapping $j$/$i$.
 
-## Advection term on discontinous elements
+## Advection term on discontinuous elements
 
 $$\nabla\cdot\rho\vec{u}$$
 

@@ -35,4 +35,4 @@ $$\mathbf{a}\times=\begin{pmatrix}0 & -a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x
 
 ## Quaternions vs Rodrigues vectors
 
-Note that calculating th Rodrigues equation is singular at small rotations and thus would need elimination of the angle terms by rewriting with exponentials. Most codes to simply compute this would use conditionals to avoid rotating at small angles. This poses problems with derivatives. So the quaternion formulation tends to be better as the inverse there is well defined for all angles.
+Note that calculating the Rodrigues equation is singular at small rotations and thus would need elimination of the angle terms by rewriting with exponentials. Most codes to simply compute this would use conditionals to avoid rotating at small angles. This poses problems with derivatives. So the quaternion formulation tends to be better as the inverse there is well-defined for all angles.

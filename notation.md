@@ -4,7 +4,7 @@
 
 It is common to struggle with notation. Best practices are as follows:
 - State all notation
-- List all variables (if not self evident, or specific to context) at the first usage, when redefined and when further clarification or clarity is helpful.
+- List all variables (if not self-evident, or specific to context) at the first usage, when redefined and when further clarification or clarity is helpful.
 
 ## References
 
@@ -17,7 +17,7 @@ https://en.wikipedia.org/wiki/Vector_notation
 * Scalars are lower case: $x$
 * Vectors are lower case bolded or have an arrow above them: $\textbf{x}$ or $\vec{x}$
 * Matrices are upper case bolded: $\textbf{A}$
-  * Individual elements are generally indexed with (row,column) ordered indices: $\textbf{A}_{ij}$ for the $i$-th row and $j$-th column.
+  * Individual elements are generally indexed with (row, column) ordered indices: $\textbf{A}_{ij}$ for the $i$-th row and $j$-th column.
 * Higher order tensors generally have explicit indices used.
 
 ### Ranges
@@ -26,7 +26,7 @@ https://en.wikipedia.org/wiki/Vector_notation
 * Exclusive ranges use round parenthesis: $(a,b)$
 * Mixed ranges: $(a,b]$ or $[a,b)$
 
-Note that often the type is implied based on the context, either integer or real. Otherwise it is stated as below:
+Note that often the type is implied based on the context, either integer or real. Otherwise, it is stated as below:
 
 * $[a,b] \in \real$
 
@@ -61,7 +61,7 @@ Use `\displaystyle` for sums.
 
 ### References
 
-Markdown does not natively support automatically referencing equations. However, you can added tags by placing `\tag{some_id}` as the end of an equation and then referencing it explicitly. For example:
+Markdown does not natively support automatically referencing equations. However, you can add tags by placing `\tag{some_id}` as the end of an equation and then referencing it explicitly. For example:
 
 ```
 $$y=Ax+b\tag{1}$$
@@ -70,3 +70,5 @@ $$y=Ax+b\tag{1}$$
 Which renders as:
 
 $$y=Ax+b\tag{1}$$
+
+Note that these only work in some interpretters. They work in VSCode but not Github.
