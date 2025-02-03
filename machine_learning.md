@@ -20,7 +20,7 @@ Machine learning is a numerical technique where data is sampled from a system of
 
 ### Deep Learning
 
-Deep learning, instead of relying upon more complex building blocks to model data with more intricate patterns, relies upon composing simple models. Typically this takes the form of a series of linear and nonlinear layers. For example.
+Deep learning, instead of relying upon more complex building blocks to model data with more intricate patterns, relies upon composing simple models. Typically, this takes the form of a series of linear and nonlinear layers. For example.
 
 $y=\mathbf{b}_2+\mathbf{A}_2\sigma(\mathbf{b}_1+\mathbf{A}_1\mathbf{x})$ in the case of 2 layers.
 
@@ -40,11 +40,11 @@ As a graphical model: (TODO)
 
 ### Supervised Learning vs Unsupervised Learning
 
-Supervised learning is the fiting of a model to explicit input/output (a.k.a. annotations, labels) pairs. This is typically stated as ${\mathbf{x}_i,y_i}$ where $y_i=f(\mathbf{x}_i)$.
+Supervised learning is the fitting of a model to explicit input/output (a.k.a. annotations, labels) pairs. This is typically stated as ${\mathbf{x}_i,y_i}$ where $y_i=f(\mathbf{x}_i)$.
 
-Unsupervised learning is the process of finding patterns in data without having explicit labels i.e. ${\mathbf{x}_i}$. Typically only clustering is considered unsupervised learning, often only relying upon a metric comparing points such as a P-norm (e.g. L1, L2).
+Unsupervised learning is the process of finding patterns in data without having explicit labels i.e. ${\mathbf{x}_i}$. Typically, only clustering is considered unsupervised learning, often only relying upon a metric comparing points such as a P-norm (e.g. L1, L2).
 
-Semi-supervised learning generally doesn't have annotated input/output pairs. Instead the output value is generated using some heuristics, such as predicting a value based upon its spatial context.
+Semi-supervised learning generally doesn't have annotated input/output pairs. Instead, the output value is generated using some heuristics, such as predicting a value based upon its spatial context.
 
 ### Discriminative vs Generative Models
 
@@ -52,7 +52,7 @@ Semi-supervised learning generally doesn't have annotated input/output pairs. In
 
 **Multi-class classification** is the task of assigning 1 of N classes to a data point. In this case the output values are typically normalized and sum to one, often performed using a softmax function, $f(\mathbf{x})_i=\frac{e^{x_i}}{\sum_j e^{x_j}}$.
 
-**Binary classification** the task of assigning any number of N classes to a data point. In this case each value is compressed to the range [0,1], often perfomed using a sigmoid function, $f(\mathbf{x})_i=\frac{1}{1-e^{-x_i}}$.
+**Binary classification** the task of assigning any number of N classes to a data point. In this case each value is compressed to the range [0,1], often performed using a sigmoid function, $f(\mathbf{x})_i=\frac{1}{1-e^{-x_i}}$.
 
 In both of these cases, the values can be interpreted as probabilities. However, from a computational perspective they don't necessarily have any significance as a probability and are more a result of the engineered properties of the computational architecture and training process. This is further reinforced by the fact that probability is ill-defined in most real world cases, relying upon a prior assumption of the underlying distribution and parameter estimates. There is other literature that further discusses the definition of probability. That said, it is a useful interpretation.
 
@@ -90,7 +90,7 @@ $h^{-1}$ or $h^0$ is initialized to some initial state.
 
 ### Computer Vision
 
-In computer vision we make predictions typically given either a single image, a temporal sequence of images, or some sort of image array. The main difference is that at each time you have a 2D array of data. This includes tasks such as image classification, object detection, object identification, segmentation. object tracking. 3D perception is also often performed on 2D data to extract 3D structure, such as in multiview reconstruction (an extension of stereovision).
+In computer vision we make predictions typically given either a single image, a temporal sequence of images, or some sort of image array. The main difference is that at each time you have a 2D array of data. This includes tasks such as image classification, object detection, object identification, segmentation and object tracking. 3D perception is also often performed on 2D data to extract 3D structure, such as in multiview reconstruction (an extension of stereovision).
 
 - https://github.com/jbhuang0604/awesome-computer-vision
 
@@ -119,7 +119,7 @@ In the case of a *language model*, the task is to classify the next word after a
 
 ### Mixture of Experts
 
-## Pre/post processing
+## Pre/post-processing
 
 ### Feature Engineering
 
@@ -127,7 +127,7 @@ In the case of a *language model*, the task is to classify the next word after a
 
 ### Sparse Models
 
-Sparsity is not merely a way to accelerate neural networks, it is integral to designing scalable architectures.
+Sparsity is not merely a way to accelerate neural networks, it is integral to design scalable architectures.
 
 References:
 - https://dynamic-sparsity.github.io/
@@ -165,7 +165,7 @@ This is the successor to Tensorflow from Google. It is heavily used by machine l
 
 Main benefits:
 - Differential numpy interface (see jax.numpy)
-- Arbitrarity order derivatives, via expression rewriting into the same language
+- Arbitrary order derivatives, via expression rewriting into the same language
 - Highly optimized for a wide variety of platforms (e.g. CPU, Nvidia, AMD, Google TPU)
 - Highly distributed processing (e.g. FSDP)
 

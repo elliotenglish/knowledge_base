@@ -2,7 +2,7 @@
 
 ## Goal of AGI
 
-The ultimate goal of development efforts within artifical intelligence/machine learning is to create an system/agent/entity capable of the following:
+The ultimate goal of development efforts within artificial intelligence/machine learning is to create a system/agent/entity capable of the following:
 - Solving complex tasks at minimum at a human level.
 - Adapting to new complex tasks that it has not seen before.
 
@@ -12,7 +12,7 @@ Also note that most models have moved beyond just being (large) language models,
 
 ## Measuring Intelligence
 
-- The classical test is the [Turing Test](https://en.wikipedia.org/wiki/Turing_test) in which you have a human subject lingually interacting with a hidden agent. The goal is for the agent to respond such that the human can not determine that the agent is a non-human.
+- The classical test is the [Turing Test](https://en.wikipedia.org/wiki/Turing_test) in which you have a human subject interact with a hidden agent. The goal is for the agent to respond such that the human can not determine that the agent is a non-human.
 - Standardized testing sets/benchmarks (e.g. MMLU, ImageNet) are also available to test models. These test a broad set of tasks from comprehension to mathematical proofs. There are leaderboards showing the performance of models on these benchmarks, such as the [Hugging Face LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard). 
 - Objective functions (e.g. perplexity for LLMs) are typically one of the metrics used to gauge the fit of a model to both training and testing data as long as annotations or self-annotations (as in the case of LLMs) are available. This is an important way to measure accuracy as it helps align the training process and real world applications.
 
@@ -23,7 +23,7 @@ Also note that most models have moved beyond just being (large) language models,
 - Recurrent neural networks (RNN)
 - Transformer architectures
 
-Currently the majority of the SOTA models use a transformer architecture. However, it also appears that the majority of the accuracy improvements are due to having bigger models and proportionately more data. However, generally as models grow they become harder to train due to the instability of stochastic gradient based methods (e.g. SGD, Momentum, Adam). So while one architecture might be a better architecture for a given problem by having better basis functions/nonlinearities, they may instead be easier to train. Transformers and other attention mechanisms can help short circuit models, making them less "nonlinear" for any given example. For example a transformer allows a nonlinear multiplicative relationship in a single layer, while an MLP needs many layers to approximate these even for moderately simple datasets.
+Currently, the majority of the SOTA models use a transformer architecture. However, it also appears that the majority of the accuracy improvements are due to having bigger models and proportionately more data. However, generally as models grow they become harder to train due to the instability of stochastic gradient based methods (e.g. SGD, Momentum, Adam). So while one architecture might be a better architecture for a given problem by having better basis functions/nonlinearities, they may instead be easier to train. Transformers and other attention mechanisms can help short circuit models, making them less "nonlinear" for any given example. For example a transformer allows a nonlinear multiplicative relationship in a single layer, while an MLP needs many layers to approximate these even for moderately simple datasets.
 
 ## Scaling Laws
 
@@ -53,14 +53,14 @@ Ray Kurzweil wrote a book entitled [The Age of Spiritual Machines](https://en.wi
 https://arxiv.org/pdf/2203.15556
 - N - model parameters across all parts of model
 - D - training tokens, equal to the average sequence length x total sequences
-  - How is this optimized for as we can take longer sequences but this will reduce the number of tokens due to the quadratic compute as a function of sequence length
+  - How is this optimized for as we can take longer sequences, but this will reduce the number of tokens due to the quadratic compute as a function of sequence length
 - C - flops total during training, equal to the number of steps taken by the FLOPs per step
 - L - final pretraining loss
 - N_opt(C),D_opt(C) = argmin(L(N,D),FLOPs(N,D)=C) - For a given count of flops, this gives the optimal model size and training tokens
 
 https://arxiv.org/abs/2402.14746
 - $s=w_1 w_2..w_l$ - The sequence and words of sequence
-- $S$ - set of sequences length $l$ or less as a subset of the full set $T$
+- $S$ - set of sequences length $l$ or less than a subset of the full set $T$
 - $p_s=P(w_1 w_2..w_{l-1})P(w_l|w_1 w_2..w_{l-1})$ - The probability of the sequence s in the data
 - $q_s=P(w_1 w_2..w_{l-1})Q(w_l|w_1 w_2..w_{l-1})$ - The probability of the sequence s in the model
 - $f(s)=Q(w_l|w_1 w_2..w_l-1)$
@@ -124,7 +124,7 @@ $$H(p,q)=-log(q(t))$$
 
 $$\overline{H}=\overline{H}(\{P_i^j\},\{t^j\})=\frac{1}{N_j}\sum_j H(\{P_i^j\},t^j)$$
 
-Where $j$ indexes tokens in a sequence. Then we define perlexity as follows:
+Where $j$ indexes tokens in a sequence. Then we define perplexity as follows:
 
 $$ppl=e^{\overline{H}}$$
 
@@ -164,7 +164,7 @@ Note that open source is also under debate as most models are at least trained o
 Some points/references:
 - For the vast majority of people we may already be [beyond the Turing Test](https://dl.acm.org/doi/10.1145/3673427).
 - LLM benchmarks show that these models have very limited ability to do general symbolic reasoning, and what currently works is likely due to large amounts of training data with templates that have been "memorized" by these models. See Apple's recent [investigation](https://arxiv.org/pdf/2410.05229) for detailed examples.
-- [AGI survery](https://github.com/ulab-uiuc/AGI-survey) [open review notes](https://openreview.net/forum?id=H2ZKqfNd0U)
+- [AGI survey](https://github.com/ulab-uiuc/AGI-survey) [open review notes](https://openreview.net/forum?id=H2ZKqfNd0U)
 - An [analysis](https://arxiv.org/abs/2406.03689) of the ability of LLMs to build complex world models.
 - (https://www.freethink.com/robots-ai/arc-prize-agi)
 
