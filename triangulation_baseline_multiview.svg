@@ -1,0 +1,54 @@
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg" style="background-color:white">
+    <g transform="translate(0,50)">
+    <!--cameras/-->
+    <text x="60" y="40">x_c0</text>
+    <g transform="translate(60,40) rotate(-30)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <text x="90" y="30">x_c1</text>
+    <g transform="translate(90,30) rotate(-10)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <text x="130" y="30">x_c2</text>
+    <g transform="translate(130,30) rotate(-5)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <text x="170" y="30">x_c3</text>
+    <g transform="translate(170,30) rotate(0)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <text x="210" y="30">x_c4</text>
+    <g transform="translate(210,30) rotate(5)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <text x="250" y="30">x_c5</text>
+    <g transform="translate(250,30) rotate(10)">
+    <line x1="0" y1="0" x2="-100" y2="100" stroke="grey"/>
+    <line x1="0" y1="0" x2="100" y2="100" stroke="grey"/>
+    <line x1="-100" y1="100" x2="100" y2="100" stroke="grey"/>
+    </g>
+    <!--point/-->
+    <text x="270" y="310">x_p</text>
+    <circle cx="270" cy="310" r="3" stroke="black" stroke-width="1" fill="white" />
+    <!--triangulation/-->
+    <line x1="60" y1="40" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    <line x1="90" y1="30" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    <line x1="130" y1="30" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    <line x1="170" y1="30" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    <line x1="210" y1="30" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    <line x1="250" y1="30" x2="270" y2="310" stroke="grey" stroke-dasharray="5 5"/>
+    </g>
+    <circle cx="160" cy="90" r="3" stroke="black" stroke-width="1" fill="white" />
+    <line x1="70" y1="120" x2="250" y2="60" stroke="grey" stroke-dasharray="15 5"/>
+    <line x1="160" y1="90" x2="270" y2="360" stroke="grey" stroke-dasharray="15 5"/>
+</svg>
