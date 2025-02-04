@@ -354,7 +354,35 @@ In general for interior domains, the first term goes to 0. When discretizing the
 
 $$\rho\vec{u}\cdot\nabla\phi_i=\sum_j\rho_j\phi_j\vec{u}\cdot\nabla\phi_i$$
 
-Here $\rho_j$ is the value at pseudo-face $j$, $\phi_j$ is the area of face $j$, and $\nabla\phi_i$ is the pseudo-face normal. In order for this to be conservative, the same term must appear for other node integrals, e.g. when swapping $j$/$i$.
+Here $\rho_j$ is the value at pseudo-face $j$, $\phi_j$ is the area of face $j$, and $\nabla\phi_i$ is the pseudo-face normal. In order for this to be conservative, the same term must appear for other node integrals, e.g. when swapping $j$/$i$. Conservation is guaranteed because of the following:
+
+$$\sum_i\phi_i=1$$
+
+Therefore
+
+$$\nabla\sum_i\phi_i=0$$
+$$=\sum_i\nabla\phi_i$$
+
+And
+
+$$\vec{u}\cdot\sum_i\nabla\phi_i=0$$
+
+So to show conservation we some the $j$-th term over all the cells, indexed by $i$, it contributes to:
+
+$$\sum_i\rho_j\phi_j\vec{u}\cdot\nabla\phi_i=0$$
+
+We can then view this as a type of $n$-way face and modify the flux to be upwinded to stabilize the method. Since we are referring to $\rho_j$ we look at the sign of $\vec{u}\cdot\nabla\phi_j$.
+
+$$\rho_j^*=\left\{\begin{matrix}
+\rho_j & \vec{u}\cdot\nabla\phi_j \le 0 \\
+\frac{\sum_{k!=j}\phi_k\rho_k}{\sum{k!=j}\phi_k} & \vec{u}\cdot\nabla\phi_j < 0
+\end{matrix} \right.$$
+
+So we end up with the sceme:
+
+$$\int_{\Omega_i}\phi_i\nabla\cdot\rho\vec{u}=
+\int_{\partial\Omega_i}\phi_i\rho\vec{u}\cdot\vec{n}
+-\int_{\Omega_i}\sum_j\rho_j^*\phi_j\vec{u}\cdot\nabla\phi_i$$
 
 ## Advection term on discontinuous elements
 
