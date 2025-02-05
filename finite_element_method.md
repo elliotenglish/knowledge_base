@@ -352,7 +352,8 @@ $$=\int_{\partial\Omega_i}\phi_i\rho\vec{u}\cdot\vec{n}
 
 In general for interior domains, the first term goes to 0. When discretizing the second term, you can view is as a pseudo-face flux to the overlapping elements. This allows you to apply upwinding in the interpolation dimension.
 
-$$\rho\vec{u}\cdot\nabla\phi_i=\sum_j\rho_j\phi_j\vec{u}\cdot\nabla\phi_i$$
+$$-\int_{\Omega_i}\rho\vec{u}\cdot\nabla\phi_i=
+-\int_{\Omega_i}\sum_j\rho_j\phi_j\vec{u}\cdot\nabla\phi_i$$
 
 Here $\rho_j$ is the value at pseudo-face $j$, $\phi_j$ is the area of face $j$, and $\nabla\phi_i$ is the pseudo-face normal. In order for this to be conservative, the same term must appear for other node integrals, e.g. when swapping $j$/$i$. Conservation is guaranteed because of the following:
 
@@ -367,7 +368,7 @@ And
 
 $$\vec{u}\cdot\sum_i\nabla\phi_i=0$$
 
-So to show conservation we some the $j$-th term over all the cells, indexed by $i$, it contributes to:
+So to show conservation we sum the $j$-th term over all the cells, indexed by $i$, it contributes to:
 
 $$\sum_i\rho_j\phi_j\vec{u}\cdot\nabla\phi_i=0$$
 
@@ -378,11 +379,25 @@ $$\rho_j^*=\left\{\begin{matrix}
 \frac{\sum_{k!=j}\phi_k\rho_k}{\sum{k!=j}\phi_k} & \vec{u}\cdot\nabla\phi_j < 0
 \end{matrix} \right.$$
 
-So we end up with the sceme:
+So we end up with the scheme:
 
 $$\int_{\Omega_i}\phi_i\nabla\cdot\rho\vec{u}=
 \int_{\partial\Omega_i}\phi_i\rho\vec{u}\cdot\vec{n}
 -\int_{\Omega_i}\sum_j\rho_j^*\phi_j\vec{u}\cdot\nabla\phi_i$$
+
+### Non-conservative advection term
+
+$$\vec{u}\cdot\nabla\rho$$
+
+Weak form:
+
+$$\int_{\Omega_i}\phi_i\vec{u}\cdot\nabla\rho$$
+
+$$=\int_{\Omega_i}\phi_i\vec{u}\cdot\nabla\sum_j\rho_j\phi_j$$
+
+$$=\int_{\Omega_i}\sum_j\rho_j\phi_i\vec{u}\cdot\nabla\phi_j$$
+
+Note that difference compared to the conservative form is the overall sign and the swapping of $\phi_i$ and $\phi_j$. We can similarly convert this to an upwind scheme by replacing the $\phi_j$ value with the upwind form as in the conservative case.
 
 ## Advection term on discontinuous elements
 
