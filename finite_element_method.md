@@ -10,7 +10,7 @@
   - $m=[0,N_o]$ describes the order of the problem.
   - $u_i(x),i=[1,N_u]$ are the dependent variables.
   - $x_j,j=[1,N_x]$ are the independent variables (e.g. spatial variables).
-  - $f_k(\cdot),k=[1,N_f]$ are the the equation functions (e.g. residual functions).
+  - $f_k(\cdot),k=[1,N_f]$ are the equation functions (e.g. residual functions).
   - $\vec{x}\in\Omega$ is the domain.
   - $\{\frac{\partial^m u_i(x)}{\partial x_j^m}\}=\{u_1(x),...,u_{N_u}(x),\frac{\partial u_1(x)}{\partial x_1},...,\frac{\partial u_{N_u}(x)}{\partial x_{N_x}},...,\frac{\partial^{N_o} u_1(x)}{\partial x_1^{N_o}},...,\frac{\partial^{N_o} u_{N_u}(x)}{\partial x_{N_x}^{N_o}}\}$ are the elements of derivatives of $u$ and $x$.
   - TODO: Boundary conditions.
@@ -19,7 +19,7 @@ This full continuum equation is converted to a discrete equation in the followin
 3. Define basis functions for describing the solution space: $$\phi_n(x),n\in [1,N_n]$$ where $$0<=\phi_n(x)<=1$$ and $$\sum_n\phi_n(x)=1,\forall x\in \Omega$$. In general $\phi_n(x)$ has finite support (i.e. domain with non-zero value) on on a small number of elements incident to a node.
 4. Define the solution space as some linear combination of these basis functions: $$u_i({x_j})=\sum_n u_{i,n}\phi_n(x_j)$$ where $u_{i,n}$ is the discrete solution variable for the $nth$ basis node and $\phi_n(\cdot)$ is the $nth$ basis function.
 5. Define residual functions (also known as test functions) for describing how we're weakly enforcing the PDE: $\alpha_l$, analogously to the basis functions $\phi_n$.
-6. Convert the PDE to to the weak form of the problem by first multiplying the equations by a residual weight function: $$\alpha_l(x)f_k(\{\frac{\partial^m u(x)}{\partial x_j^m}\})=0,l\in N_\alpha$$ where we have a separate equation now for each residual weight function.
+6. Convert the PDE to the weak form of the problem by first multiplying the equations by a residual weight function: $$\alpha_l(x)f_k(\{\frac{\partial^m u(x)}{\partial x_j^m}\})=0,l\in N_\alpha$$ where we have a separate equation now for each residual weight function.
 7. Second, integrate each equation over the support region for each basis function. This forms the discrete residual equations: $$\int_{\Omega_{\alpha_l}}\alpha_l(x) f(\{\frac{\partial^m u(x)}{\partial x_j^m}\}) dx=0,l\in\N_\alpha$$ where $\Omega_{\phi_n}$ is the support region for the $nth$ basis function.
 8. Substitute in the solution space: $$\int_{\Omega_{\alpha_l}}\alpha_l(x) f(\{\frac{\partial^m \sum_n u_{n}\phi_n(x)}{\partial x_j^m}\}) dx=0$$. and move the sum out of the derivative: Substitute in the solution space: $$\int_{\Omega_{\alpha_l}}\alpha_l(x) f(\{ \sum_n u_{n}\frac{\partial^m\phi_n(x)}{\partial x_j^m}\}) dx=0$$. In the case of a linear PDE we further move the sum all the way to the outside of the integral. In the case of a non-linear PDE we need will need to linearize the PDE with a Taylor expansion and iteratively solve it.
 9. In the general Galerkin method, the weight functions and basis functions are equal so $$\alpha_i(x)=\phi_i(x)$$. This also guarantees that the resulting linear system if $N_n\times N_n$ is a square and in general invertible. This yields the most common form: $$\int_{\Omega_{\phi_l}}\phi_l(x) f(\{\sum_n u_{n}\frac{\partial^m\phi_n(x)}{\partial x_j^m}\}) dx=0$$.
