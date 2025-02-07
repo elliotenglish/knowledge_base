@@ -11,8 +11,11 @@ def fit_polynomial_monotonic():
   x,a,b,c,d,T0,T1=sympy.symbols("x a b c d T0 T1")
   p0,dp0,p1,dp1=sympy.symbols("p0 dp0 p1 dp1")
 
-  y=a+b*x+c*x**2+d*x**3
+  m=1
+  y=a*x**(0*m)+b*x**(1*m)+c*x**(2*m)+d*x**(3*m)
+  print(f"y={y}")
   dy=sympy.diff(y,x)
+  print(f"dy={dy}")
 
   system=[
     sympy.Eq(y.subs(x,T0),p0),
