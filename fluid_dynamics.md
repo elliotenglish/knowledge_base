@@ -34,9 +34,38 @@ The equation of state can be written as:
 
 $$f(p,e,\rho)=0$$
 
-Or alternatively:
+For an ideal gas we have Boyle's law:
 
-$$p(e,\rho)=...$$
+$$pV=nRT$$
+
+- $n$ number of Moles
+- $V$ volume in cubic meters
+- $R$ Gas constant
+
+And then the definition of internal energy:
+
+$$U=\hat{c}_vnRT$$
+
+- $\hat{c}_v=\left\{\begin{matrix}\frac{3}{2} & \text{monatomic gas} \\ \frac{5}{2} & \text{diatomic gas} \\ 3 & \text{simplified non-linear molecules}\end{matrix}\right.$ heat capacity
+
+We then use the above definitions to get the desired equation of state, first defining temperature from our solution variables:
+
+$$e=\rho^{-1}(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
+
+$$U=V\rho e$$
+
+$$=V(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
+
+$$T=V\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+
+And then substitute this in:
+
+$$p=\frac{1}{V}nRV\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+
+$$=\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_v}$$
+
+References:
+- https://en.wikipedia.org/wiki/Ideal_gas
 
 ### Velocity time derivative
 
