@@ -1,4 +1,4 @@
-# Fluid Mechanics
+# Fluid Dynamics
 
 # General Compressible Flow Equations
 
