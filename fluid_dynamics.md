@@ -50,19 +50,29 @@ $$U=\hat{c}_vnRT$$
 
 We then use the above definitions to get the desired equation of state, first defining temperature from our solution variables:
 
-$$e=\rho^{-1}(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
-
 $$U=V\rho e$$
 
-$$=V(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
+$$T=\frac{V\rho e}{\hat{c}_v nR}
 
-$$T=V\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+<!-- $$=V(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$ -->
+
+<!-- $$T=V\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$ -->
 
 And then substitute this in:
 
-$$p=\frac{1}{V}nRV\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+$$p=\frac{nRT}{V}$$
 
-$$=\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_v}$$
+$$=\frac{nRT}{V}\frac{V\rho e}{\hat{c}_v nR}$$
+
+$$=\frac{\rho e}{\hat{c}_v}$$
+
+Where
+
+$$e=\rho^{-1}(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
+
+<!-- $$p=\frac{1}{V}nRV\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+
+$$=\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_v}$$ -->
 
 References:
 - https://en.wikipedia.org/wiki/Ideal_gas
