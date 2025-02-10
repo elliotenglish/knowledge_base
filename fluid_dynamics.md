@@ -1,4 +1,4 @@
-# Fluid Mechanics
+# Fluid Dynamics
 
 # General Compressible Flow Equations
 
@@ -34,9 +34,48 @@ The equation of state can be written as:
 
 $$f(p,e,\rho)=0$$
 
-Or alternatively:
+For an ideal gas we have Boyle's law:
 
-$$p(e,\rho)=...$$
+$$pV=nRT$$
+
+- $n$ number of Moles
+- $V$ volume in cubic meters
+- $R$ Gas constant
+
+And then the definition of internal energy:
+
+$$U=\hat{c}_vnRT$$
+
+- $\hat{c}_v=\left\{\begin{matrix}\frac{3}{2} & \text{monatomic gas} \\ \frac{5}{2} & \text{diatomic gas} \\ 3 & \text{simplified non-linear molecules}\end{matrix}\right.$ heat capacity
+
+We then use the above definitions to get the desired equation of state, first defining temperature from our solution variables:
+
+$$U=V\rho e$$
+
+$$T=\frac{V\rho e}{\hat{c}_v nR}
+
+<!-- $$=V(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$ -->
+
+<!-- $$T=V\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$ -->
+
+And then substitute this in:
+
+$$p=\frac{nRT}{V}$$
+
+$$=\frac{nRT}{V}\frac{V\rho e}{\hat{c}_v nR}$$
+
+$$=\frac{\rho e}{\hat{c}_v}$$
+
+Where
+
+$$e=\rho^{-1}(E-\frac{1}{2}\rho\vec{u}^T\vec{u})$$
+
+<!-- $$p=\frac{1}{V}nRV\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_vnR}$$
+
+$$=\frac{E-\frac{1}{2}\rho\vec{u}^T\vec{u}}{\hat{c}_v}$$ -->
+
+References:
+- https://en.wikipedia.org/wiki/Ideal_gas
 
 ### Velocity time derivative
 
@@ -180,6 +219,10 @@ $$\frac{\partial p}{\partial t}=
 
 Where $c=\sqrt{\frac{\partial p}{\partial\rho}\rho+\frac{\partial p}{\partial e}\frac{p}{\rho^2}}$ is the speed of sound.
 
+## Energy equation derivation
+
+TODO: Show energy time derivative and definition linked by equation of state.
+
 ### References
 - https://en.wikipedia.org/wiki/Euler_equations_(fluid_dynamics)#Conservation_form_3
 - https://physbam.stanford.edu/~fedkiw/papers/cam1996-01.pdf
@@ -229,57 +272,6 @@ $$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t \nabla p^{t+1}$$
 
 $$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
 
-## Energy equation derivation ignoring pressure
-
-$\dd{\rho\u}{t}=-\nabla\cdot(\rho\u\u^T)$
-
-$\rho\dd{\u}{t}=-\nabla\cdot(\rho\u\u^T)-\dd{\rho}{t}\u$
-
-$\dd{E}{t}=-\nabla\cdot(E\u)$
-
-$E=\frac{1}{2}\rho\u\u$
-
-$\dd{E}{t}=\frac{1}{2}(\dd{\rho}{t}\u\u+\rho\dd{\u}{t}\u+\rho\u\dd{\u}{t})$
-
-$\dd{E}{t}=\frac{1}{2}\dd{\rho}{t}\u\u+\rho\u\dd{\u}{t}$
-
-$\dd{E}{t}=
--\frac{1}{2}\nabla\cdot(\rho\u)\u\u
--\u\nabla\cdot(\rho\u\u)
--\u\u\dd{\rho}{t}$
-
-$\dd{E}{t}=
--\frac{1}{2}\nabla\cdot(\rho\u)\u\u
--\u\nabla\cdot(\rho\u\u)
-+\u\u\nabla\cdot(\rho\u)$
-
-$-\frac{1}{2}\nabla\cdot(\rho\u\u\u)=-\frac{1}{2}\nabla\cdot(\rho\u)\u\u-\frac{1}{2}\nabla\cdot(\u)\rho\u\u-\frac{1}{2}\nabla\cdot(\u)\rho\u\u$
-
-$\dd{xx}{t}=\dd{x}{t}x+x\dd{x}{t}=2x\dd{x}{t}$
-
-<!-- $\frac{\partial E}{\partial t}=
- \frac{\partial\rho}{\partial t}e
-+\rho\frac{\partial e}{\partial t}
-+\frac{1}{2}\frac{\partial\rho}{\partial t}\vec{u}^T\vec{u}
-+\rho\vec{u}^T\frac{\partial\vec{u}}{\partial t}$ /-->
-
-<!-- $-\nabla\cdot(e\vec{u})-\nabla\cdot\nabla e$ /-->
-
-Equation of state:
-https://en.wikipedia.org/wiki/Ideal_gas_law
-
-$pV=nRT$
-
-## Energy equation derivation
-
-$\dd{E}{t}=-\nabla\cdot((E+p)\u)$
-
-$E=\rho e+\frac{1}{2}\rho\u^T\u$
-
-$\dd{E}{t}=-\nabla\cdot(E\u)-\nabla\cdot(p\u)$
-
-$\dd{E}{t}=-\nabla\cdot(\rho e+\frac{1}{2}\rho\u^T\u\u)-\nabla\cdot(p\u)$
-
 ## Advection
 The conservative advection term:
 $\nabla\cdot\phi\vec{u}=\vec{u}\cdot\nabla\phi+\phi\nabla\cdot\vec{u}$
@@ -292,160 +284,3 @@ Conservative semi-lagrangian advection treats nodes lagrangian, moving the quant
 
 Reference: unconditionally stable conservative advection:
 https://physbam.stanford.edu/~fedkiw/papers/stanford2010-01.pdf
-
-## Pressure/Equation of State
-
-"specific" = units per mass.
-
-Pressure is non-bulk kinetic energy per volume. Temperature is non-bulk kinetic energy per mass.
-
-$p=energy/volume$
-
-E is conserved, and when changed in volume, increases proportionately to the change in density.
-
-$p=nRT/V=\rho RT$
-
-$p=R_e\rho e$
-
-$p(\rho,e)=...$
-
-$(\rho\u)^{t+1}=(\rho\u)^*-\Delta t\nabla p^{t+1}$
-
-## Derivative of velocity time derivative
-
-Ignoring viscous terms.
-
-$\dd{\rho\u}{t}=-\nabla\cdot(\rho\u\u^T)-\nabla p$
-
-$\dd{\u}{t}=\frac{1}{\rho}(-\nabla\cdot(\rho\u\u^T)-\nabla p-\dd{\rho}{t}\u)$
-
-$\dd{\u}{t}=\frac{1}{\rho}(-\nabla\cdot(\rho\u\u^T)-\nabla p+\nabla\cdot(\rho\u)\u)$
-
-## Derivation of energy time derivative
-
-$E=\rho e+\frac{1}{2}\rho\u^T\u$
-
-$e=\frac{E}{\rho}-\frac{1}{2}\u^T\u$
-
-Take the time derivative.
-
-$\dd{e}{t}=\dd{E}{t}\frac{1}{\rho}-\frac{E}{\rho^2}\dd{\rho}{t}-\frac{1}{2}2\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=\dd{E}{t}-\frac{E}{\rho}\dd{\rho}{t}-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=\dd{E}{t}+\frac{E}{\rho}\nabla\cdot(\rho\u)-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=-\nabla\cdot((E+p)\u)+\frac{E}{\rho}\nabla\cdot(\rho\u)-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=-\nabla\cdot(E\u)-\nabla\cdot(p\u)+\frac{E}{\rho}\nabla\cdot(\rho\u)-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=-\nabla\cdot(E\u)-\nabla\cdot(p\u)+\nabla\cdot(\frac{E}{\rho}\rho\u)-\rho\u\cdot\nabla\frac{E}{\rho}-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=-\rho\u\cdot\nabla\frac{E}{\rho}-\nabla\cdot(E\u)-\nabla\cdot(p\u)+\nabla\cdot(\frac{E}{\rho}\rho\u)-\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=
--\rho\u\cdot\nabla\frac{E}{\rho}
--\nabla\cdot(\rho e\u)
--\nabla\cdot(\frac{1}{2}\rho\u^T\u\u)
--\nabla\cdot(p\u)
-+\nabla\cdot(\frac{E}{\rho}\rho\u)
--\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=
--\rho\u\cdot\nabla\frac{E}{\rho}
--\nabla\cdot(\rho e\u)
--\frac{1}{2}\u^T\u\nabla\cdot(\rho\u)
--\frac{1}{2}\rho\u\cdot\nabla(\u^T\u)
--\nabla\cdot(p\u)
-+\nabla\cdot(\frac{E}{\rho}\rho\u)
--\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=
--\rho\u\cdot\nabla\frac{E}{\rho}
--\frac{1}{2}\rho\u\cdot\nabla(\u^T\u)
--\nabla\cdot(\rho e\u)
--\frac{1}{2}\u^T\u\nabla\cdot(\rho\u)
--\nabla\cdot(p\u)
-+\nabla\cdot(\frac{E}{\rho}\rho\u)
--\rho\u^T\dd{\u}{t}$
-
-$\rho\dd{e}{t}=
--\rho\u\cdot\nabla\frac{E}{\rho}
--\frac{1}{2}\rho\u\cdot\nabla(\u^T\u)
--\nabla\cdot(\rho e\u)
--\frac{1}{2}\u^T\u\nabla\cdot(\rho\u)
--\nabla\cdot(p\u)
-+\nabla\cdot(\frac{E}{\rho}\rho\u)
--\rho\u^T(\frac{1}{\rho}(-\nabla\cdot(\rho\u\u^T)-\nabla p+\nabla\cdot(\rho\u)\u)$))
-
-$\rho\dd{e}{t}=
--\rho\u\cdot\nabla\frac{E}{\rho}
--\frac{1}{2}\rho\u\cdot\nabla(\u^T\u)
--\nabla\cdot(\rho e\u)
--\frac{1}{2}\u^T\u\nabla\cdot(\rho\u)
--\nabla\cdot(p\u)
-+\nabla\cdot(\frac{E}{\rho}\rho\u)
--\u^T(-\nabla\cdot(\rho\u\u^T)-\nabla p+\nabla\cdot(\rho\u)\u)$)
-
-..............
-
-
-
-
----------------------------
-
-Backwards from solution
-
-
-$\dd{e}{t}=-\u^T\nabla e-\frac{p}{\rho}\nabla\cdot\u$
-
-$\rho\dd{e}{t}=-\rho\u^T\nabla e-p\nabla\cdot\u$
-
-$\rho\dd{e}{t}=-\rho\u^T\nabla(\frac{E}{\rho}-\frac{1}{2}\u^T\u)-p\nabla\cdot\u$
-
-$\rho\dd{e}{t}=-\rho\u^T\nabla\frac{E}{\rho}+\frac{1}{2}\rho\u^T\nabla(\u^T\u)-p\nabla\cdot\u$
-
-
-
-
-
-
-## BLAH
-
-Then we substitute the velocity and pressure time derivatives back into the energy time derivative:
-
-$\dd{E}{t}=-\nabla\cdot(\rho\u)(e+\frac{1}{2}|\u|^2)+\rho\dd{e}{t}+\rho\u^T(\frac{1}{\rho}(-\nabla\cdot(\rho\u\otimes\u)-\nabla p+\nabla\cdot(\rho\u)\u))$
-
-$\dd{E}{t}=-\nabla\cdot(\rho\u)(e+\frac{1}{2}|\u|^2)+\rho\dd{e}{t}+\u^T(-\nabla\cdot(\rho\u\otimes\u)-\nabla p+\nabla\cdot(\rho\u)\u)$
-
-$\dd{E}{t}=-\nabla\cdot(\rho\u)(e-\frac{1}{2}|\u|^2)+\rho\dd{e}{t}+\u^T(-\nabla\cdot(\rho\u\otimes\u)-\nabla p)$
-
-Next we need to compute the internal energy time derivative from the equation of state.
-
-$p=R \rho T$
-
-Then substituting $T=c e$ where c is an unknown constant.
-
-$p=R \rho c e$
-
-Then absorbing the 2 constants.
-
-$p=R_c \rho e$
-
-And solving for e
-
-$e=\frac{p}{R_c\rho}$
-
-And taking the time derivative.
-
-$\dd{e}{t}=\dd{p}{t}\frac{1}{R_c\rho}-\frac{p}{R_c\rho^2}\dd{\rho}{t}$
-
-
-
-Steps to finish derivation:
-1. Derive pressure update. Should only end up with a non-conservative pressure advection term, and a rho*div.vel term.
-2. Substitute time update into pressure update.
-
-
-Reference - Unconditionally stable equation of state integration:
-https://physbam.stanford.edu/~fedkiw/papers/stanford2008-04.pdf
