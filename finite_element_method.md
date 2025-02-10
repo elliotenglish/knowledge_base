@@ -485,21 +485,56 @@ $$\nabla\times\vec{v}(x)$$
 
 $$\int_{\Omega_i}\phi_i\nabla\times\vec{v}$$
 
+## Approximating non-linear differentials
+
+Option 1:
+
+Naively applying the Galerkin method above gives use term similar to the following:
+
+$$\frac{\partial ab}{\partial x}=\frac{\partial(\sum_i a_i\phi_i)(\sum_j b_j\phi_j)}{\partial x}$$
+
+However, these are complex and expensive to implement.
+
+Option 2:
+
+Instead, we can multiply together the solution variables together and then substitute in the approximation:
+
+$$\frac{\partial ab}{\partial x}=\frac{\partial\sum_i a_i b_i\phi_i}{\partial x}$$
+
+These methods both approximate the same expression. However, option 1 captures the nonlinearity within the element while option 2 relies upon the solution space to approximate the nonlinearity.
+
 ## Solving non-linear equations
 
-In many problems we end up with equations involving products of solution variables. There are several common methods for doing so
+General formulation:
+
+$$\textbf{f}(\textbf{x})=0$$
+
+- $\textbf{x}\in\R^{N_x}$
+- $\textbf{f}\in\R^{N_f}$
+
+In many problems we end up with equations involving products of solution variables. There are several common methods for doing so. Some general formulae are listed below.
 
 ### Newton's method
 
-$$f(x+dx,y+dy)=f(x,y)+\left.\frac{\partial f}{\partial x}\right|_{x,y}dx+\left.\frac{\partial f}{\partial y}\right|_{x,y}dy$$
+We first use a multivariate Taylor expansion around a point:
 
-or in vector form for an arbitrary number of variables:
+$$\textbf{f}(\textbf{x}+\textbf{h})\approx\textbf{f}(\textbf{x})+\left.\frac{\partial\textbf{f}}{\partial\textbf{x}}\right|_{x,y}\textbf{h}$$
 
-$$f(\vec{x}+d\vec{x})=f(\vec{x})+\left.\nabla f\right|_{\vec{x}}d\vec{x}$$
+Where $\frac{\partial\textbf{f}}{\partial\textbf{x}}=\nabla_\textbf{x}\textbf{f}=\textbf{J}$. For the rest of the derivation we drop the bar notation.
 
-And then we iterate as follows:
+$$\textbf{f}(\textbf{x}+\textbf{h})=\textbf{f}(\textbf{x})+\textbf{J}\textbf{h}$$
+
+We then set the left-hand side to $0$ and solve for $h$:
+
+$$\textbf{h}=-\textbf{J}^{-1}\textbf{f}(\textbf{x})$$
+
+We then define a Newton iteration as:
+
+$$\textbf{x}^{k+1}=\textbf{x}^k-\textbf{J}^{-1}\textbf{f}(\textbf{x}^k)$$
 
 ### Fixed point iteration
+
+
 
 ### Time integration
 

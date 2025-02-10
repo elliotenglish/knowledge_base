@@ -49,6 +49,15 @@ Use `\displaystyle` for integrals.
 
 Use `\displaystyle` for sums.
 
+### Evaluation
+
+In order to write and expression and then mark that it should be evaluated at a specific point, "bar notation" is used.
+
+* Evaluation: $\left.\frac{x^2}{\sqrt{x+3}}\right|_{x=1.5}^{x=4}$
+* Two-sided evaluation is precisely defined as: $\left.f(x)\right|_{x=a}^{x=b}=f(b)-f(a)$
+* One-sided evaluation is precisely defined as: $\left.f(x)\right|_{x=a}=f(a)$
+
+
 ### Superscripts/subscripts
 
 - Scalars are lower case letters: $a$
