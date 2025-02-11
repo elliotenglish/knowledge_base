@@ -479,6 +479,29 @@ $$=\sum_j\rho_j\int_{\partial\Omega_i\backslash\partial\Omega_N}\phi_i w_0 w_1\n
 
 The derivation is the same as in the continuous case, however the second term goes to 0 on constant value elements. The additional challenge is that the gradient of the basis functions is now 0, so the gradient term $\nabla\phi_j$ also goes to 0.
 
+## Divergence term on continuous elements
+
+$$\nabla\cdot\vec{u}$$
+
+$$\int_{\Omega_i}\phi_i\nabla\cdot\vec{u}=
+\int_{\Omega_i}\phi_i\nabla\cdot\sum_j\vec{u}_j\phi_j$$
+
+$$=\int_{\Omega_i}\phi_i\sum_j\nabla\cdot\vec{u}_j\phi_j$$
+
+$$=\int_{\Omega_i}\phi_i\sum_j(\vec{u}_j\cdot\nabla\phi_j+\phi_j\nabla\cdot\vec{u}_j)$$
+
+$$=\int_{\Omega_i}\phi_i\sum_j\vec{u}_j\cdot\nabla\phi_j$$
+
+$$=\int_{\Omega_i}\phi_i\sum_j\vec{u}_j\cdot\nabla\phi_j$$
+
+## Gradient term on continuous elements
+
+$$\nabla\rho$$
+
+$$\int_{\Omega_i}\phi_i\nabla\rho=\int_{\Omega_i}\phi_i\nabla\sum_j\rho_j\phi_j$$
+
+$$=\int_{\Omega_i}\phi_i\sum_j\rho_j\nabla\phi_j$$
+
 ## Curl term on continuous elements
 
 $$\nabla\times\vec{v}(x)$$
