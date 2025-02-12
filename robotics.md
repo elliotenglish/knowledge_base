@@ -12,3 +12,8 @@
 - https://github.com/google-deepmind/acme
 - https://github.com/google-deepmind/dm_control/
 - https://github.com/google-deepmind/mujoco
+
+## Research groups
+
+- Sergey Levine research group: https://github.com/rail-berkeley
+- FAIR PEARL: https://github.com/facebookresearch/Pearl
