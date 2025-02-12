@@ -148,7 +148,7 @@ Alternatively you can use an implicit Q model (the critic), and to overcome the 
 
 So we end up with the following optimization problem:
 
-$$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)))) - Q(x,\pi(x))$$
+$$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)))) - Q(x_i,\pi(x_i))$$
 
 Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
 
