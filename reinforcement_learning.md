@@ -60,7 +60,7 @@ Where
 
 In this case we take a step and then our objective is the Bellman Error as follows:
 
-$$|Q(x_t,a_t,\theta)-F_t+\beta Q(T_t,\pi(T_t),\theta)|\tag{9}$$
+$$|Q(x_t,a_t,\theta)-(F_t+\beta Q(T_t,\pi(T_t),\theta))|\tag{9}$$
 
 Where
 
@@ -73,10 +73,6 @@ References:
 - https://en.wikipedia.org/wiki/Q-learning
 - https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf
 - https://arxiv.org/abs/2410.21795
-
-## Soft Actor-Critic (SAC)
-
-## Group-Relative Policy Optimization (GRPO)
 
 ## Exploitation vs Exploration
 
@@ -120,3 +116,48 @@ def train(data_generator):
 
     updater.update(model.parameters(),parameter_derivatives)
 ```
+
+## Implicit vs explicit models (sampling optimal policies)
+
+Implicit:
+
+From a theoretical perspective, and as listed above, Q functions typically both the state and action as arguments, and then return the value. However, this can be expensive if you want to find the optimal policy as you need to solve an optimization problem:
+
+$$Q(x,a)\in\real$$
+
+$$\pi_\text{opt}(x)=\text{argmax}_a Q(x,a)$$
+
+This can require a non-trivial optimizer such as gradient descent that may require many function/gradient evaluations and get stuck in local minima.
+
+Explicit:
+
+Alternatively for discrete action spaces, you can simply return a vector containing the value for each possible action:
+
+$$Q(x)=\begin{pmatrix}Q(x,a_1) \\ \vdots \\ Q(x,a_n)\end{pmatrix}$$
+
+## Continuous/discontinuous/composite action spaces (actor-critic)
+
+One of the challenges with Q/Value learning is how to represent the action space. For simple systems, the action may simply be a choice from $N$ options at each step. However, for most real world systems there are a number of issues:
+
+- Actions are typically a composite of a number of sub-actions (e.g. $a=(a0,a1)$). This can be resolved by representing the action as indexing into the Cartesian product of the sub-actions.
+- Actions can have real-valued sub-actions. This can be resolved by either using an implicit value representation or by quantizing the action space.
+
+When the above 2 issues are combined we can have very large action spaces. For example if we 4 sub-actions each with 5 options, then the action space will be $5^4=625$. This can negatively impact the learning process as it takes a very long time to explore the action space, even when most of the actions are highly correlated (as in the real-valued case).
+
+Alternatively you can use an implicit Q model (the critic), and to overcome the issue of finding the optimal action, use an explicit policy (the actor).
+
+So we end up with the following optimization problem:
+
+$$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)))) - Q(x,\pi(x))$$
+
+Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
+
+## Soft Actor-Critic (SAC)
+
+https://arxiv.org/abs/1801.01290
+
+## Group-Relative Policy Optimization (GRPO)
+
+## Deep Deterministic Policy Gradient (DDPG)
+
+https://arxiv.org/abs/1509.02971
