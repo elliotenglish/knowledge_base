@@ -156,13 +156,6 @@ $$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)
 
 Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
 
-
-## Soft Actor-Critic (SAC)
-
-https://arxiv.org/abs/1801.01290
-
-## Group-Relative Policy Optimization (GRPO)
-
 ## Deep Deterministic Policy Gradient (DDPG)
 
 https://arxiv.org/abs/1509.02971
@@ -172,3 +165,20 @@ Stabilize actor-critic updates by maintaining slow moving target models. The par
 $$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$
 
 These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
+
+## Soft Actor-Critic (SAC)
+
+https://arxiv.org/abs/1801.01290
+
+## Proximal Policy Optimization (PPO)
+
+https://arxiv.org/abs/1707.06347
+
+## Group-Relative Policy Optimization (GRPO)
+
+https://arxiv.org/pdf/2402.03300
+
+## Terminology
+
+- mean-squared Bellman error (MSBE)
+- on/off-policy
