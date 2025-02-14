@@ -152,19 +152,23 @@ Alternatively you can use an implicit Q model (the critic), and to overcome the 
 
 So we end up with the following optimization problem:
 
-$$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)))) - Q(x_i,\pi(x_i))$$
+$$\min_{Q,\pi} \sum_{(x_t,a_t,F_t,x_{t+1})} (Q(x_t,a_t)-(F_t+\beta Q(x_{t+1},\pi(x_{t+1})))) - Q(x_t,\pi(x_t))$$
 
 Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
+
+## Deep Q-Learning/Network (DQN)
+
+Uses a neural network to model the Q function as a map from a continuous valued state to the discrete action values: $Q(x)=a: \real^{N_x} -> \real^{N_a}$
 
 ## Deep Deterministic Policy Gradient (DDPG)
 
 https://arxiv.org/abs/1509.02971
 
-Stabilize actor-critic updates by maintaining slow moving target models. The parameters of these target models are updated with a linear update as
+This extends DQN to continuous valued actions. It also stabilizes actor-critic updates by maintaining slow moving target models. The parameters of these target models are updated with a linear update as
 
 $$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$$
 
-These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
+Where $\tau$ is the target learning rate, typically closer to $0$. These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
 
 ## Soft Actor-Critic (SAC)
 
