@@ -162,7 +162,7 @@ https://arxiv.org/abs/1509.02971
 
 Stabilize actor-critic updates by maintaining slow moving target models. The parameters of these target models are updated with a linear update as
 
-$$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$
+$$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$$
 
 These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
 
