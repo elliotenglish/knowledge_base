@@ -17,3 +17,19 @@
 
 - Sergey Levine research group: https://github.com/rail-berkeley
 - FAIR PEARL: https://github.com/facebookresearch/Pearl
+
+## Automatically configuring models
+
+For the purposes of learning a robust controller, even a for specific end use case, it's important to train the controller on a wide variety of model variants in order to account for sources of error such as noise in the environment and manufacturing tolerances. One of the challenges here is to automatically construct these variants. Various aspects need to be sized in reasonable ways, so that goals can be achieved, but without over provisioning (and creating instability, or overly large quantization).
+
+A simple heuristic to compute approximate force range for the joint/DoF $q_i$ is as below:
+
+Compute a maximum effective mass for joint:
+
+$$\hat{m}_i=max_q m_i(q)$$
+
+This can be done by sampling various $q$ configurations.
+
+Then given a target maximum acceleration $a_t$ we can compute the maximum force as:
+
+$$\hat{f}_i=a_t\hat{m}_i$$

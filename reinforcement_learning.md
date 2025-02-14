@@ -74,6 +74,10 @@ References:
 - https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf
 - https://arxiv.org/abs/2410.21795
 
+## Learning stability
+
+One of the most significant challenges of reinforcement learning is the ability of the fitting process to arrive at a stable solution. Because of the recursive formulation, we end up with a problem that is not purely a $f(x_i)=y_i$ supervised learning formulation which is generally convergent with enough regularization and a small enough learning rate. Instead, we end up with a recursive formulation where our labels are the step values, $f(x_i,a_i)=y_i+\beta f(x'_i,\argmax_a f(x'_i,a))=y_i+\beta\max_a f(x'_i,a)$. Ideally this would converge to the non-recursive definition, but can often diverge due to the dynamics of the optimization process, where the portion of the residual due to the $y_i$ term is not minimized. Instead, the portion due to the recursive term dominates, and since it has no grounding in supervised data, it can diverge to unuseful or even unbounded solutions.
+
 ## Exploitation vs Exploration
 
 ### $\epsilon$-greedy Learning
@@ -152,6 +156,7 @@ $$\min_{Q,\pi} \sum_{(x_i,a_i,F_i,x'_i)} (Q(x_i,a_i)-(F_i+\beta Q(x'_i,\pi(x'_i)
 
 Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
 
+
 ## Soft Actor-Critic (SAC)
 
 https://arxiv.org/abs/1801.01290
@@ -161,3 +166,9 @@ https://arxiv.org/abs/1801.01290
 ## Deep Deterministic Policy Gradient (DDPG)
 
 https://arxiv.org/abs/1509.02971
+
+Stabilize actor-critic updates by maintaining slow moving target models. The parameters of these target models are updated with a linear update as
+
+$$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$
+
+These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
