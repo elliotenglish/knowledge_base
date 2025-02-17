@@ -172,6 +172,11 @@ Main benefits:
 [Homepage](https://jax.readthedocs.io/en/latest/index.html)
 [Tutorial](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
 
+Notes:
+- Flax
+- Orbax
+- Optax
+
 ## Books/Courses
 
 - https://github.com/josephmisiti/awesome-machine-learning/blob/master/books.md

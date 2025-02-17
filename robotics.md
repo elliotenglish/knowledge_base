@@ -26,7 +26,7 @@ A simple heuristic to compute approximate force range for the joint/DoF $q_i$ is
 
 Compute a maximum effective mass for joint:
 
-$$\hat{m}_i=max_q m_i(q)$$
+$$\hat{m}_i=\max_q m_i(q)$$
 
 This can be done by sampling various $q$ configurations.
 

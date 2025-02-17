@@ -16,7 +16,7 @@
   - TODO: Boundary conditions.
 This full continuum equation is converted to a discrete equation in the following steps:
 2. Divide the domain into elements: $$\Omega=\bigcup_e\Omega_e,e\in [1,N_e]$$ where
-3. Define basis functions for describing the solution space: $$\phi_n(x),n\in [1,N_n]$$ where $$0<=\phi_n(x)<=1$$ and $$\sum_n\phi_n(x)=1,\forall x\in \Omega$$. In general $\phi_n(x)$ has finite support (i.e. domain with non-zero value) on on a small number of elements incident to a node.
+3. Define basis functions for describing the solution space: $$\phi_n(x),n\in [1,N_n]$$ where $$0<=\phi_n(x)<=1$$ and $$\sum_n\phi_n(x)=1,\forall x\in \Omega$$. In general $\phi_n(x)$ has finite support (i.e. domain with non-zero value) on a small number of elements incident to a node.
 4. Define the solution space as some linear combination of these basis functions: $$u_i({x_j})=\sum_n u_{i,n}\phi_n(x_j)$$ where $u_{i,n}$ is the discrete solution variable for the $nth$ basis node and $\phi_n(\cdot)$ is the $nth$ basis function.
 5. Define residual functions (also known as test functions) for describing how we're weakly enforcing the PDE: $\alpha_l$, analogously to the basis functions $\phi_n$.
 6. Convert the PDE to the weak form of the problem by first multiplying the equations by a residual weight function: $$\alpha_l(x)f_k(\{\frac{\partial^m u(x)}{\partial x_j^m}\})=0,l\in N_\alpha$$ where we have a separate equation now for each residual weight function.
