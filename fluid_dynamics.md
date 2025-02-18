@@ -243,14 +243,18 @@ $$\tilde{E}=\text{conservative\_advect}(E^t,\vec{u}^t,\Delta t)$$
 Where
 
 $$\vec{u}^t=(\rho\vec{u})^t/\rho^t$$
-$$p^t=p(e^t,\rho^t)$$
+
+## Step 2: Compute and advect pressure
+
+We similarly apply time splitting to the terms of the pressure update equation. First we compute and non-conservatively advect pressure.
+
 $$e^t=E^t/\rho^t-\frac{1}{2}(\vec{u}^t)^T\vec{u}^t$$
 
-## Step 2: Solve for pressure
-
-We similarly apply time splitting to the terms of the pressure update equation. First we non-conservatively advect pressure.
+$$p^t=p(e^t,\rho^t)$$
 
 $$p^*=\text{nonconservative\_advect}(p^t,\vec{u}^t,\Delta t)$$
+
+## Step 3a.1: Solve for combined pressure/momentum equation
 
 Then we solve for $p^{t+1}$ by substituting the final momentum update equation into the pressure divergence term:
 
@@ -264,11 +268,23 @@ Then moving components over to the LHS, we solve the following linear system for
 $$(1-\Delta t^2\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}\nabla)p^{t+1}=
 p^*-\Delta t\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}(\rho\vec{u})^*$$
 
-## Step 3: Compute final momentum and total energy
+## Step 3a.2: Compute final momentum and total energy
 
 Then we compute the final momentum and energy as:
 
 $$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t \nabla p^{t+1}$$
+
+$$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
+
+## Step 3b.2: Alternate non-substituted method
+
+Solve the following simultaneously:
+
+$$p^{t+1}=p^*-\Delta t\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}(\rho\vec{u})^{t+1}$$
+
+$$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t\nabla p^{t+1}$$
+
+## Step 3b.2: Compute final total energy
 
 $$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
 
