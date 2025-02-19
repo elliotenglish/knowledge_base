@@ -479,20 +479,21 @@ $$=\sum_j\rho_j\int_{\partial\Omega_i\backslash\partial\Omega_N}\phi_i w_0 w_1\n
 
 The derivation is the same as in the continuous case, however the second term goes to 0 on constant value elements. The additional challenge is that the gradient of the basis functions is now 0, so the gradient term $\nabla\phi_j$ also goes to 0.
 
-## Divergence term on continuous elements
+## Weighted divergence term on continuous elements
 
-$$\nabla\cdot\vec{u}$$
+$$w_0\nabla\cdot w_1\vec{u}$$
 
-$$\int_{\Omega_i}\phi_i\nabla\cdot\vec{u}=
-\int_{\Omega_i}\phi_i\nabla\cdot\sum_j\vec{u}_j\phi_j$$
+$$=>\int_{\Omega_i}\phi_i w_0\nabla\cdot w_1\vec{u}$$
 
-$$=\int_{\Omega_i}\phi_i\sum_j\nabla\cdot\vec{u}_j\phi_j$$
+$$=\int_{\Omega_i}\phi_i w_0(w_1\nabla\cdot\vec{u}+\vec{u}\cdot\nabla w_1)$$
 
-$$=\int_{\Omega_i}\phi_i\sum_j(\vec{u}_j\cdot\nabla\phi_j+\phi_j\nabla\cdot\vec{u}_j)$$
+$$=\int_{\Omega_i}\phi_i w_0(w_1\nabla\cdot\sum_j\phi_j\vec{u}_j+\sum_j\phi_j\vec{u}_j\cdot\nabla w_1)$$
 
-$$=\int_{\Omega_i}\phi_i\sum_j\vec{u}_j\cdot\nabla\phi_j$$
+$$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\nabla\cdot\phi_j\vec{u}_j+\phi_j\vec{u}_j\cdot\nabla w_1)$$
 
-$$=\int_{\Omega_i}\phi_i\sum_j\vec{u}_j\cdot\nabla\phi_j$$
+$$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\phi_j\nabla\cdot\vec{u}_j+w_1\vec{u}_j\cdot\nabla\phi_j+\phi_j\vec{u}_j\cdot\nabla w_1)$$
+
+$$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\vec{u}_j\cdot\nabla\phi_j+\phi_j\vec{u}_j\cdot\nabla w_1)$$
 
 ## Gradient term on continuous elements
 
