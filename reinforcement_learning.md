@@ -139,7 +139,7 @@ Alternatively for discrete action spaces, you can simply return a vector contain
 
 $$Q(x)=\begin{pmatrix}Q(x,a_1) \\ \vdots \\ Q(x,a_n)\end{pmatrix}$$
 
-## Continuous/discontinuous/composite action spaces (actor-critic)
+## Continuous/discontinuous/composite action spaces
 
 One of the challenges with Q/Value learning is how to represent the action space. For simple systems, the action may simply be a choice from $N$ options at each step. However, for most real world systems there are a number of issues:
 
@@ -155,6 +155,9 @@ So we end up with the following optimization problem:
 $$\min_{Q,\pi} \sum_{(x_t,a_t,F_t,x_{t+1})} (Q(x_t,a_t)-(F_t+\beta Q(x_{t+1},\pi(x_{t+1})))) - Q(x_t,\pi(x_t))$$
 
 Where the first term is the Bellman Error and the second term optimizes the policy. Once we have a solution to this minimization, we can simply use the policy $\pi(x)$ to one-shot generate optimal actions.
+
+References:
+- https://www.tensorflow.org/tutorials/reinforcement_learning/actor_critic
 
 ## Deep Q-Learning/Network (DQN)
 
