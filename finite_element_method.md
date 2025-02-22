@@ -585,6 +585,7 @@ We often see non-linear equations in time integration problems. In this case, if
 - Indices of variables in the global system are retrived by calling `std::vector<int> indices;dof_map.dof_indices(elem/node,indices,var_id)`
 - For each variable-variable pair, construct a separate `DenseMatrix` and then call `add_matrix(submat,row_indices,col_indices)` to add the elements.
 - For vector valued elements, `dof_indices(...)` will return D*N indices where the components are the inner dimension i.e. `indices=[(N=0,C=0),...(N=0,C=D-1),(N=1,C=0),...(N=0,C=D-1),...]`.
+- To allocate a temporary vector you need a `Communicator` and a `DofMap`. Then you can call `vec=NumericVector::Build(comm)` followed by `vec.Init(dof_map.n_dofs(),dof_map.n_local_dofs(),false,PARALLEL)`. This was taken from the `System::add_vector` implementation. This will create a vector for all the variables managed by the `DofMap`.
 
 General system assembly pattern
 - Loop over full elements
