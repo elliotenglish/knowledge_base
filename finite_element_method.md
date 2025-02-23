@@ -495,13 +495,17 @@ $$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\phi_j\nabla\cdot\vec{u}_j+w_1\vec{u}_j\cd
 
 $$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\vec{u}_j\cdot\nabla\phi_j+\phi_j\vec{u}_j\cdot\nabla w_1)$$
 
-## Gradient term on continuous elements
+## Weighted gradient term on continuous elements
 
-$$\nabla\rho$$
+$$w_0\nabla w_1\rho$$
 
-$$\int_{\Omega_i}\phi_i\nabla\rho=\int_{\Omega_i}\phi_i\nabla\sum_j\rho_j\phi_j$$
+$$=>\int_{\Omega_i}\phi_i w_0\nabla w_1\rho$$
 
-$$=\int_{\Omega_i}\phi_i\sum_j\rho_j\nabla\phi_j$$
+$$=\int_{\Omega_i}\phi_i w_0(w_1\nabla\rho+\rho\nabla w_1)$$
+
+$$=\int_{\Omega_i}\phi_i w_0(w_1\nabla\sum_j\rho_j\phi_j+\sum_j\rho_j\phi_j\nabla w_1)$$
+
+$$=\int_{\Omega_i}\sum_j\rho_j\phi_i w_0(w_1\nabla\phi_j+\phi_j\nabla w_1)$$
 
 ## Curl term on continuous elements
 
