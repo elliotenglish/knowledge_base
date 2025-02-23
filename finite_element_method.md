@@ -493,7 +493,7 @@ $$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\nabla\cdot\phi_j\vec{u}_j+\phi_j\vec{u}_j
 
 $$=\int_{\Omega_i}\sum_j\phi_i w_0(w_1\phi_j\nabla\cdot\vec{u}_j+w_1\vec{u}_j\cdot\nabla\phi_j+\phi_j\vec{u}_j\cdot\nabla w_1)$$
 
-$$=\int_{\Omega_i}\sum_j\vec{u}_j\phi_iw_0(w_1\cdot\nabla\phi_j+\phi_j\cdot\nabla w_1)$$
+$$=\int_{\Omega_i}\sum_j\vec{u}_j\phi_i w_0\cdot(w_1\nabla\phi_j+\phi_j\nabla w_1)$$
 
 ## Weighted gradient term on continuous elements
 
