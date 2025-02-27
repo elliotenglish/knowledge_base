@@ -189,3 +189,10 @@ https://arxiv.org/pdf/2402.03300
 
 - mean-squared Bellman error (MSBE)
 - on/off-policy
+- temporal difference (TD)
+- advantage (A)
+  - The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state.
+  - $$A(s,t,\pi)=Q(s,t,\pi)-V(s,\pi)$$
+- Markov decision process (MDP) - 
+
+
