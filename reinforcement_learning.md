@@ -31,12 +31,12 @@ https://en.wikipedia.org/wiki/Bellman_equation
 
 We define the maximum possible discounted value achievable starting from some initial state as:
 
-$$V(x_0)=\max_{\{a_t\}_{t=0}^\infty}\sum_{t=0}^\infty\beta^t F(x_t,a_t) \tag{1}$$
+$$V(x_0)=\max_{\{a_t\}}\sum_{t=0}^\infty\beta^t F(x_t,a_t)$$
 
 s.t.
 
-$$a_t\in\Gamma(x_t)\tag{2}$$
-$$x_{t+1}=T(x_t,a_t)\tag{3}$$
+$$a_t\in\Gamma(x_t)$$
+$$x_{t+1}=T(x_t,a_t)$$
 
 Where
 
@@ -51,23 +51,23 @@ Where
 
 We can rewrite the value function in recursive form:
 
-$$V(x_0)=\max_{a_0}(F(x_0,a_0)+\beta V(x_1))\tag{4}$$
+$$V(x_0)=\max_{a_0}(F(x_0,a_0)+\beta V(x_1))$$
 
 Or more compactly:
 
-$$V(x)=\max_{a\in\Gamma(x)}(F(x,a)+\beta V(T(x,a)))\tag{5}$$
+$$V(x)=\max_{a\in\Gamma(x)}(F(x,a)+\beta V(T(x,a)))$$
 
 ### Stochastic value function
 
 If we assume that the state transitions (T) and feedback (F) are stochastic we define the value function instead using the expectation as follows:
 
-$$V(x)=\max_{a\in\Gamma(x)}(\mathbb{E}(F(x,a)+\beta(V(T(x,a)))))\tag{6}$$
+$$V(x)=\max_{a\in\Gamma(x)}(\mathbb{E}(F(x,a)+\beta(V(T(x,a)))))$$
 
 ## Q-Learning
 
 In this case we use a modified Bellman equation to take in both a state, an action, the current policy parameters and return the expected return.
 
-$$\hat{Q}(x,a,\pi)=\mathbb{E}(F(x,a)+\beta\hat{Q}(T(x,\pi(x))))\tag{7}$$
+$$\hat{Q}(x,a,\pi)=\mathbb{E}(F(x,a)+\beta\hat{Q}(T(x,\pi(x))))\$$
 
 Where
 
@@ -75,7 +75,7 @@ Where
 
 In the case of reinforcement learning, we directly learn an approximation to the Q function,
 
-$$Q(x,a,\theta)\tag{8}=\hat{Q}(x,a,\pi(\theta))$$
+$$Q(x,a,\theta)=\hat{Q}(x,a,\pi(\theta))$$
 
 Where
 
@@ -83,7 +83,7 @@ Where
 
 In this case we take a step and then our objective is the Bellman Error as follows:
 
-$$|Q(x_t,a_t,\theta)-(F_t+\beta Q(T_t,\pi(T_t),\theta))|\tag{9}$$
+$$|Q(x_t,a_t,\theta)-(F_t+\beta Q(T_t,\pi(T_t),\theta))|$$
 
 Where
 
