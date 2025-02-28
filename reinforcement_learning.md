@@ -1,5 +1,28 @@
 # Reinforcement Learning
 
+## Terminology
+
+- mean-squared Bellman error (MSBE)
+- on/off-policy
+- temporal difference (TD)
+- advantage (A)
+  - The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state.
+  - $$A(s,t,\pi)=Q(s,t,\pi)-V(s,\pi)$$
+- Markov decision process (MDP) - 
+
+## Markov decision process (MDP)
+
+An MDP is defined by the following elements
+
+- $S$ - the state space
+- $A$ - the action space
+- $x_t\in S$ - the state at time $t$
+- $a_t\in A$ - the action taken at time $t$
+- $f_t\in\mathbb{R}$ - the feedback at time $t$
+- $\pi:S\times A\rightarrow\mathbb{R}$ - the policy function giving the probability of taking an action at a given state
+- $P:S\times A\times S\rightarrow\mathbb{R}$ - the transition function giving the probability of transition to a given state after taking an action at a previous state
+- $J(\pi)=\mathbb{E}\left(\sum_{t=0}^{\infty}\beta^t f_t|\pi\right)$ - total discounted return, where $\beta$ is the discount factor.
+
 ## Bellman Equation
 
 https://en.wikipedia.org/wiki/Bellman_equation
@@ -185,14 +208,10 @@ https://arxiv.org/abs/1707.06347
 
 https://arxiv.org/pdf/2402.03300
 
-## Terminology
+## Asychronous RL
 
-- mean-squared Bellman error (MSBE)
-- on/off-policy
-- temporal difference (TD)
-- advantage (A)
-  - The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state.
-  - $$A(s,t,\pi)=Q(s,t,\pi)-V(s,\pi)$$
-- Markov decision process (MDP) - 
+https://arxiv.org/abs/1602.01783
 
+## More references
 
+- https://arxiv.org/abs/1611.01626
