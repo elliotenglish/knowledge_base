@@ -101,13 +101,19 @@ References:
 
 One of the most significant challenges of reinforcement learning is the ability of the fitting process to arrive at a stable solution. Because of the recursive formulation, we end up with a problem that is not purely a $f(x_i)=y_i$ supervised learning formulation which is generally convergent with enough regularization and a small enough learning rate. Instead, we end up with a recursive formulation where our labels are the step values, $f(x_i,a_i)=y_i+\beta f(x'_i,\argmax_a f(x'_i,a))=y_i+\beta\max_a f(x'_i,a)$. Ideally this would converge to the non-recursive definition, but can often diverge due to the dynamics of the optimization process, where the portion of the residual due to the $y_i$ term is not minimized. Instead, the portion due to the recursive term dominates, and since it has no grounding in supervised data, it can diverge to unuseful or even unbounded solutions.
 
-## Exploitation vs Exploration
+## Exploitation vs exploration
 
-### $\epsilon$-greedy Learning
+### $\epsilon$-greedy (epsilon greedy)
 
 In this strategy we simply take a random action at a fixed rate, which is defined as $\epsilon\in[0,1]$. So effectively we have:
 
 $$a_t(x_t)=\left\{\begin{matrix}a \sim \mathbb{U}(\Gamma(x_t)), & P(\cdot)=\epsilon \\ \displaystyle\max_{a\in\Gamma(x_t)}V(x,a), & P(\cdot)=1-\epsilon\ \end{matrix}\right.$$
+
+### Boltzmann exploration
+
+$$\pi(s,a)=exp(Q(s,a)/T)\int_{b\in\Gamma(x_t)} exp(Q(s,b)/T)db$$
+
+$$a_t(x_t)\sim\pi(s,a)$$
 
 ## Online vs Offline Operation
 
