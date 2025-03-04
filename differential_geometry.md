@@ -133,3 +133,20 @@ In this case we construct a volume around each node using the centers of adjacen
 
 In this case we use the Voronoi cell for the node as its volume. Note that this only non-degenerate for Delaunay triangulations. It is simpler to use in a finite volume discretization than the median dual mesh due to the orthogonality of the faces with their corresponding node-node edges. However, it is more complicated to construct and potentially less well conditioned if the mesh is close to non-Delaunay.
 
+## Catenary curve
+
+https://en.wikipedia.org/wiki/Catenary
+
+Assumptions needed for solution based upon force balance:
+- Vertical force between support and center decreases linearly. This is due to each support bearing half the load imposed by gravity. Then given the static shape, the load at intermediate points needs to bear half the load of the section below them.
+- Horizontal force is constant. This is due to the fact that there is no other source of horizontal force other than the end points, so each point must transfer the horizontal force.
+
+So we end up with the following force term:
+
+$$f(s)=\begin{pmatrix}c \\ -mg\frac{s}{l/2}\end{pmatrix}$$
+
+So the curve direction at any point is given by
+
+$$d(s)=\frac{f(s)}{|f(s)|}$$
+
+Integrating this function gives us the position at any point along the curve. This can be used to solve for various parameters such as the width of the span, or the dip in the center given other parameters are fixed.
