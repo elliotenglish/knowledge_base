@@ -202,6 +202,18 @@ $$\bar{\theta}^{n+1}=\tau\theta^{n+1}+(1-\tau)\bar{\theta}^n$$
 
 Where $\tau$ is the target learning rate, typically closer to $0$. These are then used to sample actions/values when generating targets for the primary models. The goal of this method is to stabilize the learning process.
 
+## Distributed Distributional Deep Deterministic Policy Gradient (D4PG)
+
+- Separate agent and training processes
+- N-Step returns - Q/V functions modified to have N steps before become recursive
+- Prioritized training samples via importance sampling
+
+https://arxiv.org/abs/1804.08617
+
+## Prioritized Replay Experience
+
+https://arxiv.org/abs/1511.05952
+
 ## Soft Actor-Critic (SAC)
 
 https://arxiv.org/abs/1801.01290
