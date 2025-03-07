@@ -36,3 +36,14 @@ $$\mathbb{E}_D(x)=\int p_D(x)f(x)dx$$
 $$\approx\frac{1}{N}\sum_{i=1}^N f(x),\quad x\sim D$$
 
 Intuitively, sampling $x$ from $D$ will give us an implicit weighting which in the limit of infinite samples converges to the true value.
+
+## Monte Carlo integration
+
+https://en.wikipedia.org/wiki/Monte_Carlo_integration
+
+The important thing is that for a domain $\Omega$, while the convergence at first seems slow, in high dimensions it can be asymptotically faster than methods based on regular sampling.
+
+- Monte Carlo integration: $O(\frac{1}{N^{\frac{1}{2}}})$ where $N$ is the number of sample points.
+- Quadrature integration: $O(\frac{1}{N^{p/d}})$ where $p$ is the order of the method, $d$ is the spatial dimension. Note that $\Delta x\approx 1/N$.
+
+For anything where $d>2p$, Monte Carlo integration will converge with fewer sample points.
