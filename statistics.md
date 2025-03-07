@@ -35,4 +35,4 @@ $$\mathbb{E}_D(x)=\int p_D(x)f(x)dx$$
 
 $$\approx\frac{1}{N}\sum_{i=1}^N f(x),\quad x\sim D$$
 
-Intuitively sampling from $D$ will give use the weighting to produce the statistic.
+Intuitively, sampling $x$ from $D$ will give us an implicit weighting which in the limit of infinite samples converges to the true value.
