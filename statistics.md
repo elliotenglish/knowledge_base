@@ -17,3 +17,22 @@ e.g.
 $$H(X)=-(\alpha\textbf{log}_2(\alpha)+(1-\alpha)\textbf{log}_2(1-\alpha))$$
 $$=-(\textbf{log}_2(\alpha^\alpha)+\textbf{log}_2((1-\alpha)^{1-\alpha})$$
 $$=-(\textbf{log}_2(\alpha^\alpha(1-\alpha)^{1-\alpha})$$
+
+
+## Probability identities
+
+### Log-derivative Trick
+
+$$\nabla_x log(f(x))=\frac{\nabla_x f(x)}{f(x)}$$
+
+Rearranging into the more useful identity gives:
+
+$$f(x)\nabla_x log(f(x))=\nabla_x f(x)$$
+
+## Monte Carlo approximation of distribution statistics
+
+$$\mathbb{E}_D(x)=\int p_D(x)f(x)dx$$
+
+$$\approx\frac{1}{N}\sum_{i=1}^N f(x),\quad x\sim D$$
+
+Intuitively sampling from $D$ will give use the weighting to produce the statistic.
