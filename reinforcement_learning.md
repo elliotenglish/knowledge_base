@@ -235,9 +235,28 @@ https://arxiv.org/abs/1602.01783
 
 - https://arxiv.org/abs/1611.01626
 
+## Avoiding actor updates from exploiting poor critic approximations
+
+### Advantage weighted regression (AWR)
+
+https://arxiv.org/abs/1910.00177
+
+### Conservative Q-Learning (CQL)
+
+https://arxiv.org/abs/2006.04779
+
+TODO: Document
+
 ## Reparameterization trick
 
 TODO
+
+## Bellman operators
+
+- Bellman operator: $B^\pi Q=f+\beta P^\pi Q$ where $P^\pi$ is the transition matrix:
+  - $P^\pi Q(s,a)=\mathbb{E}_{s'\sim T(s'|s,a),a'\sim\pi(a'|s')}Q(s',a')$
+- Bellman optimality operator: $B^*Q(s,a)=f(s,a)+\beta\mathbb{E}s'~P(s'|s,a)\left(\max_a' Q(s',a')\right)$
+- Single sample Bellman operator: $\hat{B}^\pi$
 
 ## Debugging notes
 
