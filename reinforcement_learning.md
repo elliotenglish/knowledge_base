@@ -257,12 +257,25 @@ TODO: Document
 
 TODO
 
+## State distribution
+
+- Trajectory distribution: $$p^\pi(\tau)=p(s_0)\prod_{t=0}^{T}p(s_{t+1}|s_t,a_t)\pi(a_t|s_t)$$
+  - A trajectory distribution gives the probability of taking a specific trajectory given a policy distribution function and a state transition distribution function.
+- State marginal: $p^\pi(s_t=s)=p(s_t=s)=\displaystyle\sum_{s_0}p(s_0)\sum_{a_0}\pi(a_0|s_0)\sum_{s_1}p(s_1|s_0,a_0)\sum_{a_1}\pi(a_1|s_1)...\sum_{s_{t-1}}p(s_{t-1}|s_{t-2},a_{t-2})\sum_{a_{t-1}}\pi(s_t|s_{t-1},a_{t-1})\sum_{a_t}\pi(a_t|s_t)\sum_{s_{t+1}}p(s_t+1|s_t,a_t)...$
+  - This gives the probability of having a sampled trajectory end up at state $s$ at time $t$.
+- Discounted stationary distribution: $d^\pi(s)=(1-\beta)\displaystyle\sum_{t=0}^{\infty}\beta^{t}p^\pi(s_t=s)=(1-\beta)p(s_0=s)+\beta\sum_{s\in\mathcal{S},a\in\mathcal{A}}\mathcal{T}(s'|s,a)\pi(a|s),d^\pi(s)$
+
+References:
+- https://maximiliandu.com/course_notes/DRL/Deep%20RL/Notes/The%20Key%20Distributions%2000672c28d27043e2bafdbb30ff38423e.html
+
 ## Bellman operators
 
+- Bellman optimality operator: $B^*Q(s,a)=f(s,a)+\beta\mathbb{E}s'~P(s'|s,a)\left(\max_a' Q(s',a')\right)$
 - Bellman operator: $B^\pi Q=f+\beta P^\pi Q$ where $P^\pi$ is the transition matrix:
   - $P^\pi Q(s,a)=\mathbb{E}_{s'\sim T(s'|s,a),a'\sim\pi(a'|s')}Q(s',a')$
-- Bellman optimality operator: $B^*Q(s,a)=f(s,a)+\beta\mathbb{E}s'~P(s'|s,a)\left(\max_a' Q(s',a')\right)$
-- Single sample Bellman operator: $\hat{B}^\pi$
+- Single sample Bellman operator: $\hat{B}^\pi Q=f(s,a)+\beta Q(s',a\sim\pi(s'))$ or, in the case of an explicit policy function, $\hat{B}^\pi Q=f(s,a)+\beta Q(s',\pi(s'))$
+  - The hat means approximate statistics with a single sample.
+  - $\pi(s')$ here is used in the case of an explicit policy function that produces a currently optimal action rather than an action probability distribution. This is equivalent to the statement $\pi: \R^{N_s}->\R^{N_a}$, where $N_s$ is the dimension of the state space and $N_a$ is the dimension of the action space.
 
 ## Debugging notes
 
