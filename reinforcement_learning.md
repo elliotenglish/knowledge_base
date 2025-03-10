@@ -247,6 +247,12 @@ https://arxiv.org/abs/2006.04779
 
 TODO: Document
 
+- $\mathcal{D}$ is the dataset.
+- $\pi_\beta(a|s)$ is the stochastic policy.
+- $d^{\pi_\beta}(s)$ is the discounted marginal state-distribution of $\pi_\beta(a|s)$.
+- $P^\pi Q(s,a)=\mathbb{E}_{s'\sim T(s'|s,a),a'\sim\pi(a'|s')} Q(s',a')$
+
+
 ## Reparameterization trick
 
 TODO
