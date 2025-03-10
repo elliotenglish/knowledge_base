@@ -18,7 +18,7 @@ In 2D, the volume is derived geometrically as 1/2 base times height:
 
 $vol(\{\vec{x}_1,\vec{x}_1)=\frac{1}{2}(\vec{x}_1-\vec{x}_2)\cdot\vec{n}(\vec{x}_{j\in[2,3]})vol(\{\vec{x}_{j\in [2,3]}\})$
 
-In 3D, the volume is derived geometryically as 1/2 base times height:
+In 3D, the volume is derived geometrically as 1/2 base times height:
 
 $vol(\{\vec{x}_{j\in [1,4]}\})=\frac{1}{3}(\vec{x}_1-\vec{x}_2)\cdot\vec{n}(\{\vec{x}_{j\in [2,4]}\})vol(\{\vec{x}_{j\in [2,4]}\})$
 
@@ -28,11 +28,11 @@ $vol(\{\vec{x}_{j\in [1,d]}\})=\frac{1}{d}(\vec{x}_1-\vec{x}_2)\cdot\vec{n}(\{\v
 
 ## Face Normal
 
-In 1D we rotate the basis vector by $\pi/2$.
+In 1D, we rotate the basis vector by $\pi/2$.
 
 $\vec{n}({\vec{x}_{j\in[1,2]}})=\begin{bmatrix}0 & -1 \\ 1 & 0\end{bmatrix}\frac{\vec{x}_1-\vec{x}_2}{|\vec{x}_1-\vec{x}_2|}$
 
-In 3D we use the cross product of the 2 basis vectors.
+In 3D, we use the cross product of the 2 basis vectors.
 
 $\vec{n}(\{\vec{x}_{j\in [1,3]}\})=\frac{(\vec{x}_3-\vec{x}_2)\times(\vec{x}_4-\vec{x}_2)}{|\vec{x}_3-\vec{x}_2||\vec{x}_4-\vec{x}_2)|}$
 
@@ -76,7 +76,7 @@ $\nabla\alpha_i(\vec{x})=\frac
 
 ![Tetrahedron](tetrahedron.svg)
 
-Vertex orders to create inward facing normals (reverse to get outward face normals):
+There are the vertex orders that create inward facing normals (reverse to get outward face normals):
 - 4: 1,2,3
 - 1: 2,4,3
 - 2: 3,4,1
