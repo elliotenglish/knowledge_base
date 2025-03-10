@@ -84,6 +84,7 @@ In order to write and expression and then mark that it should be evaluated at a 
 - $\oplus$ - The [Direct Sum](https://en.wikipedia.org/wiki/Direct_sum)
 - $:=$ - The definition equals, used for specifying that the LHS is defined as the RHS.
 - $\triangleq$ ($\overset{\Delta}{=}$) - A synonym for $:=$.
+- $\sim$ - This is the sampling operator. In order to say that some variable $a$ is sampled from a distribution $\mathcal{D}$ you write $a \sim \mathcal{D}$.
 
 ### References
 

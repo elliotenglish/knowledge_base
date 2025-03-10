@@ -257,15 +257,22 @@ TODO: Document
 
 TODO
 
-## State distribution
+## State distributions
 
-- Trajectory distribution: $$p^\pi(\tau)=p(s_0)\prod_{t=0}^{T}p(s_{t+1}|s_t,a_t)\pi(a_t|s_t)$$
+- Definition of a state trajectory: $\tau=\{(s_0,a_0),(s_1,a_1),..,(s_T,a_T)\}$
+  - A trajectory is a specific set of states and actions occupied over time. One can think of this as the trajectory/path through the finite state machine.
+- Trajectory distribution: $p^\pi(\tau)=p(s_0)\prod_{t=0}^{T}p(s_{t+1}|s_t,a_t)\pi(a_t|s_t)$
   - A trajectory distribution gives the probability of taking a specific trajectory given a policy distribution function and a state transition distribution function.
 - State marginal: $p^\pi(s_t=s)=p(s_t=s)=\displaystyle\sum_{s_0}p(s_0)\sum_{a_0}\pi(a_0|s_0)\sum_{s_1}p(s_1|s_0,a_0)\sum_{a_1}\pi(a_1|s_1)...\sum_{s_{t-1}}p(s_{t-1}|s_{t-2},a_{t-2})\sum_{a_{t-1}}\pi(s_t|s_{t-1},a_{t-1})\sum_{a_t}\pi(a_t|s_t)\sum_{s_{t+1}}p(s_t+1|s_t,a_t)...$
   - This gives the probability of having a sampled trajectory end up at state $s$ at time $t$.
-- Discounted stationary distribution: $d^\pi(s)=(1-\beta)\displaystyle\sum_{t=0}^{\infty}\beta^{t}p^\pi(s_t=s)=(1-\beta)p(s_0=s)+\beta\sum_{s\in\mathcal{S},a\in\mathcal{A}}\mathcal{T}(s'|s,a)\pi(a|s),d^\pi(s)$
+- Discounted stationary distribution: $d^\pi(s)=(1-\beta)\displaystyle\sum_{t=0}^{\infty}\beta^{t}p^\pi(s_t=s)=(1-\beta)p(s_0=s)+\beta\sum_{s'\in\mathcal{S},a\in\mathcal{A}}\mathcal{p}(s|s',a)\pi(a|s'),d^\pi(s')$
+From the above we have a key identity:
+- Discounted function statistics: $\mathbb{E}_{\tau\sim\pi}\sum_{t=0}^{\infty}\beta^t f(s_t,a_t)=\frac{1}{1-\beta}\mathbb{E}_{s\sim d^\pi,a\sim\pi(s)}f(s,a)$
+  - This defines the expected return of a policy.
 
-References:
+TODO: Duplicate proof of the last statement from references.
+
+References (including proofs of value identity):
 - https://maximiliandu.com/course_notes/DRL/Deep%20RL/Notes/The%20Key%20Distributions%2000672c28d27043e2bafdbb30ff38423e.html
 
 ## Bellman operators
