@@ -249,9 +249,24 @@ TODO: Document
 
 - $\mathcal{D}$ is the dataset.
 - $\pi_\beta(a|s)$ is the stochastic policy.
+- $\Large\hat{\pi}_\beta(a|s)=\frac{\sum_{s',a'\in\mathcal{D}}\delta_{s',s}\delta_{a',a}}{\sum_{s',a'\in\mathcal{D}}\delta_{s',s}}$ is the frequency defined probability of an action $a$ from state $s$ within the dataset.
 - $d^{\pi_\beta}(s)$ is the discounted marginal state-distribution of $\pi_\beta(a|s)$.
 - $P^\pi Q(s,a)=\mathbb{E}_{s'\sim T(s'|s,a),a'\sim\pi(a'|s')} Q(s',a')$
 
+At the outset the propose to minimize $Q$ with respect to some distribution $\mu$:
+
+$$\hat{Q}^{k+1}=\argmin_Q\alpha
+\mathbb{E}_{s\sim\mathcal{D},a\in\mu(a|s)}Q(s,a)+
+\frac{1}{2}\mathbb{E}\left(Q(s,a)-\hat{B}\hat{Q}^k(s,a)\right)^2$$
+
+They then modify this to also maximize $Q$ for values within the dataset:
+
+$$\hat{Q}^{k+1}=\argmin_Q\alpha
+\left(\mathbb{E}_{s\sim\mathcal{D},a\in\mu(a|s)}Q(s,a)+
+\mathbb{E}_{s\sim D,a\sim\hat{\pi}_\beta(a|s)}Q(s,a)\right)+
+\frac{1}{2}\mathbb{E}\left(Q(s,a)-\hat{B}\hat{Q}^k(s,a)\right)^2$$
+
+Note that sampling from $\hat{\pi}_\beta(a|s)$ is just uniform sampling actions from tuples with the state $s$. Later they say that they use the current policy estimate as the value for the minimized $Q$, $\mu=\pi$.
 
 ## Reparameterization trick
 
