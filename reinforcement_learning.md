@@ -241,7 +241,7 @@ https://arxiv.org/abs/1707.06347
   - This can probably be defined also as the discounted feedback.
 - $L^{PPO}(\theta)=\hat{\mathbb{E}}(-L^{CLIP}(\theta)+c_1 L^{VF}(\theta)-c_2 S[\pi_\theta](s_t))$
   - This is the negative of $L^{CLIP+VF+S}(\theta)$ as defined and maximized in the paper.
-- TODO: Variants
+- TODO: Advantage function definition
 
 References
 
