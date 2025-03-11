@@ -140,6 +140,21 @@ $$\text{characters\_per\_token} = len(text) / len(tokens[0])$$
 
 When a neuron can represent multiple features.
 
+## Using contrastive data and reinforcement learning to improv LMs
+
+- https://arxiv.org/abs/2203.02155
+- https://arxiv.org/abs/2009.01325
+- https://arxiv.org/pdf/2402.03300
+
+1. For a given input, sample N outputs from your LM. For each pair of outputs, ask a human to rank them.
+2. Train a reward model $r_\theta(x,y)$ that given an input and output, predicts a reward for the tuple. Train it using ordinal regression, where the score from 2 tuples must maximize their delta:
+  - $loss(\theta,(x_i,y_i),(x_j,y_j),o_{ij})=log(\sigma(o_{ij}(r_\theta(x_i,y_i)-r_\theta(x_j,y_j))))$, where $o_{ij}\in\{-1,1}$ depending upon the rank of the samples.
+3. Train the LM to maximize the reward function using reinforcement learning. Note that the LM itself is the policy.
+  - Sample from dataset $x_i$
+  - Apply policy $y_i=\pi_\phi(x_i)$
+  - Compute reward using reward model, $r_i=r_\theta(x,y)$
+  - Use PPO loss to update policy parameters $\phi$.
+
 ## Current progress 2025/2/2
 
 - DeepSeek

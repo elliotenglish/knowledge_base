@@ -248,6 +248,7 @@ References
 - https://spinningup.openai.com/en/latest/algorithms/ppo.html
   - Note that $V_t^{targ} here is replaced with $\hat{R}$, which is defined on a separate page.
   - See the definition of $\hat{R}_t$ here: https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html
+- https://github.com/ericyangyu/PPO-for-Beginners
 
 ## Group-Relative Policy Optimization (GRPO)
 
