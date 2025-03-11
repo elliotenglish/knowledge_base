@@ -223,6 +223,14 @@ https://arxiv.org/abs/1801.01290
 
 https://arxiv.org/abs/1707.06347
 
+- $L^{CPI}(\theta)=\hat{\mathbb{E}}\left(\frac{\pi_\theta(a_t,s_t)}{\pi_{\theta_{old}}(a_t|s_t)}\hat{A}_t\right)$
+- $L^{CLIP}(\theta)=\hat{\mathbb{E}}\left(\min(r_t(\theta)\hat{A}_t,clip(r_t(\theta),1-\epsilon,1+\epsilon))\right)$
+- $L^{VT}(\theta)=(V_\theta(s_t)-V_t^{targ})^2$
+  - It is not clear from the paper how $V_t^{targ}$ is defined.
+- $L^{PPO}(\theta)=\hat{\mathbb{E}}(-L^{CLIP}(\theta)+c_1 L^{VF}(\theta)-c_2 S[\pi_\theta](s_t))$
+  - This is the negative of $L^{CLIP+VF+S}(\theta)$ as defined and maximized in the paper.
+- $$$$
+
 ## Group-Relative Policy Optimization (GRPO)
 
 https://arxiv.org/pdf/2402.03300
