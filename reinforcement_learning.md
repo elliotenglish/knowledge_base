@@ -219,6 +219,16 @@ https://arxiv.org/abs/1511.05952
 
 https://arxiv.org/abs/1801.01290
 
+## Advantage function
+
+The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state. This is related to the Bellman error but can be more generally defined and approximated depending upon the data available.
+
+The general formula for computing the advantage of taking an action is
+$$A(s,a,\pi)=Q(s,a,\pi)-V(s,\pi)$$
+Where
+$$V(s_t,\pi)=\mathbb{E}\left[r_t+\lambda V(s_{t+1},\pi)\right]$$
+$$s_{t+1}=T(s_t,a_t~\pi(s_t))$$
+
 ## Proximal Policy Optimization (PPO)
 
 https://arxiv.org/abs/1707.06347
@@ -227,15 +237,23 @@ https://arxiv.org/abs/1707.06347
 - $L^{CLIP}(\theta)=\hat{\mathbb{E}}\left(\min(r_t(\theta)\hat{A}_t,clip(r_t(\theta),1-\epsilon,1+\epsilon))\right)$
 - $L^{VT}(\theta)=(V_\theta(s_t)-V_t^{targ})^2$
   - It is not clear from the paper how $V_t^{targ}$ is defined.
+  - From examining OpenAI's spinning up and example code on github, it appears that this is generally the sum of the undiscounted trajectory feedback from the runs with the current policy since the last update. This is part of how the algorithm is truly and online algorithm without a dataset or replay buffer.
+  - This can probably be defined also as the discounted feedback.
 - $L^{PPO}(\theta)=\hat{\mathbb{E}}(-L^{CLIP}(\theta)+c_1 L^{VF}(\theta)-c_2 S[\pi_\theta](s_t))$
   - This is the negative of $L^{CLIP+VF+S}(\theta)$ as defined and maximized in the paper.
-- $$$$
+- TODO: Variants
+
+References
+
+- https://spinningup.openai.com/en/latest/algorithms/ppo.html
+  - Note that $V_t^{targ} here is replaced with $\hat{R}$, which is defined on a separate page.
+  - See the definition of $\hat{R}_t$ here: https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html
 
 ## Group-Relative Policy Optimization (GRPO)
 
 https://arxiv.org/pdf/2402.03300
 
-## Asychronous RL
+## Asynchronous RL
 
 https://arxiv.org/abs/1602.01783
 
@@ -310,13 +328,17 @@ References (including proofs of value identity):
 ## Debugging notes
 
 - If you see spikes in the Q objective try these steps:
-  1. Check that the state/action values are within specific ranges. These are dictated by the environment dynamics so a problem here indicates a problem with the dynamics. If they are large it may be due to the simulation environment's own integration going unstable. By default Mujoco uses explicit integration, this combined with penalty forces for constraints has a very narrow stability regime which an RL agent with large force limits can generally exceed very quickly. Set Mujoco to use implicit time integration.
-  2. Check the feedback values. These are directly included in the objective so they can easily produce a large objective if they themselves are large. However, they are also specified by a heuristic, so check those if the feedback looks large.
+  1. Check that the state/action values are within specific ranges. These are dictated by the environment dynamics so a problem here indicates a problem with the dynamics. If they are large it may be due to the simulation environment's own integration going unstable. By default, Mujoco uses explicit integration, this combined with penalty forces for constraints has a very narrow stability regime which an RL agent with large force limits can generally exceed very quickly. Set Mujoco to use implicit time integration.
+  2. Check the feedback values. These are directly included in the objective so that they can easily produce a large objective if they themselves are large. However, they are also specified by a heuristic, so check those if the feedback looks large.
   3. Run with a smaller learning rate. If the spikes disappear, then the learning rate was too large and the solver was going unstable.
   4. Increase regularization. This can help the solver avoid producing a model with chaotic subspaces that may produce large values when newly explored.
 - If your policy's value function is not showing an improvement over time, try these steps:
-  1. View the behavior of the system. Does it look like it's getting into a stable regime associated with a local minima? Try different exploration policies.
-  2. Check the Q error for each step and compare against the Q error shown by the solver on the batch from the replay buffer. If the replay buffer error is much smaller then relevant data points are not being sampled within the solver.
-  3. In theory if a bad policy is continually exploited, it should generate enough datapoints
+  1. View the behavior of the system. Does it look like it's getting into a stable regime associated with a local minimum? Try different exploration policies.
+  2. Check the Q error for each step and compare against the Q error shown by the solver on the batch from the replay buffer. If the replay buffer error is much smaller, then relevant data points are not being sampled within the solver.
+  3. In theory if a bad policy is continually exploited, it should generate enough data points.
 
 https://en.wikipedia.org/wiki/Multi-objective_optimization
+
+## Convergence analysis
+
+https://proceedings.neurips.cc/paper_files/paper/2023/file/1dc9fbdb6b4d9955ad377cb983232c9f-Paper-Conference.pdf
