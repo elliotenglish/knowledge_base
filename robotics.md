@@ -10,7 +10,6 @@
 
 ## Software
 
-- https://github.com/google-deepmind/acme
 - https://github.com/google-deepmind/dm_control/
 - https://github.com/google-deepmind/mujoco
 

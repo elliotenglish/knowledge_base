@@ -344,3 +344,8 @@ https://en.wikipedia.org/wiki/Multi-objective_optimization
 ## Convergence analysis
 
 https://proceedings.neurips.cc/paper_files/paper/2023/file/1dc9fbdb6b4d9955ad377cb983232c9f-Paper-Conference.pdf
+
+## Software
+
+- https://github.com/DLR-RM/stable-baselines3
+- https://github.com/google-deepmind/acme
