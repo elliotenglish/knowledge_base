@@ -1,4 +1,3 @@
-
 # Differentiable Physics
 
 ## References
@@ -8,7 +7,7 @@
 ## Software
 
 General
-- Nvidia Warp
+- [NVIDIA Warp](https://github.com/NVIDIA/warp)
 
 FEM
 - [JAX-FEM](https://github.com/deepmodeling/jax-fem)
@@ -24,3 +23,10 @@ Robotics/Articulated Bodies
 Fusion/Electromagnetics
 - [DESC-Opt](https://github.com/PlasmaControl/DESC)
 - [Stellacode](https://github.com/rob3315/stellacode)
+
+Additive Manufacturing
+- [JAX-AM](https://github.com/tianjuxue/jax-am)
+
+## Research
+
+- [DiffCSG](https://arxiv.org/abs/2409.01421)
