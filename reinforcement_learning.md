@@ -349,3 +349,16 @@ https://proceedings.neurips.cc/paper_files/paper/2023/file/1dc9fbdb6b4d9955ad377
 
 - https://github.com/DLR-RM/stable-baselines3
 - https://github.com/google-deepmind/acme
+- https://github.com/google/dopamine
+
+## GDM ACME Notes
+
+There is no straightforward way to instantiate an agent. The agent specific examples use simulation loop wrapper classes that preclude getting an instance of the constructed agent. It is possible to pick apart the code by recursing in the examples, to find the instantiation logic. There is one example, the "tutorial" that does perform an instantiation (https://github.com/google-deepmind/acme/blob/master/examples/tutorial.ipynb). It unfortunately uses a very complex multi-component setup as well as internal classes (e.g. "_LearningActor") in order to make a functioning agent.
+
+- [Environment/MDP](https://github.com/google-deepmind/dm_control/blob/46390cfc356dfcb4235a2417efb2c3ab260194b8/dm_control/rl/control.py#L28)
+- [Timestep](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/_environment.py#L25)
+- [Environment/MDP Spec](https://github.com/google-deepmind/acme/blob/eedf63ca039856876ff85be472fa9186cf29b073/acme/specs.py#L33)
+- Spaces
+  - [Array](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L35)
+  - [BoundedArray](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L152)
+  - [DiscreteArray](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L273)
