@@ -9,7 +9,8 @@
 - advantage (A)
   - The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state.
   - $$A(s,t,\pi)=Q(s,t,\pi)-V(s,\pi)$$
-- Markov decision process (MDP) - 
+- state/observation
+  - In general we only have a partial view of the global state, both of either the agent or the environment. So many frameworks instead use the nomenclature observation rather than state in their code.
 
 ## Markov decision process (MDP)
 
@@ -58,12 +59,6 @@ Or more compactly:
 
 $$V(x)=\max_{a\in\Gamma(x)}(F(x,a)+\beta V(T(x,a)))$$
 
-### Stochastic value function
-
-If we assume that the state transitions (T) and feedback (F) are stochastic we define the value function instead using the expectation as follows:
-
-$$V(x)=\max_{a\in\Gamma(x)}(\mathbb{E}(F(x,a)+\beta(V(T(x,a)))))$$
-
 ## Q-Learning
 
 In this case we use a modified Bellman equation to take in both a state, an action, the current policy parameters and return the expected return.
@@ -98,9 +93,25 @@ References:
 - https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf
 - https://arxiv.org/abs/2410.21795
 
+## Stochastic models
+
+### Stochastic environments
+
+If we assume that the state transitions (T) and feedback (F) are stochastic we define the value function instead using the expectation as follows:
+
+$$V(x)=\max_{a\in\Gamma(x)}(\mathbb{E}(F(x,a)+\beta(V(T(x,a)))))$$
+
+### Stochastic models
+
+We can also model a stochastic policy by defining our model to produce parameters for a random distribution. While at first this doesn't seem advantageous because the goal is to find an optimal policy that given any state produces an optimal action maximizing the reward, in certain cases we may have an unclear.
+
 ## Learning stability
 
 One of the most significant challenges of reinforcement learning is the ability of the fitting process to arrive at a stable solution. Because of the recursive formulation, we end up with a problem that is not purely a $f(x_i)=y_i$ supervised learning formulation which is generally convergent with enough regularization and a small enough learning rate. Instead, we end up with a recursive formulation where our labels are the step values, $f(x_i,a_i)=y_i+\beta f(x'_i,\argmax_a f(x'_i,a))=y_i+\beta\max_a f(x'_i,a)$. Ideally this would converge to the non-recursive definition, but can often diverge due to the dynamics of the optimization process, where the portion of the residual due to the $y_i$ term is not minimized. Instead, the portion due to the recursive term dominates, and since it has no grounding in supervised data, it can diverge to unuseful or even unbounded solutions.
+
+Deadly triad (function approximation, off-policy learning, bootstrapping).
+
+https://arxiv.org/abs/2203.02628
 
 ## Exploitation vs exploration
 
@@ -210,6 +221,10 @@ Where $\tau$ is the target learning rate, typically closer to $0$. These are the
 - Prioritized training samples via importance sampling
 
 https://arxiv.org/abs/1804.08617
+
+## Addressing Function Approximation Error in Actor-Critic Methods (TD3)
+
+https://arxiv.org/abs/1802.09477
 
 ## Prioritized Replay Experience
 
@@ -353,10 +368,11 @@ https://proceedings.neurips.cc/paper_files/paper/2023/file/1dc9fbdb6b4d9955ad377
 
 ## GDM ACME Notes
 
-There is no straightforward way to instantiate an agent. The agent specific examples use simulation loop wrapper classes that preclude getting an instance of the constructed agent. It is possible to pick apart the code by recursing in the examples, to find the instantiation logic. There is one example, the "tutorial" that does perform an instantiation (https://github.com/google-deepmind/acme/blob/master/examples/tutorial.ipynb). It unfortunately uses a very complex multi-component setup as well as internal classes (e.g. "_LearningActor") in order to make a functioning agent.
+There is no straightforward way to instantiate an agent. The agent specific examples use simulation loop wrapper classes that preclude getting an instance of the constructed agent. It is possible to recursively pick apart the code examples, to find the instantiation logic. There is one example, the "tutorial" that does perform an instantiation (https://github.com/google-deepmind/acme/blob/master/examples/tutorial.ipynb). It unfortunately uses a very complex multi-component setup as well as internal classes (e.g. "_LearningActor") in order to make a functioning agent.
 
 - [Environment/MDP](https://github.com/google-deepmind/dm_control/blob/46390cfc356dfcb4235a2417efb2c3ab260194b8/dm_control/rl/control.py#L28)
 - [Timestep](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/_environment.py#L25)
+- [Transition](https://github.com/google-deepmind/acme/blob/eedf63ca039856876ff85be472fa9186cf29b073/acme/types.py#L58)
 - [Environment/MDP Spec](https://github.com/google-deepmind/acme/blob/eedf63ca039856876ff85be472fa9186cf29b073/acme/specs.py#L33)
 - Spaces
   - [Array](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L35)
