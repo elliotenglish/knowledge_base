@@ -122,6 +122,10 @@ In this strategy we simply take a random action at a fixed rate, which is define
 
 $$a_t(x_t)=\left\{\begin{matrix}a \sim \mathbb{U}(\Gamma(x_t)), & P(\cdot)=\epsilon \\ \displaystyle\max_{a\in\Gamma(x_t)}V(x,a), & P(\cdot)=1-\epsilon\ \end{matrix}\right.$$
 
+### Ornstein-Uhlenbeck process
+
+https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process
+
 ### Boltzmann exploration
 
 $$\pi(s,a)=exp(Q(s,a)/T)\int_{b\in\Gamma(x_t)} exp(Q(s,b)/T)db$$
@@ -290,7 +294,8 @@ https://arxiv.org/abs/1910.00177
 
 ### Conservative Q-Learning (CQL)
 
-https://arxiv.org/abs/2006.04779
+- https://arxiv.org/abs/2006.04779
+- https://github.com/aviralkumar2907/CQL
 
 TODO: Document
 

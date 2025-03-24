@@ -33,3 +33,7 @@ This can be done by sampling various $q$ configurations.
 Then given a target maximum acceleration $a_t$ we can compute the maximum force as:
 
 $$\hat{f}_i=a_t\hat{m}_i$$
+
+## Language models for trajectory generation
+
+https://www.robot-learning.uk/language-models-trajectory-generators
