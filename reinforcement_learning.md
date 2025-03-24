@@ -205,6 +205,10 @@ References:
 
 Uses a neural network to model the Q function as a map from a continuous valued state to the discrete action values: $Q(x)=a: \real^{N_x} -> \real^{N_a}$
 
+## Deterministic Policy Gradient (DPG)
+
+https://proceedings.mlr.press/v32/silver14.pdf
+
 ## Deep Deterministic Policy Gradient (DDPG)
 
 https://arxiv.org/abs/1509.02971
