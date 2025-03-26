@@ -243,6 +243,11 @@ https://arxiv.org/abs/1511.05952
 
 https://arxiv.org/abs/1801.01290
 
+## Double Q Learning
+
+https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf
+https://arxiv.org/abs/1509.06461
+
 ## Advantage function
 
 The difference between the value given by taking a specific action at a given state, over the expected value over the distribution of actions at the same state. This is related to the Bellman error but can be more generally defined and approximated depending upon the data available.
