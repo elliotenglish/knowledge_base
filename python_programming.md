@@ -34,3 +34,28 @@ snakeviz out.prof
 ```
 
 https://github.com/joerick/pyinstrument?tab=readme-ov-file
+
+## Data Structs
+
+A data struct is a pure field struct. These are useful for example:
+
+```
+class A:
+  field0: int = 5432
+  field1: str = "foo"
+```
+
+You can then construct new instances and then read/write fields. In order to have a constructor that accepts named parameters you need to either use `dataclass` or `NamedTuple`:
+
+```
+from dataclasses import dataclass
+
+@dataclass
+class A:
+  field0: int = 5432
+  field1: str = "foo"
+
+a=A(field0=1235,field1="bar")
+```
+
+In order to make the struct hashable you must set the dataclass to be frozen, i.e. `@dataclass(frozen=True)`.

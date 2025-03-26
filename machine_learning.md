@@ -174,8 +174,19 @@ Main benefits:
 
 Notes:
 - Flax
+  - Provides building blocks for models through the nnx package (previously linen)
 - Orbax
+  - Provides common training utilities
+  - Parallel model checkpointing
+    - Note that you can not checkpoint unstructured objects and an abstract structure needs to be provided in order to deserialize checkpoints. This means that you can not checkpoint data.
 - Optax
+  - Contains optimizer implementations (e.g. SGD, momentum, ADAM)
+  - Certain optimizers provide weight decay
+
+Multiple class inheritance:
+```
+TypeError: metaclass conflict: the metaclass of a derived class must be a (non-strict) subclass of the metaclasses of all its bases
+```
 
 ## Books/Courses
 
