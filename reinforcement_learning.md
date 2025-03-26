@@ -296,6 +296,7 @@ https://arxiv.org/abs/1910.00177
 
 - https://arxiv.org/abs/2006.04779
 - https://github.com/aviralkumar2907/CQL
+- https://github.com/aviralkumar2907/CQL/blob/master/d4rl/rlkit/torch/sac/cql.py
 
 TODO: Document
 
@@ -388,3 +389,7 @@ There is no straightforward way to instantiate an agent. The agent specific exam
   - [Array](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L35)
   - [BoundedArray](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L152)
   - [DiscreteArray](https://github.com/google-deepmind/dm_env/blob/91b46797fea731f80eab8cd2c8352a0674141d89/dm_env/specs.py#L273)
+
+## Gymnasium Notes
+
+- https://github.com/PierreExeter/gym-reacher
