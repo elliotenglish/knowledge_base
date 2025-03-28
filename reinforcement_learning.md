@@ -114,6 +114,19 @@ One of the most significant challenges of reinforcement learning is the ability 
 - Off-policy learning removes the opportunity of the solution process to explore hypothesis and effectively correct estimates.
 - TODO: Add "done"/variable discount term above. Add consequences of making problem fully supervised here.
 
+Toy problem:
+- $f(x,a)=-|T(x)|$
+- $T(x,a)=x+a$
+- $x\in[0,\infty]$
+- $a\in[-1,1]$
+- $N$: max steps
+- $Q^0(x,1)=\left\{\begin{matrix}-1/2 x^2, & x<N, x\in\mathbb{I} \\ C, & otherwise \end{matrix}\right.$
+- $Q^\infty(x,1)=\left\{\begin{matrix}1/2 x^2, & x<N, x\in\mathbb{I} \\ C, & otherwise \end{matrix}\right.$: we want to show that something like this is admissible as a pathological solution
+- $Q^{k+1}(x,a)=Q^k(x,a)-\lambda\nabla\frac{1}{2}(Q^k(x,a)-(f(x,a)+\beta Q^k(T(x),\pi(T(x)))^2$ - gradient descent on Bellman Error
+- $\pi(x)=1$ - we fix the policy as going in the opposite of the true direction. The goal is to show that the policy will be unchanged (gradient is 0 when accounting for the action space) when iterating as above.
+
+The challenge with the analysis is that what happens to $Q(N,a)$ at each update phase. We can either work to show there is a steady state solution with the same initial value, or that the solution continually grows unbounded.
+
 ## Exploitation vs exploration
 
 ### $\epsilon$-greedy (epsilon greedy)
