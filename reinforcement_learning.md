@@ -377,11 +377,15 @@ References (including proofs of value identity):
   2. Check the feedback values. These are directly included in the objective so that they can easily produce a large objective if they themselves are large. However, they are also specified by a heuristic, so check those if the feedback looks large.
   3. Run with a smaller learning rate. If the spikes disappear, then the learning rate was too large and the solver was going unstable.
   4. Increase regularization. This can help the solver avoid producing a model with chaotic subspaces that may produce large values when newly explored.
-- If your solver for Q is not converging quickly, or going unstable, verify that your derivatives are correct. Many papers say to ignore the portion of the derivatives due to the Bellman operator Q term in the Bellman error, however this leads to an incorrect derivative and eliminates any guarantees to even local minima for gradient descent. Specifically if you have the error $f(\theta)=(Q_\theta(s,a)-(f+\beta*Q_\theta(s',a')))$, the entire equation must be differentiated with respect to $\theta, not just the $Q_\theta(s,a)$ term but also the $Q_\theta(s',a')$ term.
+- If your solver for Q is not converging quickly, or going unstable consider these steps:
+  - Verify that your derivatives are correct. Many papers say to ignore the portion of the derivatives due to the Bellman operator Q term in the Bellman error, however this leads to an incorrect derivative and eliminates any guarantees to even local minima for gradient descent. Specifically if you have the error $f(\theta)=(Q_\theta(s,a)-(f+\beta*Q_\theta(s',a')))$, the entire equation must be differentiated with respect to $\theta, not just the $Q_\theta(s,a)$ term but also the $Q_\theta(s',a')$ term.
+  - Note that including the target derivative can also lead to convergence to the wrong solution. Particulary Q values exterior to the sampled domain can artificially grow, if $Q(s,a)>Q_t$.
+  - Some papers use target networks that are updated much more slowly. This is approximately the same as running with a much smaller learning rate. DDPG from SB3 uses a learning rate of $3\times 10^{-4}$, however the update rate for the target networks is $\tau=0.005$, resulting in an effective learning rate of $1.5\times 10^{-6}$.
 - If your policy's value function is not showing an improvement over time, try these steps:
   1. View the behavior of the system. Does it look like it's getting into a stable regime associated with a local minimum? Try different exploration policies.
   2. Check the Q error for each step and compare against the Q error shown by the solver on the batch from the replay buffer. If the replay buffer error is much smaller, then relevant data points are not being sampled within the solver.
   3. In theory if a bad policy is continually exploited, it should generate enough data points that through exploration noise yield slight improves it finds itself out of the locally bad solution.
+
 
 https://en.wikipedia.org/wiki/Multi-objective_optimization
 
