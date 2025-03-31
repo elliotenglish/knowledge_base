@@ -396,6 +396,11 @@ References (including proofs of value identity):
 - https://arxiv.org/abs/2110.06169
 - https://arxiv.org/abs/2106.02039
 - https://arxiv.org/abs/2103.16596
+- https://arxiv.org/abs/1906.00949
+  - Bootstrap error - error that arises from bootstrapping using actions that are outside the training dataset
+  - "error propagation" studied in approximate dynamic programming (ADP)
+  - bootstrapping error accumulation reduction (BEAR)
+- https://openreview.net/pdf?id=S1lXO6cf6S
 
 ## Debugging notes
 
