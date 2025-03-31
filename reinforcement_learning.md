@@ -370,6 +370,29 @@ References (including proofs of value identity):
   - The hat means approximate statistics with a single sample.
   - $\pi(s')$ here is used in the case of an explicit policy function that produces a currently optimal action rather than an action probability distribution. This is equivalent to the statement $\pi: \R^{N_s}->\R^{N_a}$, where $N_s$ is the dimension of the state space and $N_a$ is the dimension of the action space.
 
+## Offline Reinforcement Learning
+
+- https://arxiv.org/abs/2502.02538
+- https://arxiv.org/abs/2406.09329
+- https://arxiv.org/abs/2406.04534
+- https://arxiv.org/abs/2402.15567
+- https://arxiv.org/abs/2310.20663
+- https://arxiv.org/abs/2310.11731
+- https://arxiv.org/abs/2310.08558
+- https://arxiv.org/abs/2309.10150
+- https://arxiv.org/abs/2309.03839
+- https://arxiv.org/abs/2306.03346
+- https://arxiv.org/abs/2304.10573
+- https://arxiv.org/abs/2303.05479
+- https://arxiv.org/abs/2212.08244
+- https://arxiv.org/abs/2212.04607
+- https://arxiv.org/abs/2211.15144
+- https://arxiv.org/abs/2211.01471
+- https://arxiv.org/abs/2210.05178
+- https://arxiv.org/abs/2110.06169
+- https://arxiv.org/abs/2106.02039
+- https://arxiv.org/abs/2103.16596
+
 ## Debugging notes
 
 - If you see spikes in the Q objective try these steps:
