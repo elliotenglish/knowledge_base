@@ -257,10 +257,13 @@ https://arxiv.org/abs/1511.05952
 
 https://arxiv.org/abs/1801.01290
 
-## Double Q Learning
+##
 
-https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf
-https://arxiv.org/abs/1509.06461
+- Double Q Learning
+  - https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf
+  - https://arxiv.org/abs/1509.06461
+- Distributional policies
+  - https://arxiv.org/abs/2005.04269
 
 ## Advantage function
 
@@ -280,7 +283,7 @@ https://arxiv.org/abs/1707.06347
 - $L^{CLIP}(\theta)=\hat{\mathbb{E}}\left(\min(r_t(\theta)\hat{A}_t,clip(r_t(\theta),1-\epsilon,1+\epsilon))\right)$
 - $L^{VT}(\theta)=(V_\theta(s_t)-V_t^{targ})^2$
   - It is not clear from the paper how $V_t^{targ}$ is defined.
-  - From examining OpenAI's spinning up and example code on github, it appears that this is generally the sum of the undiscounted trajectory feedback from the runs with the current policy since the last update. This is part of how the algorithm is truly and online algorithm without a dataset or replay buffer.
+  - From examining OpenAI's spinning up and example code on GitHub, it appears that this is generally the sum of the undiscounted trajectory feedback from the runs with the current policy since the last update. This is part of how the algorithm is truly and online algorithm without a dataset or replay buffer.
   - This can probably be defined also as the discounted feedback.
 - $L^{PPO}(\theta)=\hat{\mathbb{E}}(-L^{CLIP}(\theta)+c_1 L^{VF}(\theta)-c_2 S[\pi_\theta](s_t))$
   - This is the negative of $L^{CLIP+VF+S}(\theta)$ as defined and maximized in the paper.
@@ -403,13 +406,15 @@ References (including proofs of value identity):
   4. Increase regularization. This can help the solver avoid producing a model with chaotic subspaces that may produce large values when newly explored.
 - If your solver for Q is not converging quickly, or going unstable consider these steps:
   - Verify that your derivatives are correct. Many papers say to ignore the portion of the derivatives due to the Bellman operator Q term in the Bellman error, however this leads to an incorrect derivative and eliminates any guarantees to even local minima for gradient descent. Specifically if you have the error $f(\theta)=(Q_\theta(s,a)-(f+\beta*Q_\theta(s',a')))$, the entire equation must be differentiated with respect to $\theta, not just the $Q_\theta(s,a)$ term but also the $Q_\theta(s',a')$ term.
-  - Note that including the target derivative can also lead to convergence to the wrong solution. Particulary Q values exterior to the sampled domain can artificially grow, if $Q(s,a)>Q_t$.
+  - Note that including the target derivative can also lead to convergence to the wrong solution. Particularly Q values exterior to the sampled domain can artificially grow, if $Q(s,a)>Q_t$.
   - Some papers use target networks that are updated much more slowly. This is approximately the same as running with a much smaller learning rate. DDPG from SB3 uses a learning rate of $3\times 10^{-4}$, however the update rate for the target networks is $\tau=0.005$, resulting in an effective learning rate of $1.5\times 10^{-6}$.
 - If your policy's value function is not showing an improvement over time, try these steps:
   1. View the behavior of the system. Does it look like it's getting into a stable regime associated with a local minimum? Try different exploration policies.
   2. Check the Q error for each step and compare against the Q error shown by the solver on the batch from the replay buffer. If the replay buffer error is much smaller, then relevant data points are not being sampled within the solver.
   3. In theory if a bad policy is continually exploited, it should generate enough data points that through exploration noise yield slight improves it finds itself out of the locally bad solution.
-
+- If the Q values are consistently over estimating real returns
+  - You can calculate these by looking at the discounted returns computed from sampled trajectories and comparing them against the Q value from the starting node.
+  - One way to check whether your code converges is to set $\beta=0$, and eliminate the recursive component, and make it a purely supervised learning problem. This should at least recover the feedback gradient.
 
 https://en.wikipedia.org/wiki/Multi-objective_optimization
 
