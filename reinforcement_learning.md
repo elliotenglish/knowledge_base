@@ -431,7 +431,11 @@ References (including proofs of value identity):
       - https://github.com/aviralkumar2907/BEAR/blob/f2e31c1b5f81c4fb0e692a34949c7d8b48582d8f/algos.py#L395
       - https://github.com/aviralkumar2907/BEAR/blob/f2e31c1b5f81c4fb0e692a34949c7d8b48582d8f/algos.py#L433
       - This critical detail is omitted from the paper
-
+      - $VAE(s,a)=\hat{a},\mu,\sigma$
+      - $\min(VAE)=|a-\hat{a}|^2-0.5(1+\log(\sigma^2)-\mu^2-\sigma^2)$ (mean of the latter KL loss term)
+      - "VAE Based behavior cloning also used in Fujimoto et.al. (ICML 2019)"
+- https://arxiv.org/abs/1812.02900
+  - 
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
 ## Debugging notes
