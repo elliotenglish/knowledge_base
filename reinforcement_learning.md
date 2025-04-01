@@ -420,6 +420,9 @@ References (including proofs of value identity):
         - Note that in the continuous space these would generally all be the same we can assume in general the same state is never visited exactly again.
       - Update $\phi$, by maximize the minimum target $Q_{\theta_j'}$, while constraining $MMD(\{a_j\},\{\hat{a}_i\})<\epsilon$
     - Update solution networks from target networks using polyak averaging
+  - Implementation
+    - https://github.com/aviralkumar2907/BEAR
+    - https://github.com/seungwon1/BEAR-QL
 
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
