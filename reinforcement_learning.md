@@ -407,6 +407,7 @@ References (including proofs of value identity):
     - In the practical setting this is just saying that the policy has to be one that was explored in the dataset. However, we do not have access to the behavior policy that was used to generate the dataset. Moreover, the $s'$ states used to calculate the Bellman Error will not even be in the dataset in the general continuous case. Alternatively you can consider the uniform policy $\pi(s|a)=1/{\int_a da}$, however, this would imply that all actions are permissible.
   - Uses maximum mean discrepancy (MMD) to approximately constraint the solution policy to the behavior policy.
     - $MMD(\{x_i,i\in[1,n]\},\{y_j,j\in[1,m]\})=\frac{1}{n^2}\sum_{i,i'}k(x_i,x_{i'})-\frac{2}{nm}\sum{i,j}k(x_i,y_j)+\frac{1}{m^2}\sum{j,j'}k(y_j,y_{j'})$
+    - $k$ is some distance kernel.
   - Update:
     - Sample a batch of transitions from the dataset $(s,a,r,s')\in D$
     - $Q$ update:
@@ -423,6 +424,8 @@ References (including proofs of value identity):
   - Implementation
     - https://github.com/aviralkumar2907/BEAR
     - https://github.com/seungwon1/BEAR-QL
+    - The code has variants of the policy update where one of the min/max/mean Q value can be used for policy updates
+    - The code also uses $\lambda=0.5$ by default
 
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
