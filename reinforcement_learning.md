@@ -425,7 +425,12 @@ References (including proofs of value identity):
     - https://github.com/aviralkumar2907/BEAR
     - https://github.com/seungwon1/BEAR-QL
     - The code has variants of the policy update where one of the min/max/mean Q value can be used for policy updates
-    - The code also uses $\lambda=0.5$ by default
+    - The code also uses $\lambda=0.5$ by default, but in the command line in the README, they set lambda to 0, so the $Q$ target values is essentially always computed with the minimum $Q$ target network as in double $Q$ learning.
+    - To sample from dataset policy they use a variational autoencoder to compute the behavioral policy
+      - https://github.com/aviralkumar2907/BEAR/blob/f2e31c1b5f81c4fb0e692a34949c7d8b48582d8f/algos.py#L212
+      - https://github.com/aviralkumar2907/BEAR/blob/f2e31c1b5f81c4fb0e692a34949c7d8b48582d8f/algos.py#L395
+      - https://github.com/aviralkumar2907/BEAR/blob/f2e31c1b5f81c4fb0e692a34949c7d8b48582d8f/algos.py#L433
+      - This critical detail is omitted from the paper
 
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
