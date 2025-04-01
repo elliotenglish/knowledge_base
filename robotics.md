@@ -37,3 +37,9 @@ $$\hat{f}_i=a_t\hat{m}_i$$
 ## Language models for trajectory generation
 
 https://www.robot-learning.uk/language-models-trajectory-generators
+
+## Humanoid robotics
+
+- Learning human motion
+  - https://github.com/LeCAR-Lab/ASAP
+  - https://arxiv.org/pdf/2502.01143

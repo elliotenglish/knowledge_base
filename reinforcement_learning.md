@@ -397,9 +397,30 @@ References (including proofs of value identity):
 - https://arxiv.org/abs/2106.02039
 - https://arxiv.org/abs/2103.16596
 - https://arxiv.org/abs/1906.00949
-  - Bootstrap error - error that arises from bootstrapping using actions that are outside the training dataset
-  - "error propagation" studied in approximate dynamic programming (ADP)
-  - bootstrapping error accumulation reduction (BEAR)
+  - Bootstrap error - error that arises from bootstrapping using actions that are outside the training dataset distribution
+  - This type of "error propagation" is studied in approximate dynamic programming (ADP)
+  - Introduces the algorithm: bootstrapping error accumulation reduction (BEAR-QL)
+  - Trains $j=[1,K]$ target $Q$ networks with parameters $\theta_j'$
+  - Trains single target $\pi$ network with parameters $\phi'$
+  - Assumes a dataset $D=\{(s,a,r,s')\}$ which is collected using some "behavior policy" $\beta(\cdot|s)$.
+  - Define the allowable set of policies as $\Pi_\epsilon={\pi|\pi(a|s)=0 \text{whenever} \Beta(a|s)<\epsilon}$
+    - In the practical setting this is just saying that the policy has to be one that was explored in the dataset. However, we do not have access to the behavior policy that was used to generate the dataset. Moreover, the $s'$ states used to calculate the Bellman Error will not even be in the dataset in the general continuous case. Alternatively you can consider the uniform policy $\pi(s|a)=1/{\int_a da}$, however, this would imply that all actions are permissible.
+  - Uses maximum mean discrepancy (MMD) to approximately constraint the solution policy to the behavior policy.
+    - $MMD(\{x_i,i\in[1,n]\},\{y_j,j\in[1,m]\})=\frac{1}{n^2}\sum_{i,i'}k(x_i,x_{i'})-\frac{2}{nm}\sum{i,j}k(x_i,y_j)+\frac{1}{m^2}\sum{j,j'}k(y_j,y_{j'})$
+  - Update:
+    - Sample a batch of transitions from the dataset $(s,a,r,s')\in D$
+    - $Q$ update:
+      - Samples $i\in[1,p]$ actions from the target policy $a_i~\pi_{\phi'}(s')$
+      - Compute the common $Q$ target using the target networks, $y=max_{a_i}[\lambda min_j(Q_{\theta_j'}(s',a_i))+(1-\lambda)max)j(Q_{\theta_j'}(s',a_i)]$
+      - Update each non-target $\theta_j$ using the Bellman Error with the common target
+        - Note that this is pushing each target $Q$ network to have the same function
+    - $\pi$ update:
+      - Sample $m$ actions from the non-target policy $\hat{a}_i~\pi(s)$
+      - Sample $n$ actions from the dataset for state $s$, $a_j~D(s)$
+        - Note that in the continuous space these would generally all be the same we can assume in general the same state is never visited exactly again.
+      - Update $\phi$, by maximize the minimum target $Q_{\theta_j'}$, while constraining $MMD(\{a_j\},\{\hat{a}_i\})<\epsilon$
+    - Update solution networks from target networks using polyak averaging
+
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
 ## Debugging notes
