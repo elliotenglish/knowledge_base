@@ -435,7 +435,34 @@ References (including proofs of value identity):
       - $\min(VAE)=|a-\hat{a}|^2-0.5(1+\log(\sigma^2)-\mu^2-\sigma^2)$ (mean of the latter KL loss term)
       - "VAE Based behavior cloning also used in Fujimoto et.al. (ICML 2019)"
 - https://arxiv.org/abs/1812.02900
-  - 
+  - Introduces Batch-Constrained deep Q-learning (BCQ)
+  - When they say batch, they just mean the dataset. Batching/mini-batches within the training loop and not related.
+  - Uses a VAE to model the dataset. Specifically, given a state, what are the transitions that were previously explored.
+    - VAE: $G_\omega=(E_\omega,D_\omega)$
+    - Encoder: $\mu,\sigma)=E_\omega(x,a): \R^{N_s}\times\R^{N_a}\rightarrow\R^{N_h}\times\R^{N_h}$
+    - Stochastic sampling: $h\sim \mathcal{N}(\mu,\sigma)$
+    - Decoder: $\tilde{a}=D_\omega(s,h)$
+    - Objective:
+      - $L(E,D)=|a'-a'|^2+D_{KL}(\mathcal{N}(\mu,\sigma)||\mathcal{N}(0,1))$
+      - Simplified: $L(E,D)=|a'-a'|^2-\frac{1}{2}\sum_j(1+\log(\sigma_j^2)-\mu_j^2-\sigma_j^2)$
+    - $\hat{a}=G_\omega(s)=D(s,h\sim\mathcal{N}(0,1))$
+      - This is not discussed in the paper, taken from code.
+      - https://github.com/sfujim/BCQ/blob/4876f7e5afa9eb2981feec5daf67202514477518/continuous_BCQ/BCQ.py#L90
+  - Uses a perturbation network $\xi(s,a)$ to model the actor as a perturbation from the actions sampled from $G$
+  - Algorithm (BCQ)
+    - Option: pretrain VAE on dataset
+    - Loop
+      - Sample Batch $(s,a,r,s')$
+      - Compute $\mu\sigma$ for $(s,a)$, $\tilde(a)$
+      - Option: train VAE here simultaneously with $Q$,$\mu$
+      - Critic update:
+        - Sample actions $a'=G(s)$
+        - Same update as BEAR-QL
+      - Actor update:
+        - Sample $\hat{a}=G(s)$
+        - Compute action as $\bar{a}=\hat{a}+\xi(s,\hat{a})$
+        - Usual Q minimization
+      - Update target networks
 - https://openreview.net/pdf?id=S1lXO6cf6S
 
 ## Debugging notes
