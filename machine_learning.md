@@ -143,7 +143,7 @@ References:
 
 https://en.wikipedia.org/wiki/Variational_autoencoder
 
-A variational autoencoder encoders an input vector $\textbf{x}$ into a probabilistic latent space, $p(\textbf{h}|\textbf{x})$ where $\textbf{h}$ is a vector from the hidden space. Practically however, we model the hidden space distribution as a parameterized model distribution, where the encoder outputs the distribution parameters. For example, if we have a normal distribution the autoencoder functions can be written as $\vec{\mu}(\textbf{x})$ and $\vec{\sigma}(\textbf{x})$ or $F(\textbf{x})->\vec{\mu},\vec{\sigma}$ or $F: R^{N_x} \rightarrow \R^{N_h}\times\R^{N_h}$ or even outputting a mean and a full covariance matrix. Then for example we can defined the hidden state as $\textbf{h}\sim\mathcal{N}(\vec{u},\vec{\sigma}^2)$.
+A variational autoencoder encoders an input vector $\textbf{x}$ into a probabilistic latent space, $p(\textbf{h}|\textbf{x})$ where $\textbf{h}$ is a vector from the hidden space. Practically however, we model the hidden space distribution as a parameterized model distribution, where the encoder outputs the distribution parameters. For example, if we have a normal distribution the autoencoder functions can be written as $\vec{\mu}(\textbf{x})$ and $\vec{\sigma}(\textbf{x})$ or $F(\textbf{x})->\vec{\mu},\vec{\sigma}$ or $F: R^{N_x} \rightarrow \R^{N_h}\times\R^{N_h}$ or even outputting a mean and a full covariance matrix. Then, for example, we can define the hidden state as $\textbf{h}\sim\mathcal{N}(\vec{u},\vec{\sigma}^2)$.
 
 In order to train a VAE, you combine both the reconstruction distance and the evidence lower bound (ELBO). Given 2 random variables $X,Z$: $X\sim p_\theta(X)$, $Z\sim p_\theta(Z|X)$
 
