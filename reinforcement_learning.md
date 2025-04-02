@@ -394,8 +394,15 @@ References (including proofs of value identity):
 - https://arxiv.org/abs/2211.01471
 - https://arxiv.org/abs/2210.05178
 - https://arxiv.org/abs/2110.06169
+  - Compute $Q_\beta$ with $\mu_\beta$ using the SARSA-style objective, that is transitions include the next action $(s,a,r,s',a')$ and we minimize $(Q_\beta(s,a)-(r+\gamma Q_\beta(s,a)))^2$.
+  - Uses [expectile regression](https://en.wikipedia.org/wiki/Expectile)
+  - TODO: Finish
 - https://arxiv.org/abs/2106.02039
+  - Formulates offline RL as a sequence modeling problem
+  - trajectory: $\tau=(s_1,a_1,r_1,s_2,a_2,r_2,...,s_T,a_T,r_t)$
+  - TODO: Finish
 - https://arxiv.org/abs/2103.16596
+  - Benchmarks
 - https://arxiv.org/abs/1906.00949
   - Bootstrap error - error that arises from bootstrapping using actions that are outside the training dataset distribution
   - This type of "error propagation" is studied in approximate dynamic programming (ADP)
