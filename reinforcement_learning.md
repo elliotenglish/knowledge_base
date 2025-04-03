@@ -258,7 +258,9 @@ https://arxiv.org/abs/1511.05952
 
 https://arxiv.org/abs/1801.01290
 
-##
+## Multiple (double) Q learning
+
+2 of the most significant issues with the Actor-Critic method is that the actor can very easily exploit the Q function in areas for which it has no samples, both in the immediate case where state-action pairs are not sampled.
 
 - Double Q Learning
   - https://proceedings.neurips.cc/paper_files/paper/2010/file/091d584fced301b442654dd8c23b3fc9-Paper.pdf
@@ -404,6 +406,8 @@ References (including proofs of value identity):
   - TODO: Finish
 - https://arxiv.org/abs/2103.16596
   - Benchmarks
+- https://arxiv.org/abs/2005.01643
+  - Tutorial
 - https://arxiv.org/abs/1906.00949
   - Bootstrap error - error that arises from bootstrapping using actions that are outside the training dataset distribution
   - This type of "error propagation" is studied in approximate dynamic programming (ADP)
@@ -484,6 +488,7 @@ References (including proofs of value identity):
   - Verify that your derivatives are correct. Many papers say to ignore the portion of the derivatives due to the Bellman operator Q term in the Bellman error, however this leads to an incorrect derivative and eliminates any guarantees to even local minima for gradient descent. Specifically if you have the error $f(\theta)=(Q_\theta(s,a)-(f+\beta*Q_\theta(s',a')))$, the entire equation must be differentiated with respect to $\theta, not just the $Q_\theta(s,a)$ term but also the $Q_\theta(s',a')$ term.
   - Note that including the target derivative can also lead to convergence to the wrong solution. Particularly Q values exterior to the sampled domain can artificially grow, if $Q(s,a)>Q_t$.
   - Some papers use target networks that are updated much more slowly. This is approximately the same as running with a much smaller learning rate. DDPG from SB3 uses a learning rate of $3\times 10^{-4}$, however the update rate for the target networks is $\tau=0.005$, resulting in an effective learning rate of $1.5\times 10^{-6}$.
+  - Note that by using the target network the derivatives attributable to the target are zero. This is a large part of where the stability comes from.
 - If your policy's value function is not showing an improvement over time, try these steps:
   1. View the behavior of the system. Does it look like it's getting into a stable regime associated with a local minimum? Try different exploration policies.
   2. Check the Q error for each step and compare against the Q error shown by the solver on the batch from the replay buffer. If the replay buffer error is much smaller, then relevant data points are not being sampled within the solver.
