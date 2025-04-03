@@ -110,6 +110,7 @@ We can also model a stochastic policy by defining our model to produce parameter
 One of the most significant challenges of reinforcement learning is the ability of the fitting process to arrive at a stable solution. Because of the recursive formulation, we end up with a problem that is not purely a $f(x_i)=y_i$ supervised learning formulation which is generally convergent with enough regularization and a small enough learning rate. Instead, we end up with a recursive formulation where our labels are the step values, $f(x_i,a_i)=y_i+\beta f(x'_i,\argmax_a f(x'_i,a))=y_i+\beta\max_a f(x'_i,a)$. Ideally this would converge to the non-recursive definition, but can often diverge due to the dynamics of the optimization process, where the portion of the residual due to the $y_i$ term is not minimized. Instead, the portion due to the recursive term dominates, and since it has no grounding in supervised data, it can diverge to unuseful or even unbounded solutions.
 
 - Handling truncation: https://arxiv.org/abs/1712.00378
+- Without target networks: https://arxiv.org/pdf/2411.15370
 - Deadly triad (function approximation, off-policy learning, bootstrapping). https://arxiv.org/abs/2203.02628
 - Using general function approximators allows Q to become any value, even unbounded.
 - Off-policy learning removes the opportunity of the solution process to explore hypothesis and effectively correct estimates.
