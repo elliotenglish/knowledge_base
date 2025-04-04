@@ -496,6 +496,7 @@ References (including proofs of value identity):
 - If the Q values are consistently over estimating real returns
   - You can calculate these by looking at the discounted returns computed from sampled trajectories and comparing them against the Q value from the starting node.
   - One way to check whether your code converges is to set $\beta=0$, and eliminate the recursive component, and make it a purely supervised learning problem. This should at least recover the feedback gradient.
+  - Omitting the target derivative tends to reduce overestimation at unsampled points, as any positive derivatives attributed to the target are ignored, forcing interior sampled points to adjust more. However, this requires the complexity of target networks to stabilize the system. See notes above.
 
 https://en.wikipedia.org/wiki/Multi-objective_optimization
 
