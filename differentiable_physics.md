@@ -27,6 +27,16 @@ Fusion/Electromagnetics
 Additive Manufacturing
 - [JAX-AM](https://github.com/tianjuxue/jax-am)
 
+Stress/strain structure optimization
+- [JAX FDM](https://github.com/arpastrana/jax_fdm)
+
 ## Research
 
-- [DiffCSG](https://arxiv.org/abs/2409.01421)
+- DiffCSG [paper](https://arxiv.org/abs/2409.01421) [github](https://github.com/YYYYYHC/Differentiable-CSG-via-Rasterization) - Extension of differentiable rendering to 3D
+- [Nvdiffrast](https://github.com/NVlabs/nvdiffrast) - Differentiable rendering
+
+## ML Based Subgrid Solutions
+
+TODO: This belongs in a simulation page
+
+- [DeepONet](https://github.com/lululxvi/deeponet)

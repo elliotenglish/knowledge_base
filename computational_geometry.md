@@ -23,3 +23,10 @@ https://doc.cgal.org/latest/TDS_3/index.html#title6
 https://doc.cgal.org/latest/SMDS_3/index.html#TetSoupExample
 https://github.com/CGAL/cgal/blob/25d28c0e2f3acff6f029df7f13fd9e4032cf33a7/SMDS_3/include/CGAL/tetrahedron_soup_to_triangulation_3.h#L176
 
+## Constructive solid geometry
+
+- CGAL
+- OCCT
+- [Manifold](https://github.com/elalish/manifold)
+- [Pycork](https://github.com/drlukeparry/pycork)
+- [pycsg](https://github.com/timknip/pycsg)
