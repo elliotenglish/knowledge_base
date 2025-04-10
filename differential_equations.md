@@ -109,3 +109,9 @@ $\mathbf{u}=c_1e^{\mathbf{A}t}-\mathbf{A}^{-1}\mathbf{b}$
 We are solving for a function that is both dependent upon time and space, $u(x,t)$.
 
 $\frac{\partial u}{\partial t}=au+bx$
+
+## Directional derivatives
+
+The Gateaux derivate is a form of directional differentiation. Under reasonable assumptions it is equal the inner product of the gradient and direction, like other definitions of directional differentiation.
+
+https://en.wikipedia.org/wiki/Gateaux_derivative

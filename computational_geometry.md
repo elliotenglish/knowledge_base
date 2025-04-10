@@ -5,10 +5,13 @@
 - [Computational Geometry Algorithm Library (CGAL)](https://github.com/CGAL/cgal)
 - [Open CASCADE Technology (OCCT)](https://github.com/Open-Cascade-SAS/OCCT)
   - [PythonOCC](https://github.com/tpaviot/pythonocc-core)
+  - BREP based
 - [ezdxf](https://github.com/mozman/ezdxf)
 - [Open3D](https://github.com/isl-org/Open3D)
 - (Not maintained) [PyMesh](https://github.com/PyMesh/PyMesh)
 - [OpenVDB](https://github.com/AcademySoftwareFoundation/openvdb)
+- [OpenSCAD](https://github.com/openscad/openscad)
+  - CGAL based
 
 ## CGAL Notes
 
@@ -30,3 +33,7 @@ https://github.com/CGAL/cgal/blob/25d28c0e2f3acff6f029df7f13fd9e4032cf33a7/SMDS_
 - [Manifold](https://github.com/elalish/manifold)
 - [Pycork](https://github.com/drlukeparry/pycork)
 - [pycsg](https://github.com/timknip/pycsg)
+
+## Boundary representation (BREP)
+
+https://en.wikipedia.org/wiki/Boundary_representation

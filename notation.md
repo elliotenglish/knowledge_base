@@ -85,6 +85,8 @@ In order to write and expression and then mark that it should be evaluated at a 
 - $:=$ - The definition equals, used for specifying that the LHS is defined as the RHS.
 - $\triangleq$ ($\overset{\Delta}{=}$) - A synonym for $:=$.
 - $\sim$ - This is the sampling operator. In order to say that some variable $a$ is sampled from a distribution $\mathcal{D}$ you write $a \sim \mathcal{D}$.
+- $:$ - Tensor contraction operator over the 2 inner indices. $\textbf{A}:\textbf{B}=\sum_{i,j}\textbf{A}_{ij}\textbf{B}_{ij}$.
+- $::$ - Tensor contraction over 4 indices.
 
 ### References
 
