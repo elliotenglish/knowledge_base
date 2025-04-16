@@ -43,3 +43,7 @@ https://www.robot-learning.uk/language-models-trajectory-generators
 - Learning human motion
   - https://github.com/LeCAR-Lab/ASAP
   - https://arxiv.org/pdf/2502.01143
+- Example agents
+  - https://github.com/mokeam/DDPG-Humanoid/tree/master
+  - https://github.com/AlEmerich/capstone-project
+  - https://github.com/ProfessorNova/PPO-Humanoid
