@@ -1,10 +1,13 @@
+sidebar:
+  README.md
+  geometry.md
+  finite_element_method.md
+  machine_learning.md
+  reinforcement_learning.md
 plugins:
-  - jekyll-relative-links
+- jekyll-remote-theme
+- jekyll-relative-links
+remote_theme: pages-themes/architect@v0.2.0
 relative_links:
   enabled: true
   collections: true
-# include:
-#  README.md
-#  geometry.md
-theme: jekyll-theme-architect
-
