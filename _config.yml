@@ -3,7 +3,8 @@ plugins:
 relative_links:
   enabled: true
   collections: true
-include:
-  README.md
-  geometry.md
+# include:
+#  README.md
+#  geometry.md
+theme: jekyll-theme-architect
 
