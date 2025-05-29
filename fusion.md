@@ -41,9 +41,9 @@
     - Neutral beam injection (NBI)
       - Ion heating mechanism
       - Source of fast ions
-    - Electron cyclotron heating (ECRH)
+    - Electron cyclotron resonance heating (ECRH)
     - Ion cyclotron resonance heating (ICRH)
-    - Lower hybrid resonance heating (LH) 
+    - Lower hybrid resonance heating (LH)
 - Fuel cycles
   - D+T=
   - D+D=
@@ -125,3 +125,36 @@ In order to build a digital twin we need to model each of the following componen
 - Exhaust removal/diverter
 - Diagnostics
 - Heat exchanger
+
+## Reaction Rate
+
+Reaction rate increases with temperature to a degree due to particle overcoming coulomb forces holding apart the nuclei. However, after a certain temperature reaction rates decreases as nuclei simply pass one another by even at near proximity. Without this you would have an
+
+- $<\sigma v>$ - Reactivity.
+- $v$ - The mean v in a Maxwellian distribution.
+- $\sigma$ - The collision cross-section.
+
+## Lawson Criterion
+
+$$nT\tau_E$$
+
+- $n$ - The mass density.
+- $T$ - The temperature.
+- $\tau_E$ - The energy half life assuming no energy is generated or added to the system. There are many forms of energy loss, but you can mostly think of them behaving like thermal conduction.
+
+Note that $\tau_E\sim\frac{1}{n}$ and consequently $n\tau_E\sim T$, meaning that largely the criteria is density independent.
+
+## Energy Gain
+
+$$Q=\frac{P_\text{out}}{P_\text{in}}$$
+
+- $P_\text{out}$ - The energy produced by the fusion reaction, or produced by energy capture systems.
+- $P_\text{in}$ - The energy used for heating and other systems.
+
+There are many forms of $Q$:
+
+- $Q_fuel$ - $P_in$ is the energy absorbed by the fuels, $P_out$ the energy released by the reaction.
+- $Q_sci$ - $P_in$ is the energy added by heating systems, $P_out$ is the energy released by the reaction.
+- $Q_eng$ - $P_in$ is the energy added by reactor systems, $P_out$ is the energy sent to the grid.
+
+These are a progression of including more system factors into the total energy calculation.
