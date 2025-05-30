@@ -128,10 +128,10 @@ In order to build a digital twin we need to model each of the following componen
 
 ## Reaction Rate
 
-Reaction rate increases with temperature to a degree due to particle overcoming coulomb forces holding apart the nuclei. However, after a certain temperature reaction rates decreases as nuclei simply pass one another by even at near proximity. Without this you would have an
+Reaction rate increases with temperature to a degree due to particle overcoming coulomb forces holding apart the nuclei. However, after a certain temperature reaction rates decreases as nuclei simply pass one another by even at near proximity. Without this you would have runaway reactions. Generally these are experimentally determined.
 
 - $<\sigma v>$ - Reactivity.
-- $v$ - The mean v in a Maxwellian distribution.
+- $v$ - The mean velocity in a Maxwell–Boltzmann distribution.
 - $\sigma$ - The collision cross-section.
 
 ## Lawson Criterion
