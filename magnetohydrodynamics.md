@@ -1,5 +1,8 @@
 # Magnetohydrodynamics
 
+- Continuity equation: $\frac{\partial\rho}{\partial t}+\nabla(\rho\vec{v})=0$
+-
+
 ## Conservation laws in MHD
 
 https://lweb.cfa.harvard.edu/~namurphy/Lectures/Ay253_02_ConservationLaws.pdf

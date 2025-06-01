@@ -11,12 +11,12 @@ Note below that some vector quantities are bolded and capitalized. Which is typi
 * $\mu_0$ - vacuum permeability, effectively the rate of change of the magnetic field.
 * $\textbf{J}$ (or $\textbf{I}$) - Current density. It is relative to the motion of the different charge fields, e.g. $\textbf{J} ~= n_e \textbf{v}_e - n_i \textbf{v}_i$. ? TODO
 * $\tau_E$ - Confinement time. This is the half life of the plasma's energy due to conduction and radiation, collectively transport.
+* $\textbf{R}$ - TODO
 * $\textbf{R}_c$ - TODO
 * $R_c=\sqrt{\textbf{R}\cdot\textbf{R}}=|\textbf{R}|$
-* Gyromotion - ?
+* Gyromotion - TODO
 * $w_c=qB/m$ - The gyro frequency.
 * $r_L=v_\perp/w_c$ - The gyro radius.
-* $\textbf{R}* - ?
 * Transport - TODO
 * Classical transport - Transport of energy/particles in a cylindrical plasma? TODO
 * Neoclassical transport - Transport energy/particles in a torus? TODO
@@ -116,6 +116,8 @@ External modes affect the plasma surface and can lead to plasma wall contact.
 ## Kink Modes
 
 ## Balloon Kink Modes
+
+## Edge-localized Modes (ELM)
 
 
 
