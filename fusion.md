@@ -136,6 +136,8 @@ Reaction rate increases with temperature to a degree due to particle overcoming 
 
 ## Lawson Criterion
 
+Used to understand the concept of "ignition", or otherwise the moment at which a reaction becomes self-sustaining.
+
 $$nT\tau_E$$
 
 - $n$ - The mass density.
@@ -153,8 +155,8 @@ $$Q=\frac{P_\text{out}}{P_\text{in}}$$
 
 There are many forms of $Q$:
 
-- $Q_fuel$ - $P_in$ is the energy absorbed by the fuels, $P_out$ the energy released by the reaction.
-- $Q_sci$ - $P_in$ is the energy added by heating systems, $P_out$ is the energy released by the reaction.
-- $Q_eng$ - $P_in$ is the energy added by reactor systems, $P_out$ is the energy sent to the grid.
+- $Q_\text{fuel}$ - $P_\text{in}$ is the energy absorbed by the fuels, $P_\text{out}$ the energy released by the reaction.
+- $Q_\text{sci}$ - $P_\text{in}$ is the energy added by heating systems, $P_\text{out}$ is the energy released by the reaction.
+- $Q_\text{eng}$ - $P_\text{in}$ is the energy added by reactor systems, $P_\text{out}$ is the energy sent to the grid.
 
 These are a progression of including more system factors into the total energy calculation.

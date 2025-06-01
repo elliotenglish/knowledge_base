@@ -1,9 +1,9 @@
 sidebar:
-  README.md
-  geometry.md
-  finite_element_method.md
-  machine_learning.md
-  reinforcement_learning.md
+- README.md
+- geometry.md
+- finite_element_method.md
+- machine_learning.md
+- reinforcement_learning.md
 plugins:
 - jekyll-remote-theme
 - jekyll-relative-links
