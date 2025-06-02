@@ -160,3 +160,9 @@ There are many forms of $Q$:
 - $Q_\text{eng}$ - $P_\text{in}$ is the energy added by reactor systems, $P_\text{out}$ is the energy sent to the grid.
 
 These are a progression of including more system factors into the total energy calculation.
+
+## Plasma configuration solution
+
+Force balance equation:
+
+$\textbf{J}\times\textbf{B}-\nabla p=0$
