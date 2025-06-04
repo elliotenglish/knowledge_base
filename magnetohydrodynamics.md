@@ -1,7 +1,11 @@
 # Magnetohydrodynamics
 
 - Continuity equation: $\frac{\partial\rho}{\partial t}+\nabla(\rho\vec{v})=0$
--
+- Equation of state: $\frac{\partial}{\partial t}(\frac{p}{\rho^\gamma})=0$
+- Momentum: $\rho(\frac{\partial}{\partial t}+\vec{v}\cdot\nabla)\vec{v}=\textbf{J}\times\textbf{B}-\nabla p$
+- Ampere's law: $\mu_0\textbf{J}=\nabla\times\textbf{B}$
+- Faraday's law: $\frac{\partial\textbf{B}}{\partial t}=-\nabla\times\textbf{E}$
+- Ohm's law: $\textbf{E}+\vec{v}\times\textbf{B}=\eta\textbf{J}$
 
 ## Conservation laws in MHD
 
