@@ -166,3 +166,9 @@ These are a progression of including more system factors into the total energy c
 Force balance equation:
 
 $\textbf{J}\times\textbf{B}-\nabla p=0$
+
+## Basis Functions
+
+$F^{m,n}(\rho,\theta,\zeta)=$
+
+$f_c(\rho,\theta,\zeta)=\sum_{m,n\in B} c_{m,n} F^{m,n}(\rho,\theta,\zeta)$
