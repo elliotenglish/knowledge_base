@@ -167,8 +167,37 @@ Force balance equation:
 
 $\textbf{J}\times\textbf{B}-\nabla p=0$
 
-## Basis Functions
+## Toroidal Basis Functions
 
 $F^{m,n}(\rho,\theta,\zeta)=$
 
 $f_c(\rho,\theta,\zeta)=\sum_{m,n\in B} c_{m,n} F^{m,n}(\rho,\theta,\zeta)$
+
+## Fuel Cycle Reaction Rates
+
+Units: barn (1 barn = $10^{-24}\text{cm}^2$)
+
+$$\sigma_T(E)=\frac{A_5+[(A_4-A_3E)^2+1)]^{-1}A_2}{E[exp(A_1E^{-1/2})-1]}$$
+
+
+Data references:
+- [Fusion Cross Sections and Reactivities by. George H. Miley, Harry Towner, and Nenad Ivich.](https://www.osti.gov/servlets/purl/4014032)
+- [Bishnupriya Nayak, "Reactivities of neutronic and aneutronic fusion fuel"](https://doi.org/10.1016/j.anucene.2013.04.025)
+- [H.-S. Bosch and G.M. Hale 1992 Nucl. Fusion 32 611](https://doi.org/10.1088/0029-5515/32/4/I07)
+- [J. L. Tuck 1961 Nucl. Fusion 1 201, "Thermonuclear Reaction Rates"](https://doi.org/10.1088/0029-5515/1/3/009)
+- https://www.nrl.navy.mil/News-Media/Publications/NRL-Plasma-Formulary/
+- [TAE](https://www.physics.uci.edu/sites/physics.uci.edu/files/P20-FRC-reactor-Rostoker-08-18-2015-final.pdf)
+- [Becker, H.W., Rolfs, C. & Trautvetter, H.P. Low-energy cross sections for11B(p, 3α). Z. Physik A - Atomic Nuclei 327, 341–355 (1987)](https://doi.org/10.1007/BF01284459)
+- [Spraker, M.C., Ahmed, M.W., Blackston, M.A. et al. The 11B(p,α)8Be → α + α and the 11B(α,α)11B Reactions at Energies Below 5.4 MeV. J Fusion Energ 31, 357–367 (2012).](https://doi.org/10.1007/s10894-011-9473-5)
+- [S. Stave, M.W. Ahmed, R.H. France, S.S. Henshaw, B. Müller, B.A. Perdue, R.M. Prior, M.C. Spraker, H.R. Weller,
+Understanding the B11(p,α)αα reaction at the 0.675 MeV resonance](https://doi.org/10.1016/j.physletb.2010.12.015)
+- [M. H. Sikora, H. R. Weller, A New Evaluation of the B11(p,α)αα Reaction Rates](https://doi.org/10.1007/s10894-016-0069-y)
+
+## Neural Network Modeling
+
+https://doi.org/10.1063/1.5134126
+
+## Data Sources
+
+https://wiki.fusion.ciemat.es/wiki/Fusion_databases
+https://ishpdb.ipp-hgw.mpg.de/
