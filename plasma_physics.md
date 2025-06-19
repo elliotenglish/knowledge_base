@@ -79,6 +79,82 @@ The standard model?
 
 Distributions of particles. Vlassov equations?
 
+The key principe in determining the statistical properties of a gas is that, if we have a distribution Q of particle states, thermal equilibrium occurs at the most probably distribution. To do this we look at a discrete version first.
+
+### Multiplicity function
+
+Given $N_p$ particles, $N_c$ containers each with a capacity for $N_{c,i}$ particles. Note that $N_{c,i}$ will be the surrogate for the probability distribution function.
+
+If each slot within each container is unique then we have $N_p!$ possible combinations. If we don't care about the arrangement in each container then we divide out the permutations of each container:
+
+$$\frac{N_p!}{\prod_i N_{c,i}!}$$
+
+Going in the alternate direction, we assume we have $N_{s,i}$ sub containers for each container $i$. The possible combinations here is $N_{s,i}^{N_{c,i}}$
+
+So the total possible combinations is:
+
+$$Q=\frac{N_p!}{\prod_i N_{i}!}\prod_i N_{s,i}^{N_{c,i}}$$
+
+### Stirling's approximation
+
+$$\ln(x!)=x\ln(x)-x+O(\ln(x))$$
+
+### Constraints
+
+- Mass is conserved is implied so that $N_p=\sum_i N_{c,i}$
+  - $\phi(\{N_{c,i}\})=N_p-\sum_i N_{c,i}$
+- Energy is conserved $E=\sum_i E_i N_{c,i}=\psi(\{N_{c,i}\})$
+  - $\psi(\{N_{c,i}\})=E-\sum_i E_i N_{c,i}$
+
+### Optimization
+
+Taking the logarithm of the above simplifies the expression for $Q$ to:
+
+$$\ln(Q)=\ln(N_p!)+\sum_i N_{c,i}\ln(N_{s,i})-\sum_i\ln(N_{c,i}!)$$
+
+Then making this differentiable using the Stirling approximation:
+
+$$\ln(Q)\approx N_p\ln(N_p)-N_p+\sum_i N_{c,i}\ln(N_{s,i})-\sum_i N_{c,i}\ln(N_{c,i})+\sum_i N_{c,i}=f(\{N_{c,i}\})$$
+
+We then have the optimization problem
+
+$$\max_{\{N_{c,i}\}} f(\{N_{c,i}\})$$
+$$s.t.$$
+$$\phi(\{N_{c,i}\})=0$$
+$$\psi(\{N_{c,i}\})=0$$
+
+
+Then if we want to maximize this subject to the constraints $\phi$ and $\psi$ we have to solve the following equation:
+
+$$L=f+\alpha\phi+\beta\psi$$
+
+$$\frac{\partial L}{\partial \{N_{c,i}\}}=0$$
+
+Where $\alpha$ and $\beta$ are Lagrange multipliers.
+
+If we then substitute in $f$, $\phi$, and $\psi$, and to their derivatives we get the following:
+
+$$\frac{\partial L}{\partial N_{c,i}}=
+\ln(N_{s,i})-\frac{N_{c,i}}{N_{c,i}}-\ln(N_{c,i})+1
+-\alpha
+-\beta E_i$$
+$$=
+\ln(N_{s,i})-\ln(N_{c,i})
+-\alpha
+-\beta E_i$$
+
+Setting this to $0$, we then manipulate the equation as:
+
+$$0=\ln(N_{s,i})-\ln(N_{c,i})
+-\alpha
+-\beta E_i$$
+$$\ln(\frac{N_{c,i}}{N_{s,i}})=-\alpha-\beta E_i$$
+$$\frac{N_{c,i}}{N_{s,i}}=e^{-\alpha-\beta E_i}$$
+
+### Solution
+
+TODO
+
 ## Gyrokinetic Theory
 
 Particles average over their gyroradius so that we only have position and velocity parallel to the magnetic field. How does this account for drift?
