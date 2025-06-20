@@ -77,9 +77,11 @@ The standard model?
 
 ## Kinetic Theory
 
-Distributions of particles. Vlassov equations?
+In order to understand the statistical properties of a gas, we represent the gas state as a distribution of sub-states (or phases, or more specifically energy levels). Given this representation, the key principal that we will be using is that thermal equilibrium occurs at the most probable distribution. To do this we will look at a discrete version first.
 
-The key principe in determining the statistical properties of a gas is that, if we have a distribution Q of particle states, thermal equilibrium occurs at the most probably distribution. To do this we look at a discrete version first.
+References:
+- https://byjus.com/physics/maxwell-boltzmann-distribution-derivation/
+- https://alan.ece.gatech.edu/ECE6451/Lectures/StudentLectures/Hill_5p4_MaxwellBoltzmannDistribution.pdf
 
 ### Multiplicity function
 
