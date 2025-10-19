@@ -167,6 +167,12 @@ Force balance equation:
 
 $\textbf{J}\times\textbf{B}-\nabla p=0$
 
+## Maxwell-Boltzmann distribution
+
+Used to describe gasses in thermodynamic equilibrium.
+
+$$pdf(x)=\sqrt{\frac{2}{\pi}}\frac{x^2}{a^3}\exp(\frac{-x^2}{2a^2})$$
+
 ## Toroidal Basis Functions
 
 $F^{m,n}(\rho,\theta,\zeta)=$
@@ -177,8 +183,19 @@ $f_c(\rho,\theta,\zeta)=\sum_{m,n\in B} c_{m,n} F^{m,n}(\rho,\theta,\zeta)$
 
 Units: barn (1 barn = $10^{-24}\text{cm}^2$)
 
+Duane function:
 $$\sigma_T(E)=\frac{A_5+[(A_4-A_3E)^2+1)]^{-1}A_2}{E[exp(A_1E^{-1/2})-1]}$$
 
+Maxwellian averaged cross section:
+$$<\sigma v>=\frac{4}{(2\pi m_1)^{1/2}}(\frac{\mu}{m_1 k T})^{3/2}\int_0^\infty E\sigma(E)exp(\frac{\mu E}{m_1 k T})dE$$
+
+- $T$: The temperature of both species
+- $m_1$: The mass of the ion with energy E
+- $\mu=(\frac{1}{m_1}+\frac{1}{m_2})^{-1}=\frac{m_1 m_2}{m_1+m_2}$: The reduced mass of the two ions
+  - $\frac{\mu}{m_1}=\frac{m_2}{m_1+m_2}$
+- $E_1=m_1 e$
+  - $\frac{\mu E_1}{m_1}=\frac{m_2 m_1 e}{m_1+m_2}$
+- $e$: Specific energy (e.i. energy per unit mass)
 
 Data references:
 - [Fusion Cross Sections and Reactivities by. George H. Miley, Harry Towner, and Nenad Ivich.](https://www.osti.gov/servlets/purl/4014032)
@@ -201,3 +218,5 @@ https://doi.org/10.1063/1.5134126
 
 https://wiki.fusion.ciemat.es/wiki/Fusion_databases
 https://ishpdb.ipp-hgw.mpg.de/
+https://www-nds.iaea.org/exfor/endf.htm
+https://scipython.com/blog/plotting-nuclear-fusion-cross-sections/

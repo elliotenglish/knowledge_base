@@ -134,7 +134,7 @@ $$\frac{\partial L}{\partial \{N_{c,i}\}}=0$$
 
 Where $\alpha$ and $\beta$ are Lagrange multipliers.
 
-If we then substitute in $f$, $\phi$, and $\psi$, and to their derivatives we get the following:
+If we then substitute in $f$, $\phi$, and $\psi$, and take their derivatives we get the following:
 
 $$\frac{\partial L}{\partial N_{c,i}}=
 \ln(N_{s,i})-\frac{N_{c,i}}{N_{c,i}}-\ln(N_{c,i})+1
@@ -153,9 +153,55 @@ $$0=\ln(N_{s,i})-\ln(N_{c,i})
 $$\ln(\frac{N_{c,i}}{N_{s,i}})=-\alpha-\beta E_i$$
 $$\frac{N_{c,i}}{N_{s,i}}=e^{-\alpha-\beta E_i}$$
 
+or
+
+$$
+N_{c,i}=N_{s,i}e^{-\alpha-\beta E_i}=e^{-\alpha}N_{s,i}e^{-\beta E_i}
+$$
+
 ### Solution
 
-TODO
+Note that the Lagrange multipliers, $\alpha$ and $\beta$, are constants.
+
+#### $\alpha$ Solution
+
+The constraint on the sum of $N_{c,i}$ implies
+$$e^{-\alpha}=\frac{N}{\sum_i N_{s,i}e^{-\beta E_i}}$$
+
+The denominator is referred to as the partition function.
+
+#### $\beta$ Solution
+
+$$E=\sum_j E_j \frac{N}{\sum_i N_{s,i}e^{-\beta E_i}} N_{s,i}e^{-\beta E_i}$$
+$$E\sum_i N_{s,i}e^{-\beta E_i}=N\sum_j E_j N_{s,i}e^{-\beta E_i}$$
+
+$\beta = \frac{1}{k_b T}$
+
+#### $N_{s,i}$ Solution
+
+$N_{s,i}$ is often referred to as the degeneracy for the $i$-th container. In a quantum system this can refer to the combinatorial number of discrete states. In a classical system this is a function proportional to volume of the primary variable state space. For example for a given bucket of energies $S_i=[E_i,E_i+\Delta E)$, the primary variable is $\vec{v}$ and $E=m\vec{v}^T\vec{v}$.
+
+$$V(r)\sim r^3$$
+
+$$r=|v|=\left(\frac{E}{m}\right)^{\frac{1}{2}}$$
+
+$$V(r)=\left(\frac{E}{m}\right)^{\frac{3}{2}}$$
+
+$$N_{s,i}=\left(\frac{E_i+\Delta E}{m}\right)^{3/2}-\left(\frac{E_i}{m}\right)^{3/2}$$
+
+#### Continuum
+
+The discrete solution is now:
+
+$$\hat{P}(E_i)=\left(\left(\frac{E_i+\Delta E}{m}\right)^{3/2}-\left(\frac{E_i}{m}\right)^{3/2}\right)e^{-\beta E_i}$$
+
+$$P(E_i)=\frac{\hat{P}(E_i)}{\sum_j \hat{P}(E_j)}$$
+
+or as a continuous solution:
+
+$$\hat{P}(e)=\left(\frac{e}{m}\right)^{\frac{3}{2}}e^{-\beta e}$$
+
+$$P(e)=\frac{\hat{P}(e)}{\int_{e=0}^\infty\hat{P}(e)}$$
 
 ## Gyrokinetic Theory
 
