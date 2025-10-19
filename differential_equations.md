@@ -115,3 +115,9 @@ $\frac{\partial u}{\partial t}=au+bx$
 The Gateaux derivate is a form of directional differentiation. Under reasonable assumptions it is equal the inner product of the gradient and direction, like other definitions of directional differentiation.
 
 https://en.wikipedia.org/wiki/Gateaux_derivative
+
+## Differential equations of distribution functions
+
+In general the time derivative of a distribution function is composed of 2 parts. The first is the physical space flux due to bulk flow. The second is the phase space flux due to the flow within the distribution. This term is equal to the phase space gradient times the force applied as in the non-distributional case. Both terms are conservative.
+
+This can be seen in Vlasov equations.
