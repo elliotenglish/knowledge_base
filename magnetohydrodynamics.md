@@ -18,3 +18,9 @@ https://en.wikipedia.org/wiki/Boltzmann_equation
 ## Vlasov-Maxwell equation
 
 https://en.wikipedia.org/wiki/Vlasov_equation#The_Vlasov%E2%80%93Maxwell_system_of_equations_(Gaussian_units)
+
+## Vlasov-Maxwell-Landau equation
+
+This formulation adds the necessary terms for collisions due to coulomb forces.
+
+https://arxiv.org/pdf/2401.01689
