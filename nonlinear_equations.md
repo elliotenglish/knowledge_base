@@ -52,6 +52,16 @@ $$\vec{x}^{k+1}=\vec{x}^k+\vec{h}$$
 
 $$\vec{x}^{k+1}=\vec{x}^k+\left(\frac{\partial f(\vec{x^k})}{\partial \vec{x}}\right)^{-1}f(\vec{x^k})$$
 
+Note that the equation is commonly rewritten as the following:
+
+$$\vec{x}^{k+1}=\vec{x}^k+\mathbf{J}^{-1}f^k$$
+
+Where
+
+$$\mathbf{J}=\frac{\partial f(\vec{x^k})}{\partial \vec{x}}$$
+
+$$f^k=f(\vec{x}^k)$$
+
 ### Applied to linear equations
 
 We show that Newton's method applied to a linear equation is equivalent to solving the equation directly.
