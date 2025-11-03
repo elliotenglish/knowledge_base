@@ -35,3 +35,33 @@ Which is the standard quadratic equation solution formula (so-called "quadratic 
 ## Cubic Equation
 
 TODO: Cardano formulas
+
+## Newton's Method for Solving General Nonlinear Equations
+
+We want to solve the following equation. This is also known as a root finding problem.
+$$f(\vec{x})=0$$
+
+Approximate our function at a current value, $\vec{x}$, plus a delta, $\vec{h}$, as follows:
+$$f(\vec{x}+\vec{h})\approx f(\vec{x})+\frac{\partial f(\vec{x})}{\partial \vec{x}}\vec{h}$$
+
+Set the new value to $0$ and solve for an update:
+
+$$\vec{h}=(\frac{\partial f(\vec{x})}{\partial \vec{x}})^{-1}f(\vec{x})$$
+
+$$\vec{x}^{k+1}=\vec{x}^k+\vec{h}$$
+
+$$\vec{x}^{k+1}=\vec{x}^k+\left(\frac{\partial f(\vec{x^k})}{\partial \vec{x}}\right)^{-1}f(\vec{x^k})$$
+
+### Applied to linear equations
+
+We show that Newton's method applied to a linear equation is equivalent to solving the equation directly.
+
+$$f(\vec{x})=\mathbf{A}\vec{x}-\vec{b}=0$$
+
+$$\vec{x}^{k+1}=\vec{x}^k+\mathbf{A}^{-1}(\mathbf{A}\vec{x}^k-\vec{b})$$
+
+Then if we let $\vec{x}^k=0$, we get the linear equation back.
+
+$$\vec{x}^{k+1}=\vec{0}+\mathbf{A}^{-1}(\mathbf{A}\vec{0}-\vec{b})$$
+
+$$\vec{x}^{k+1}=\mathbf{A}^{-1}\vec{b}$$
