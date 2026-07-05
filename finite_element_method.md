@@ -339,7 +339,7 @@ $$=\sum_j\rho_j\int_{\Omega_i}\phi_i(\phi_j\nabla\cdot\vec{u}+\vec{u}\cdot\nabla
 
 This is sufficient for integrating through a prespecified, or fixed velocity field.
 
-### Option 2:
+### Option 2 (Algebraic Upwinding version 1):
 
 However, the above method tends to introduce oscillations so we can reformulate as follows:
 
@@ -376,7 +376,7 @@ We can then view this as a type of $n$-way face and modify the flux to be upwind
 
 $$\rho_j^*=\left\{\begin{matrix}
 \rho_j & \vec{u}\cdot\nabla\phi_j \le 0 \\
-\frac{\sum_{k!=j}\phi_k\rho_k}{\sum{k!=j}\phi_k} & \vec{u}\cdot\nabla\phi_j < 0
+\frac{\sum_{k!=j}\phi_k\rho_k}{\sum_{k!=j}\phi_k} & \vec{u}\cdot\nabla\phi_j < 0
 \end{matrix} \right.$$
 
 So we end up with the scheme:
@@ -384,6 +384,28 @@ So we end up with the scheme:
 $$\int_{\Omega_i}\phi_i\nabla\cdot\rho\vec{u}=
 \int_{\partial\Omega_i}\phi_i\rho\vec{u}\cdot\vec{n}
 -\int_{\Omega_i}\sum_j\rho_j^*\phi_j\vec{u}\cdot\nabla\phi_i$$
+
+### Option 3 (Algebraic Upwinding version 2):
+
+We simplify the above by avoiding the expansion of the divergence operator. Instead we just expand those terms directly with our basis approximation of the derivatives.
+
+For element $i$ and node $j$:
+
+$$\int_{\Omega_i}\phi_j\nabla\cdot\rho\vec{u}=
+\int_{\Omega_i}\phi_j\nabla\cdot\sum_{k \in E_i}\rho_k\vec{u}_k\phi_k$$
+$$=
+\int_{\Omega_i}\phi_j\sum_{k \in E_i}\rho_k\vec{u}_k\cdot\nabla\phi_k$$
+
+Then you replace $\rho_k$ with the upwinded value:
+
+$$=
+\int_{\Omega_i}\phi_j\sum_{k \in E_i}\rho_k^*\vec{u}_k\cdot\nabla\phi_k$$
+
+
+$$\rho_k^*=\left\{\begin{matrix}
+\rho_k & \vec{u}\cdot\nabla\phi_j \le 0 \\
+\frac{\sum_{l!=k}\phi_l\rho_l}{\sum_{l!=k}\phi_l} & \vec{u}\cdot\nabla\phi_j < 0
+\end{matrix} \right.$$
 
 ### Non-conservative advection term
 
