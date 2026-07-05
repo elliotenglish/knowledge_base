@@ -25,3 +25,6 @@ Where $u_l$,$u_r$ are the initial values, and $\Omega_l\bigcap\Omega_r=\Omega$ a
 ## Godunov Method
 
 https://en.wikipedia.org/wiki/Godunov%27s_scheme
+
+## Roe Solver
+
