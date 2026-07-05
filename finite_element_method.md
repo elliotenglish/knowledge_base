@@ -403,8 +403,8 @@ $$=
 
 
 $$\rho_k^*=\left\{\begin{matrix}
-\rho_k & \vec{u}\cdot\nabla\phi_j \le 0 \\
-\frac{\sum_{l!=k}\phi_l\rho_l}{\sum_{l!=k}\phi_l} & \vec{u}\cdot\nabla\phi_j < 0
+\rho_k & \vec{u}\cdot\nabla\phi_k \le 0 \\
+\frac{\sum_{l!=k}\phi_l\rho_l}{\sum_{l!=k}\phi_l} & \vec{u}\cdot\nabla\phi_k < 0
 \end{matrix} \right.$$
 
 ### Non-conservative advection term
