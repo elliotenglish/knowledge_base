@@ -403,9 +403,49 @@ $$=
 
 
 $$\rho_k^*=\left\{\begin{matrix}
-\rho_k & \vec{u}\cdot\nabla\phi_k \le 0 \\
-\frac{\sum_{l!=k}\phi_l\rho_l}{\sum_{l!=k}\phi_l} & \vec{u}\cdot\nabla\phi_k < 0
+\rho_k & \vec{u}_k\cdot\nabla\phi_k \le 0 \\
+\frac{\sum_{l!=k}\phi_l\rho_l}{\sum_{l!=k}\phi_l} & \vec{u}_k\cdot\nabla\phi_k < 0
 \end{matrix} \right.$$
+
+### Option 4 (Algebraic Upwinding version 3):
+
+In this formulation, we show how to write the FEM code as a node to node pseudo-face flux.
+
+Define the per node residual:
+
+$$F_i^E=\int_{\Omega_E}\phi_i\nabla\cdot f$$
+$$=\int_{\Omega_E}\phi_i\nabla\cdot\sum_j f_j\phi_j$$
+$$=\sum_j f_j\cdot\int_{\Omega_E}\phi_i\nabla\phi_j$$
+
+Make it compact:
+
+$$c_{ij}=\int_{\Omega_E}\phi_i\nabla\phi_j$$
+$$F_i^E=\sum_j c_{ij}f_j$$
+
+Identities on our basis functions:
+
+$$\sum_i\phi_i=1$$
+$$\sum_i\nabla\phi_i=0$$
+$$c_{ii}=-\sum_{j\ne i}c_{ij}$$
+$$c_{ij}=-c_{ji}$$
+
+Use these to define a node to node flux formulation.
+
+$$F_i^E=f_i(-\sum_{j\ne i}c_{ij})+\sum_{j\ne i}f_j c_{ij}$$
+$$=\sum_{j\ne i}c_{ij}(f_j-f_i)$$
+
+For clarity we compact the node to node flux as:
+
+$$=\sum_{j\ne i}c_{ij}F_{ji}$$
+$$F_{ji}=(f_j-f_i)$$
+
+So now we have a node to node based formulation. Now we need to turn this into a flux based formulation:
+
+$$F_i^E=\sum_{j\ne i}c_{ij}(f_j-f_i)$$
+
+$$F_i^E=\sum_{j\ne i}
+
+
 
 ### Non-conservative advection term
 
