@@ -14,7 +14,7 @@ $$\frac{\partial\mathbf{E}}{\partial t}=\frac{\nabla\times\mathbf{B}-\mu_0\mathb
 - $\mathbf{E}$: electric field
 - $\mathbf{B}$: magnetic field
 
-## Perfectly Match Layer (PML)
+## Perfectly Matched Layer (PML)
 
 $$\vec{n}\times(\mathbf{E}-\mathbf{E}_{PML})=0$$
 $$\vec{n}\times(\mathbf{B}-\mathbf{B}_{PML})=0$$
