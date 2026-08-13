@@ -630,6 +630,30 @@ $$\textbf{x}^{k+1}=\textbf{x}^k-\textbf{J}^{-1}\textbf{f}(\textbf{x}^k)$$
 
 We often see non-linear equations in time integration problems. In this case, if stability supports it, we can use a partially explicit scheme to replace all but one variable with a given value from a previous step.
 
+## Converting PDEs equations to DG solvable form
+
+We begin with the following form of differential operator which has been symbolically expanded and latent variables added to have first order derivatives multiplied by functions of $\textbf{x}$ and $\textbf{u}$.
+
+$$L(\textbf{x},\textbf{u},\frac{\partial\textbf{u}}{\partial\textbf{x}})=\sum_{i\in D_u,j\in D_x}H_{i,j}(\textbf{x},\textbf{u})\frac{\partial u_i}{\partial x_j}+g(\textbf{x},\textbf{u})=0$$
+
+If we expand the gradient as a complete derivative we get the following:
+
+$$\nabla\cdot\mathbf{F}(\textbf{x},\textbf{u})=\sum_{i}\frac{d F_i(\textbf{x},\textbf{u})}{d x_i}=\sum_{i}\left(\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial x_i} + \sum_j\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial u_j}\frac{\partial u_j}{\partial x_i}\right)$$
+
+Now we need to solve the following system of integrals:
+
+$$H_{i,j}(\textbf{x},\textbf{u})=\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial u_j}$$
+
+To solve this you have 2 options:
+- Sequential partial integration (this iterates over $u_i$ and finds the solution $F_i$ by integrating the residual of $H_i$ with the derivative $F_i^k$ (the partial solution after incorporating the solution for $u_1$...$u_k$) with respect to the current $u_i$.
+- Apply a path integral, relying upon the conservative nature of F, making the path irrelevant.
+
+After solving this we then have an equation of the form:
+
+$$\nabla\cdot F(\textbf{x},\textbf{u})+g(\textbf{x},\textbf{u})==0$$
+
+This can then be directly pushed through the DG machinery above.
+
 ## Software Packages
 - Trilinos
 - libmesh
