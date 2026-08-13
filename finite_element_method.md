@@ -644,6 +644,12 @@ Now we need to solve the following system of integrals:
 
 $$H_{i,j}(\textbf{x},\textbf{u})=\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial u_j}$$
 
+Or effectively:
+
+$$\left(\begin{matrix} H_{i,1}(\textbf(x),\textbf{u}) \\ ... \\ H_{i,N_u}(\textbf(x),\textbf{u}) \end{matrix}\right)=\nabla_{\textbf{u}}F_i(\textbf{x},\textbf{u})$$
+
+You can check that $\{H_{i,1}...H_{i,N_u}\}$ satisfy this by verifying that the second derivatives are equal using the [symmetry of second derivatives](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives).
+
 To solve this you have 2 options:
 - Sequential partial integration (this iterates over $u_i$ and finds the solution $F_i$ by integrating the residual of $H_i$ with the derivative $F_i^k$ (the partial solution after incorporating the solution for $u_1$...$u_k$) with respect to the current $u_i$.
 - Apply a path integral, relying upon the conservative nature of F, making the path irrelevant.
