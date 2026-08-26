@@ -280,6 +280,11 @@ References:
 - https://www.oden.utexas.edu/media/reports/2001/0121.pdf
 - https://cdn.nr.re.kr/nrgwss2022/lecture/2022NRGWSchool_DG_method.pdf
 
+### Identities
+
+Gradients can be rewritten as the divergence of the scalar times the identity matrix.
+$$\nabla p=\nabla \cdot I p$$
+
 ## Nodal vs Modal Basis Functions
 
 Nodal refers to values being stored at specific points in space or at certain geometry elements like a node, edge, face or element. Modal refers to values being stored across the domain at solution frequencies instead. In some sense because these are all multipliers for basis functions they form a spectrum of options.
