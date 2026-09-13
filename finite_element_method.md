@@ -285,9 +285,40 @@ References:
 Gradients can be rewritten as the divergence of the scalar times the identity matrix.
 $$\nabla p=\nabla \cdot I p$$
 
+### Boundary conditions
+
+We break down the DG operator construction as follows.
+
+For a modal DOF:
+
+$$r_i=\int_{x\in E_j} \phi_i \mathcal{L}(u,x)$$
+
+$$\mathcal{L}(u,x)=\nabla\cdot F(u,x)+f(u,x)$$
+
+- $F$ is the conservative portion of the PDE in flux form.
+- $f$ is the non-conservative portition of the PDE.
+
+Multiply by residual weight and integrate.
+
+$$r_i=\int_{E_j}\phi_i\nabla\cdot F(u,x)+f(u,x)$$
+
+Rewrite conservative term.
+
+$$r_i=\int_{E_j}\nabla\cdot(\phi_i F(u,x))-\int_{E_j}(\nabla\phi_i)\cdot F(u,x)+\int_{E_j}f(u,x)$$
+
+Apply the divergence law.
+
+$$r_i=\int_{\partial E_j}\vec{n}\cdot(\phi_i F(u,x))-\int_{E_j}(\nabla\phi_i)\cdot F(u,x)+\int_{E_j}f(u,x)$$
+
+- Boundary term: $\int_{\partial E_j}\vec{n}\cdot(\phi_i F(u,x))$
+- Stiffness/volume term: $\int_{E_j}(\nabla\phi_i)\cdot F(u,x)$
+- Source term: $\int_{E_j}f(u,x)$
+
+for mode $i$ in element $j$.
+
 ## Nodal vs Modal Basis Functions
 
-Nodal refers to values being stored at specific points in space or at certain geometry elements like a node, edge, face or element. Modal refers to values being stored across the domain at solution frequencies instead. In some sense because these are all multipliers for basis functions they form a spectrum of options.
+Nodal refers to values being stored at specific points in space or at certain geometry elements like a node, edge, face or element. Modal refers to values being stored across the domain at solution frequencies instead. In some sense because these are all multipliers for basis functions they form a spectrum of options. Generally modal basis functions are local to an element. In a discontinuous galerkin method, for a linear/1st order Lagrange element the basis functions are constant and the identity matrix (in reference space).
 
 ## Poisson equation on continuous elements
 
