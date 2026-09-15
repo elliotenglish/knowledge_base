@@ -33,3 +33,9 @@ Green-Lagrange strain tensor:
 $$E=\frac{1}{2}(C-I)$$
 
 $$\sigma=\frac{1}{J}F S F^T$$
+
+## Neo-Hookean Materials
+
+## Hyperelasticity
+
+## Finite Strain vs Infinitesimal Strain
