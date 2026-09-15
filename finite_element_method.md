@@ -280,9 +280,45 @@ References:
 - https://www.oden.utexas.edu/media/reports/2001/0121.pdf
 - https://cdn.nr.re.kr/nrgwss2022/lecture/2022NRGWSchool_DG_method.pdf
 
+### Identities
+
+Gradients can be rewritten as the divergence of the scalar times the identity matrix.
+$$\nabla p=\nabla \cdot I p$$
+
+### Boundary conditions
+
+We break down the DG operator construction as follows.
+
+For a modal DOF:
+
+$$r_i=\int_{x\in E_j} \phi_i \mathcal{L}(u,x)$$
+
+$$\mathcal{L}(u,x)=\nabla\cdot F(u,x)+f(u,x)$$
+
+- $F$ is the conservative portion of the PDE in flux form.
+- $f$ is the non-conservative portition of the PDE.
+
+Multiply by residual weight and integrate.
+
+$$r_i=\int_{E_j}\phi_i\nabla\cdot F(u,x)+f(u,x)$$
+
+Rewrite conservative term.
+
+$$r_i=\int_{E_j}\nabla\cdot(\phi_i F(u,x))-\int_{E_j}(\nabla\phi_i)\cdot F(u,x)+\int_{E_j}f(u,x)$$
+
+Apply the divergence law.
+
+$$r_i=\int_{\partial E_j}\vec{n}\cdot(\phi_i F(u,x))-\int_{E_j}(\nabla\phi_i)\cdot F(u,x)+\int_{E_j}f(u,x)$$
+
+- Boundary term: $\int_{\partial E_j}\vec{n}\cdot(\phi_i F(u,x))$
+- Stiffness/volume term: $\int_{E_j}(\nabla\phi_i)\cdot F(u,x)$
+- Source term: $\int_{E_j}f(u,x)$
+
+for mode $i$ in element $j$.
+
 ## Nodal vs Modal Basis Functions
 
-Nodal refers to values being stored at specific points in space or at certain geometry elements like a node, edge, face or element. Modal refers to values being stored across the domain at solution frequencies instead. In some sense because these are all multipliers for basis functions they form a spectrum of options.
+Nodal refers to values being stored at specific points in space or at certain geometry elements like a node, edge, face or element. Modal refers to values being stored across the domain at solution frequencies instead. In some sense because these are all multipliers for basis functions they form a spectrum of options. Generally modal basis functions are local to an element. In a discontinuous galerkin method, for a linear/1st order Lagrange element the basis functions are constant and the identity matrix (in reference space).
 
 ## Poisson equation on continuous elements
 
@@ -629,6 +665,36 @@ $$\textbf{x}^{k+1}=\textbf{x}^k-\textbf{J}^{-1}\textbf{f}(\textbf{x}^k)$$
 ### Time integration
 
 We often see non-linear equations in time integration problems. In this case, if stability supports it, we can use a partially explicit scheme to replace all but one variable with a given value from a previous step.
+
+## Converting PDEs equations to DG solvable form
+
+We begin with the following form of differential operator which has been symbolically expanded and latent variables added to have first order derivatives multiplied by functions of $\textbf{x}$ and $\textbf{u}$.
+
+$$L(\textbf{x},\textbf{u},\frac{\partial\textbf{u}}{\partial\textbf{x}})=\sum_{i\in D_u,j\in D_x}H_{i,j}(\textbf{x},\textbf{u})\frac{\partial u_i}{\partial x_j}+g(\textbf{x},\textbf{u})=0$$
+
+If we expand the gradient as a complete derivative we get the following:
+
+$$\nabla\cdot\mathbf{F}(\textbf{x},\textbf{u})=\sum_{i}\frac{d F_i(\textbf{x},\textbf{u})}{d x_i}=\sum_{i}\left(\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial x_i} + \sum_j\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial u_j}\frac{\partial u_j}{\partial x_i}\right)$$
+
+Now we need to solve the following system of integrals:
+
+$$H_{i,j}(\textbf{x},\textbf{u})=\frac{\partial F_i(\textbf{x},\textbf{u})}{\partial u_j}$$
+
+Or effectively:
+
+$$\left(\begin{matrix} H_{i,1}(\textbf(x),\textbf{u}) \\ ... \\ H_{i,N_u}(\textbf(x),\textbf{u}) \end{matrix}\right)=\nabla_{\textbf{u}}F_i(\textbf{x},\textbf{u})$$
+
+You can check that $\{H_{i,1}...H_{i,N_u}\}$ satisfy this by verifying that the second derivatives are equal using the [symmetry of second derivatives](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives).
+
+To solve this you have 2 options:
+- Sequential partial integration (this iterates over $u_i$ and finds the solution $F_i$ by integrating the residual of $H_i$ with the derivative $F_i^k$ (the partial solution after incorporating the solution for $u_1$...$u_k$) with respect to the current $u_i$.
+- Apply a path integral, relying upon the conservative nature of F, making the path irrelevant.
+
+After solving this we then have an equation of the form:
+
+$$\nabla\cdot F(\textbf{x},\textbf{u})+g(\textbf{x},\textbf{u})==0$$
+
+This can then be directly pushed through the DG machinery above.
 
 ## Software Packages
 - Trilinos
