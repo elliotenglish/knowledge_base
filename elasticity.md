@@ -56,9 +56,13 @@ $$\sigma=\frac{1}{J}P F^T=\frac{1}{J}F S F^T$$
 - Young's module: $E$
 - Poisson's ratio: $\nu$
 - Lame parameters:
-  - $\lambda=$
-  - $\mu=$
-- Bulk modulus (resistance to compression): $K=$
+  - $\lambda=\frac{E}{(1+\nu)(1-2\nu)}$
+  - Shear modulus: $\mu=G=\frac{E}{2(1+\nu)}$
+- Bulk modulus (resistance to compression): $K=\frac{E}{3-6\nu}=\lambda+\frac{2}{3}$
+
+## Saint Venant–Kirchhoff
+
+$$S=\lambda tr(E)I+2\mu E$$
 
 ## Neo-Hookean Materials
 
@@ -70,7 +74,16 @@ https://en.wikipedia.org/wiki/Mooney%E2%80%93Rivlin_solid
 
 ## Hyperelasticity
 
+## Discontinuous Galerkin Formulation
 
+The position equation is straightforward. The velocity equation is a bit more involved.
 
-## Related
+$$\int_{x\in\Omega}\phi\frac{\partial\vec{v}}{\partial t}=\int_{x\in\Omega}\phi\nabla\cdot\sigma$$
 
+$$=\int_{x\in\Omega}\nabla\cdot(\phi\sigma)-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
+
+$$=\int_{x\in\partial\Omega}\vec{n}\cdot(\phi\sigma)-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
+
+$$=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
+
+The boundary flux is the traction vector at the boundary. While the internal integral represents the usual exchange between basic function weights.
