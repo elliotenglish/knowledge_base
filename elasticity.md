@@ -16,20 +16,17 @@ https://en.wikipedia.org/wiki/Cauchy_momentum_equation
 
 $$\frac{\partial\vec{x}}{\partial t}=\vec{v}$$
 
-$$\frac{\partial\vec{v}}{\partial t}=\nabla\cdot\sigma$$
+$$\frac{\partial\rho\vec{v}}{\partial t}=\nabla\cdot\sigma$$
 
 $$\sigma=F(\epsilon)$$
 
+- $\vec{x}$ is the physical space coordinate.
+- $\vec{r}$ is the reference space coordinate.
 - $\vec{u}$ is the velocity vector
 - $\sigma$ is the Cauchy stress tensor
+  - $\sigma$ is symmetric: $\sigma_{ij}=\sigma_{ji}$
 - $\epsilon$ is the strain tensor
-
-- $\sigma$ is symmetric: $$\sigma_{ij}=\sigma_{ji}$$
-
-
-$$\vec{u}=\vec{x}(\vec{r})-\vec{r}$$
-
-$$F=\frac{\partial\vec{x}(\vec{r})}{\partial\vec{r}}=\nabla_{\vec{r}}\vec{x}$$
+- $F$ is the defination Deformation: $F=\frac{\partial\vec{x}(\vec{r})}{\partial\vec{r}}=\nabla_{\vec{r}}\vec{x}\in \mathbb{R}^{DxD}$
 
 Cauchy-Green tensor:
 
@@ -51,6 +48,8 @@ The Cauchy stress tensor is then computed as:
 
 $$\sigma=\frac{1}{J}P F^T=\frac{1}{J}F S F^T$$
 
+$$J=det(F)$$
+
 ## Material parameters
 
 - Young's module: $E$
@@ -60,19 +59,24 @@ $$\sigma=\frac{1}{J}P F^T=\frac{1}{J}F S F^T$$
   - Shear modulus: $\mu=G=\frac{E}{2(1+\nu)}$
 - Bulk modulus (resistance to compression): $K=\frac{E}{3-6\nu}=\lambda+\frac{2}{3}$
 
-## Saint Venant–Kirchhoff
+## Hyperelasticity
+
+https://en.wikipedia.org/wiki/Hyperelastic_material
+
+$$P=\frac{\partial\psi(F)}{\partial F}$$
+
+### Saint Venant–Kirchhoff
 
 $$S=\lambda tr(E)I+2\mu E$$
 
-## Neo-Hookean Materials
+### Neo-Hookean Materials
 
-- https://en.wikipedia.org/wiki/Neo-Hookean_solid
+https://en.wikipedia.org/wiki/Neo-Hookean_solid
 
-## Mooney-Rivlin
+### Mooney-Rivlin
 
 https://en.wikipedia.org/wiki/Mooney%E2%80%93Rivlin_solid
 
-## Hyperelasticity
 
 ## Discontinuous Galerkin Formulation
 
@@ -87,3 +91,4 @@ $$=\int_{x\in\partial\Omega}\vec{n}\cdot(\phi\sigma)-\int_{x\in\Omega}(\nabla\ph
 $$=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
 
 The boundary flux is the traction vector at the boundary. While the internal integral represents the usual exchange between basic function weights.
+
