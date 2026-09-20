@@ -111,17 +111,33 @@ $$\int_{x\in\Omega}\phi\frac{\partial\rho\vec{v}}{\partial t}=\int_{x\in\partial
 
 The boundary flux is the traction vector at the boundary. While the internal integral represents the usual exchange between basic function weights.
 
-Ignoring spatial discretization for now, let's discretize this equation using backward euler:
+Ignoring spatial discretization for now, let's discretize this equation using backward euler and make $\sigma$ a function of $F$.
 
-$$\int_{\vec{x}\in\Omega}\phi\rho\frac{\vec{v}^{n+1}-\vec{v}^n}{\Delta t}=\int_{\vec{x}\in\partial\Omega}\phi\vec{n}\cdot\sigma(\vec{x}^{n+1})-\int_{\vec{x}\in\Omega}(\nabla\phi)\cdot\sigma(\vec{x}^{n+1})$$
+$$\int_{\vec{x}\in\Omega}\phi\rho\frac{\vec{v}^{n+1}-\vec{v}^n}{\Delta t}=\int_{\vec{x}\in\partial\Omega}\phi\vec{n}\cdot\sigma(F^{n+1})-\int_{\vec{x}\in\Omega}(\nabla\phi)\cdot\sigma(F^{n+1})$$
 
-The challenge now is to compute $\sigma(\vec{x}^{n+1})$. Let's begin by making a first order expansion:
+The challenge now is to compute $\sigma(F^{n+1})$. Let's begin by making a first order expansion:
 
-$$\sigma(\vec{x}^{n+1})=\sigma(\vec{x}^n)+\frac{\partial\sigma(\vec{x}^n)}{\partial\vec{x}}(\vec{x}^{n+1}-\vec{x}^n)$$
+$$\sigma(F^{n+1})=\sigma(F^n)+\frac{\partial\sigma(F^n)}{\partial F}(F^{n+1}-F^n)$$
 
-$$=\sigma(\vec{x}^n)+\frac{\partial\sigma(\vec{x}^n)}{\partial\vec{x}}(\Delta t\vec{v}^{n+1})$$
+Given:
 
-And now the challenge is to compute $\frac{\partial\sigma}{\partial\vec{x}}$. 
+$$F=\nabla_{\vec{r}}\vec{x}=\frac{\partial\vec{x}}{\partial\vec{r}}$$
+
+Taking the time derivative:
+
+$$\frac{\partial F}{\partial t}=\frac{\partial}{\partial t}\frac{\partial\vec{x}}{\partial\vec{r}}=\frac{\partial}{\partial\vec{r}}\frac{\partial\vec{x}}{\partial t}=\frac{\partial\vec{v}}{\partial\vec{r}}$$
+
+And then rewrite in terms of $\vec{x}$ derivatives:
+
+$$\frac{\partial\vec{v}}{\partial\vec{r}}=\frac{\partial\vec{v}}{\partial\vec{x}}\frac{\partial\vec{x}}{\partial\vec{r}}=\frac{\partial\vec{v}}{\partial\vec{x}}F$$
+
+We then rewrite the definition of $\sigma^{n+1}$ as:
+
+$$\sigma(F^{n+1})=\sigma(F^n)+\frac{\partial\sigma(F^n)}{\partial F}(F^{n+1}-F^n)$$
+
+$$=\sigma(F^n)+\frac{\partial\sigma(F^n)}{\partial F}(\Delta t \frac{\partial F^{n+1}}{\partial t})$$
+
+$$=\sigma(F^n)+\frac{\partial\sigma(F^n)}{\partial F}(\Delta t \frac{\partial\vec{v}^{n+1}}{\partial\vec{x}}F^n)$$
 
 ## Element choice
 
