@@ -60,7 +60,7 @@ $$\sigma=\frac{1}{J}\frac{\partial\psi(F)}{\partial F}\cdot F^T$$
 
 ## Material parameters
 
-- Young's module: $E$
+- Young's modulus: $E$
 - Poisson's ratio: $\nu$
 - Lame parameters:
   - $\lambda=\frac{E}{(1+\nu)(1-2\nu)}$
@@ -97,7 +97,7 @@ https://en.wikipedia.org/wiki/Mooney%E2%80%93Rivlin_solid
 
 The position equation is straightforward and can simply be evaluated using a Lagrangian approach by time evolving mesh nodes. The velocity equation is a bit more involved.
 
-$$\int_{x\in\Omega}\phi\frac{\partial\vec{v}}{\partial t}=\int_{x\in\Omega}\phi\nabla\cdot\sigma$$
+$$\int_{x\in\Omega}\phi\frac{\partial\rho\vec{v}}{\partial t}=\int_{x\in\Omega}\phi\nabla\cdot\sigma$$
 
 $$=\int_{x\in\Omega}\nabla\cdot(\phi\sigma)-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
 
@@ -107,7 +107,7 @@ $$=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)
 
 Giving us:
 
-$$\int_{x\in\Omega}\phi\frac{\partial\vec{v}}{\partial t}=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
+$$\int_{x\in\Omega}\phi\frac{\partial\rho\vec{v}}{\partial t}=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
 
 The boundary flux is the traction vector at the boundary. While the internal integral represents the usual exchange between basic function weights.
 
