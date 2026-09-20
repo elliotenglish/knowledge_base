@@ -36,6 +36,10 @@ Green-Lagrange strain tensor:
 
 $$E=\frac{1}{2}(C-I)$$
 
+Strain energy density function has 2 common symbols:
+
+$$W(F)=\psi(F)$$
+
 First Piola-Kirchhoff stress tensor:
 
 $$S=2\frac{\partial\psi(C)}{\partial C}=\frac{\partial\phi(E)}{\partial E}$$
@@ -49,6 +53,10 @@ The Cauchy stress tensor is then computed as:
 $$\sigma=\frac{1}{J}P F^T=\frac{1}{J}F S F^T$$
 
 $$J=det(F)$$
+
+or
+
+$$\sigma=\frac{1}{J}\frac{\partial\psi(F)}{\partial F}\cdot F^T$$
 
 ## Material parameters
 
@@ -80,7 +88,14 @@ https://en.wikipedia.org/wiki/Mooney%E2%80%93Rivlin_solid
 
 ## Discontinuous Galerkin Formulation
 
-The position equation is straightforward. The velocity equation is a bit more involved.
+### Timestepping scheme
+
+- Update positions explicitly, using forward euler.
+- Solve for velocity implicitly, using backward euler.
+
+### Implicit solve
+
+The position equation is straightforward and can simply be evaluated using a Lagrangian approach by time evolving mesh nodes. The velocity equation is a bit more involved.
 
 $$\int_{x\in\Omega}\phi\frac{\partial\vec{v}}{\partial t}=\int_{x\in\Omega}\phi\nabla\cdot\sigma$$
 
@@ -90,5 +105,30 @@ $$=\int_{x\in\partial\Omega}\vec{n}\cdot(\phi\sigma)-\int_{x\in\Omega}(\nabla\ph
 
 $$=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
 
+Giving us:
+
+$$\int_{x\in\Omega}\phi\frac{\partial\vec{v}}{\partial t}=\int_{x\in\partial\Omega}\phi\vec{n}\cdot\sigma-\int_{x\in\Omega}(\nabla\phi)\cdot\sigma$$
+
 The boundary flux is the traction vector at the boundary. While the internal integral represents the usual exchange between basic function weights.
 
+Ignoring spatial discretization for now, let's discretize this equation using backward euler:
+
+$$\int_{\vec{x}\in\Omega}\phi\rho\frac{\vec{v}^{n+1}-\vec{v}^n}{\Delta t}=\int_{\vec{x}\in\partial\Omega}\phi\vec{n}\cdot\sigma(\vec{x}^{n+1})-\int_{\vec{x}\in\Omega}(\nabla\phi)\cdot\sigma(\vec{x}^{n+1})$$
+
+The challenge now is to compute $\sigma(\vec{x}^{n+1})$. Let's begin by making a first order expansion:
+
+$$\sigma(\vec{x}^{n+1})=\sigma(\vec{x}^n)+\frac{\partial\sigma(\vec{x}^n)}{\partial\vec{x}}(\vec{x}^{n+1}-\vec{x}^n)$$
+
+$$=\sigma(\vec{x}^n)+\frac{\partial\sigma(\vec{x}^n)}{\partial\vec{x}}(\Delta t\vec{v}^{n+1})$$
+
+And now the challenge is to compute $\frac{\partial\sigma}{\partial\vec{x}}$. 
+
+## Element choice
+
+We need to use at least first order elements in order to get an element local deformation gradient. This can exactly match the nodal deformation of the element.
+
+We also choose to use simplex elements.
+
+## Boundary conditions
+
+Boundary conditions are enforced using a constraint + lagrange multiplier force on the velocity within the implicit solve.
