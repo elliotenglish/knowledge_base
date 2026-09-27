@@ -256,7 +256,15 @@ $$p^*=\text{nonconservative\_advect}(p^t,\vec{u}^t,\Delta t)$$
 
 ## Step 3a.1: Solve for combined pressure/momentum equation
 
-Then we solve for $p^{t+1}$ by substituting the final momentum update equation into the pressure divergence term:
+Then we solve for $p^{t+1}$ by evaluating the pressure divergence term (the second term in the pressure time derivative):
+
+$$p^{t+1}=p^*-\Delta t \rho^{n+1}(c^{*})^2\nabla\cdot\vec{u}^{t+1}$$
+
+Where we evaluate the sound speed as a function of $e^*$ and $\rho^{n+1}$:
+
+$$c^*=\sqrt{\frac{\partial p(e^*,\rho^{n+1})}{\partial\rho}\rho^{n+1}+\frac{\partial p(e^*,\rho^{n+1})}{\partial e}\frac{p^*}{(\rho^{n+1})^2}}$$
+
+Then substituting the final momentum update equation into the pressure update:
 
 $$p^{t+1}=p^*-\Delta t\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}((\rho\vec{u})^*-\Delta t \nabla p^{t+1})$$
 $$=p^*
