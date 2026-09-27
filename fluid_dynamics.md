@@ -171,7 +171,7 @@ $$\frac{\partial e}{\partial t}=-\vec{u}\cdot\nabla e
 
 ### Pressure time derivative
 
-Although pressure is a pseudo variable, it the time derivative equation is useful for building numerical methods, such as when solving for pressure implicitly.
+Although pressure is a pseudo variable, its time derivative equation is useful for building numerical methods, such as when solving for pressure implicitly.
 
 Given the definition of pressure:
 
@@ -287,6 +287,12 @@ $$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t\nabla p^{t+1}$$
 ## Step 3b.2: Compute final total energy
 
 $$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
+
+## Step 3c.1
+
+$$\frac{\partial\rho\vec{u}*}{\partial t}=-\nabla p$$
+
+$$\frac{\partial E*}{\partial t}=-\nabla\cdot(p\vec{u})$$
 
 ## Advection
 The conservative advection term:
