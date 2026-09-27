@@ -254,7 +254,11 @@ $$p^t=p(e^t,\rho^t)$$
 
 $$p^*=\text{nonconservative\_advect}(p^t,\vec{u}^t,\Delta t)$$
 
-## Step 3a.1: Solve for combined pressure/momentum equation
+## Step 3
+
+The strategy here is to linear the pressure update equation. And then conservatively apply it to momentum and energy. Then effectively the correct pressure can be computed from these using the equation of state in the following step. This avoids the non-linear solve simultaneously for velocity and energy.
+
+### Step 3a.1: Solve for combined pressure/momentum equation
 
 Then we solve for $p^{t+1}$ by evaluating the pressure divergence term (the second term in the pressure time derivative):
 
@@ -276,7 +280,7 @@ Then moving components over to the LHS, we solve the following linear system for
 $$(1-\Delta t^2\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}\nabla)p^{t+1}=
 p^*-\Delta t\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}(\rho\vec{u})^*$$
 
-## Step 3a.2: Compute final momentum and total energy
+### Step 3a.2: Compute final momentum and total energy
 
 Then we compute the final momentum and energy as:
 
@@ -284,7 +288,7 @@ $$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t \nabla p^{t+1}$$
 
 $$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
 
-## Step 3b.2: Alternate non-substituted method
+### Step 3b.2: Alternate non-substituted method
 
 Solve the following simultaneously:
 
@@ -292,15 +296,9 @@ $$p^{t+1}=p^*-\Delta t\rho^{t+1}c^2\nabla\cdot(\rho^{t+1})^{-1}(\rho\vec{u})^{t+
 
 $$(\rho\vec{u})^{t+1}=(\rho\vec{u})^*-\Delta t\nabla p^{t+1}$$
 
-## Step 3b.2: Compute final total energy
+### Step 3b.2: Compute final total energy
 
 $$E^{t+1}=E^*-\Delta t\nabla\cdot p^{t+1}\vec{u}^{t+1}$$
-
-## Step 3c.1
-
-$$\frac{\partial\rho\vec{u}*}{\partial t}=-\nabla p$$
-
-$$\frac{\partial E*}{\partial t}=-\nabla\cdot(p\vec{u})$$
 
 ## Advection
 The conservative advection term:
