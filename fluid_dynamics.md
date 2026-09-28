@@ -256,7 +256,7 @@ $$p^*=\text{nonconservative\_advect}(p^t,\vec{u}^t,\Delta t)$$
 
 ## Step 3
 
-The strategy here is to linear the pressure update equation. And then conservatively apply it to momentum and energy. Then effectively the correct pressure can be computed from these using the equation of state in the following step. This avoids the non-linear solve simultaneously for velocity and energy.
+The strategy here is to linear the pressure update equation. And then conservatively apply it to momentum and energy. Then effectively the correct pressure can be computed from these using the equation of state in the following step. This avoids the non-linear solve simultaneously for velocity and energy. In order to be unconditionally stable we need to be careful around the spatial discretization to make sure that they match.
 
 ### Step 3a.1: Solve for combined pressure/momentum equation
 
