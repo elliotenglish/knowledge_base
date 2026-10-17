@@ -312,3 +312,17 @@ Conservative semi-lagrangian advection treats nodes lagrangian, moving the quant
 
 Reference: unconditionally stable conservative advection:
 https://physbam.stanford.edu/~fedkiw/papers/stanford2010-01.pdf
+
+## Test Cases
+
+NASA's reports are a great resource for information on the known behavior of compressible flows in different flow speed regimes and some simplified geometry.
+
+https://www.grc.nasa.gov/www/k-12/airplane/Images/naca1135.pdf
+
+### 2D Flow Past a Stationary Circle
+
+https://elliotenglish.ca/publications/stanford2013-02.pdf (6.1.4)
+
+In this example we examine an incompressible (or sufficiently incompressible) flow past a cylinder in a large open domain with a fixed inflow velocity. The vortex shedding frequency and coefficients of lift and drag are examined to match experimental results.
+
+
