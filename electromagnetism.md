@@ -14,14 +14,21 @@ $$\frac{\partial\mathbf{E}}{\partial t}=\frac{\nabla\times\mathbf{B}-\mu_0\mathb
 - $\mathbf{E}$: electric field
 - $\mathbf{B}$: magnetic field
 
-## Perfectly Matched Layer (PML)
+### Conservative Form
+
+$$\int_\Omega\frac{\partial\mathbf{B}}{\partial t}=-\int_\Omega\nabla\times\mathbf{E}=\int_{\partial\Omega}\vec{n}\times\mathbf{E}$$
+$$\int_\Omega\frac{\partial\mathbf{E}}{\partial t}=\int_\Omega\frac{1}{\mu_0\epsilon_0}\vec{n}\times\mathbf{B}-\int_\Omega\frac{1}{\epsilon_0}\mathbf{J}$$
+
+## Boundary Conditions
+
+### Perfectly Matched Layer (PML)
 
 $$\vec{n}\times(\mathbf{E}-\mathbf{E}_{PML})=0$$
 $$\vec{n}\times(\mathbf{B}-\mathbf{B}_{PML})=0$$
 
 If $\mathbf{E}_{PML}$ and $\mathbf{B}_{PML}$ are 0, then all energy is absorbed
 
-## Port Boundary
+### Port Boundary
 
 $$\vec{n}\times\mathbf{E}=\vec{n}\times f(t)$$
 
