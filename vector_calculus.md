@@ -8,7 +8,7 @@ $$\nabla\cdot\rho\vec{u}=\rho\nabla\cdot\vec{u}+\vec{u}\cdot\nabla\rho$$
 
 The divergence rule converts the volume integral of the divergence of a vector function over a domain to a surface integral of the component of the vector function in the outward normal direction over the boundary of that same domain.
 
-$$\int_\Omega\nabla\cdot\vec{u}d\vec{x}=\int_{\partial\Omega}\vec{u}\cdot\vec{n}d\vec{x}$$
+$$\int_\Omega\nabla\cdot\vec{u}d\vec{x}=\int_{\partial\Omega}\vec{n}\cdot\vec{u}d\vec{x}$$
 
 Where:
 
@@ -16,6 +16,12 @@ Where:
 - $\partial\Omega$ is the boundary of the domain
 - $\vec{u}$ is the vector function being integrated
 - $\vec{n}$ is the outward facing normal of the domain
+
+## Curl Rule
+
+This can also be applied to the curl operator as follows:
+
+$$\int_\Omega\nabla\times\vec{u}d\vec{x}=\int_{\partial\Omega}\vec{n}\times\vec{x}d\vec{x}$$
 
 ## Integration by parts
 
